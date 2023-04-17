@@ -1,0 +1,10 @@
+Build target 'Target 1'
+compiling AD.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SENDDATA?AD
+
+Program Size: data=22.0 xdata=0 code=403
+creating hex file from ".\Objects\AD"...
+".\Objects\AD" - 0 Error(s), 1 Warning(s).
+Build Time Elapsed:  00:00:01

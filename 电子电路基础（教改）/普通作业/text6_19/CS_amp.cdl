@@ -1,0 +1,9 @@
+.SUBCKT CS_AMP GNDA VDDA vin vip vout Vbias
+
+* with current-source load
+MM1 2    vin   6    GNDA n18 W=0.6u L=0.2u M=1
+MM2 vout vip   6    GNDA n18 W=0.6u L=0.2u M=1
+MM3 2    2     VDDA VDDA p18 W=2.8u L=0.2u M=1
+MM4 2    vout  VDDA VDDA p18 W=2.8u L=0.2u M=1
+MM5 6    Vbias GNDA GNDA n18 W=1.2u L=0.2u M=1
+.ENDS

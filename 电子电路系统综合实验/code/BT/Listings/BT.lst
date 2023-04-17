@@ -1,0 +1,94 @@
+C51 COMPILER V9.60.0.0   BT                                                                07/06/2022 17:30:40 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE BT
+OBJECT MODULE PLACED IN .\Objects\BT.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE BT.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\BT.lst) TABS(2) OBJECT(.\Objects\BT.obj)
+
+line level    source
+
+   1          /**************************************************
+   2          *串口通信实验：收发（数据转发功能：单片机收到了电脑发送的数据后又转发回
+             -给电脑）
+   3          **************************************************/
+   4          #include<reg51.h>
+   5          #define uchar unsigned char 
+   6          #define uint unsigned int
+   7          sbit D3 = P1^4;
+   8          uchar order;
+   9          uint MODEL;
+  10          uint mod;
+  11          uint R_OUT;
+  12          uint G_OUT;
+  13          uint B_OUT;
+  14          uint clock;
+  15          uint enable_clock = 0;
+  16          uint enable_light = 0;
+  17          bit r_flag;       //设置全局变量
+  18          
+  19          void judge_order();
+  20          
+  21          void main()
+  22          {
+  23   1        D3 = 0;
+  24   1          SCON=0X50;  //REN=1允许接收状态 串口方式1
+  25   1        TMOD=0X20;  //定时器1定时方式2
+  26   1        TH1=0XFD; //11.0592M  9600波特率 数据位8 停止位1
+  27   1        TL1=0xFD;
+  28   1        TI=1;   //串口发送标志
+  29   1        TR1=1;    //启动定时器
+  30   1        EA=1;   //开总中断
+  31   1        ES=1;   //开串中断
+  32   1        while(1)
+  33   1        {
+  34   2          if(r_flag==1)   //如果有数据则进入这个语句
+  35   2          {
+  36   3            judge_order();
+  37   3                  r_flag=0;
+  38   3          }
+  39   2        }
+  40   1      }
+  41          
+  42          void judge_order()
+  43          {
+  44   1          MODEL = (order & 0xF0) >> 4;
+  45   1          switch(MODEL)
+  46   1          {
+  47   2              case 0://固定灯效
+  48   2                  mod = order & 0x0F;
+  49   2                  break;
+  50   2              case 1://调节红色占空比
+  51   2                  R_OUT = order & 0x0F;
+  52   2                  break;
+  53   2              case 2://调节绿色占空比
+C51 COMPILER V9.60.0.0   BT                                                                07/06/2022 17:30:40 PAGE 2   
+
+  54   2                  G_OUT = order & 0x0F;
+  55   2                  break;
+  56   2              case 3://调节蓝色占空比
+  57   2                  B_PUT = order & 0x0F;
+*** ERROR C202 IN LINE 57 OF BT.c: 'B_PUT': undefined identifier
+  58   2                  break;
+  59   2              case 4://定时开
+  60   2                  clock = order & 0x0F;
+  61   2                  enable_clock = 1;
+  62   2                  break;
+  63   2              case 5://
+  64   2                  clock = order & 0x0F;
+  65   2                  enable_clock = 0;
+  66   2                  break;
+  67   2              case 6://
+  68   2                  enable_light = 1;
+  69   2                  break;
+  70   2          }
+  71   1      
+  72   1      }
+  73          void serial() interrupt 4//串行中断函数
+  74          {
+  75   1        order=SBUF;       //将收取的数据存到a
+  76   1        r_flag=1;       //标志置位——表示单片机收到数据
+  77   1        RI=0;       //接收标志清零
+  78   1      }
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  1 ERROR(S)

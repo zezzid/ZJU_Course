@@ -1,0 +1,23 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\giga\Desktop\2021短学期\程序\2022 短学期 实验 例程\uart_mode1\exam2.uvproj
+Project File Date:  07/05/2022
+
+<h2>Output:</h2>
+compiling exam2.c...
+exam2.c - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling exam2.c...
+linking...
+Program Size: data=11.0 xdata=0 code=425
+creating hex file from "exam2"...
+"exam2" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling exam2.c...
+linking...
+Program Size: data=11.0 xdata=0 code=425
+creating hex file from "exam2"...
+"exam2" - 0 Error(s), 0 Warning(s).

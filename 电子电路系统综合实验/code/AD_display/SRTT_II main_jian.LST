@@ -1,0 +1,254 @@
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN_JIAN                                                 07/06/2022 10:08:46 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SRTT_II_MAIN_JIAN
+OBJECT MODULE PLACED IN .\output\SRTT_II main_jian.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE SRTT_II main_jian.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND
+                    - TABS(2) OBJECT(.\output\SRTT_II main_jian.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>              
+   3          
+   4          #define Uchar unsigned char
+   5          #define Uint unsigned int
+   6          #define uchar unsigned char
+   7          #define uint unsigned int
+   8          #define Ulong unsigned long
+   9          #define ulong unsigned long
+  10          
+  11          //Declare SFR associated with the ADC
+  12          sfr ADC_CONTR = 0xC5;
+  13          sfr ADC_DATA  = 0xC6;
+  14          sfr ADC_LOW2  = 0xBE;
+  15          sfr P1M0      = 0x91;
+  16          sfr P1M1      = 0x92;
+  17          
+  18          //Define ADC operation const for ADC_CONTR
+  19          #define ADC_POWER   0x80
+  20          #define ADC_FLAG    0x10    
+  21          #define ADC_START   0x08
+  22          #define ADC_SPEEDLL 0x00    //00
+  23          #define ADC_SPEEDL  0x20    //01
+  24          #define ADC_SPEEDH  0x40    //10
+  25          #define ADC_SPEEDHH 0x60    //11
+  26          
+  27          //定义引脚
+  28          sbit LCD1602_RS = P3^2;         //1602的数据/指令选择控制线
+  29          sbit LCD1602_RW = P3^3;
+  30          sbit LCD1602_E  = P3^4;         //1602的使能控制线
+  31          #define LCD1602_DB P2            //数据端口  D0~D7
+  32          
+  33          void LCD1602_Init();
+  34          void Delay_ms(unsigned int nms);
+  35          void delay(unsigned int t);
+  36          void LcdWaitReady();
+  37          void LCD1602_write_cmd(unsigned char cmd);
+  38          void LCD1602_write_data(unsigned char date);
+  39          void LCD1602_Clear();//清屏
+  40          void LCD1602_SetCursor(unsigned char x,unsigned char y);  //设置光标初始位置
+  41          void LCD1602_ShowChar(unsigned char xpos,unsigned char ypos,unsigned char xsz);
+  42          void LCD1602_ShowStr(unsigned char xpos,unsigned char ypos,unsigned char *p);
+  43          void LCD1602_ShowNum(char x, char y, unsigned int num);
+  44          uchar Adc(unsigned char n);
+  45          void send(uchar i);
+  46          
+  47          void LCD1602_Init()    //1602初始化函数 
+  48          {
+  49   1          LCD1602_write_cmd(0x01);    //显示清屏
+  50   1          LCD1602_write_cmd(0x38);    //显示模式设置
+  51   1          LCD1602_write_cmd(0x0C);    //显示开及光标设置
+  52   1          LCD1602_write_cmd(0x06);    //显示光标移动位置
+  53   1      }
+  54          
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN_JIAN                                                 07/06/2022 10:08:46 PAGE 2   
+
+  55          void LcdWaitReady()    /* 等待液晶准备好 */
+  56          {
+  57   1          unsigned char sta;
+  58   1          
+  59   1          LCD1602_DB = 0xFF;
+  60   1          LCD1602_RS = 0;
+  61   1          LCD1602_RW = 1;       //读状态
+  62   1          do {
+  63   2              LCD1602_E = 1;
+  64   2              sta = LCD1602_DB; //读取状态字
+  65   2              LCD1602_E = 0;
+  66   2          } while (sta & 0x80); //bit7等于1表示液晶正忙，重复检测直到其等于0为止
+  67   1      }
+  68          
+  69          void Delay_ms(unsigned int nms)        //@11.0592MHz   nms为要延时的ms数  
+  70          {
+  71   1          unsigned char i, j;    
+  72   1          while(nms--)
+  73   1          {
+  74   2              i = 15;
+  75   2              j = 90;
+  76   2              do
+  77   2              {
+  78   3                  while (--j);
+  79   3              } while (--i);
+  80   2          }
+  81   1      }
+  82          
+  83          void delay(unsigned int t) //延时
+  84          {       
+  85   1          unsigned int i, j; 
+  86   1          for(i=0;i<t;i++)
+  87   1        { 
+  88   2            for(j=0;j<10;j++)
+  89   2          {;} 
+  90   2          } 
+  91   1      } 
+  92          
+  93          void LCD1602_write_cmd(unsigned char cmd)    //写命令函数
+  94          {
+  95   1          LcdWaitReady();
+  96   1          LCD1602_RS = 0;
+  97   1          LCD1602_RW = 0;
+  98   1          LCD1602_DB = cmd;
+  99   1          LCD1602_E  = 1;
+ 100   1          Delay_ms(10);
+ 101   1          LCD1602_E  = 0;
+ 102   1      }
+ 103          
+ 104          void LCD1602_write_data(unsigned char date)    //写数据函数 
+ 105          {
+ 106   1          LcdWaitReady();
+ 107   1          LCD1602_RS = 1;
+ 108   1          LCD1602_RW = 0;
+ 109   1          LCD1602_DB = date;
+ 110   1          LCD1602_E  = 1;
+ 111   1          Delay_ms(10);
+ 112   1          LCD1602_E  = 0;
+ 113   1      }
+ 114          
+ 115          void LCD1602_Clear()    //1602清屏函数
+ 116          {
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN_JIAN                                                 07/06/2022 10:08:46 PAGE 3   
+
+ 117   1          LCD1602_write_cmd(0x01);
+ 118   1      }
+ 119          
+ 120          void LCD1602_SetCursor(unsigned char x,unsigned char y)//设置1602光标位置函数
+ 121          {
+ 122   1          unsigned char addr;
+ 123   1          if(y==0)     //由输入的屏幕坐标计算显示RAM的地址
+ 124   1              addr=0x00+x;
+ 125   1          else
+ 126   1              addr=0x40+x;
+ 127   1          LCD1602_write_cmd(addr | 0x80);//设置RAM地址
+ 128   1      }
+ 129          
+ 130          void LCD1602_ShowNum(char x, char y, unsigned int num)  //指定位置显示数字函数
+ 131          {
+ 132   1          unsigned int i,j,k,l,n;
+ 133   1          i=num/10000;
+ 134   1          j=(num-10000*i)/1000;
+ 135   1          k=(num-10000*i-1000*j)/100;
+ 136   1          l=(num-10000*i-1000*j-100*k)/10;
+ 137   1          n=num%10;
+ 138   1          LCD1602_SetCursor(x,y);  //设置起始地址
+ 139   1          if(i!=0)LCD1602_write_data(i+0x30);
+ 140   1          if((i!=0)||(j!=0))LCD1602_write_data(j+0x30);
+ 141   1          if((i!=0)||(j!=0)||(k!=0))LCD1602_write_data(k+0x30);
+ 142   1          if((i!=0)||(j!=0)||(k!=0)||(l!=0))LCD1602_write_data(l+0x30);
+ 143   1          LCD1602_write_data(n+0x30);
+ 144   1      }
+ 145          
+ 146          void LCD1602_ShowChar(unsigned char xpos,unsigned char ypos,char xsz)    //指定位置显示字符函数
+ 147          {
+ 148   1          ypos%=2;
+ 149   1          if(ypos==0)
+ 150   1          {
+ 151   2              LCD1602_write_cmd(0x80+xpos);
+ 152   2          }
+ 153   1          else
+ 154   1          {
+ 155   2              LCD1602_write_cmd(0x80+0x40+xpos);
+ 156   2          }
+ 157   1          LCD1602_write_data(xsz);
+ 158   1      }
+ 159          
+ 160          void LCD1602_ShowStr(unsigned char xpos,unsigned char ypos,char *p) //指定位置显示字符串函数
+ 161          {
+ 162   1          if(ypos>1)return;
+ 163   1          while(*p!='\0')
+ 164   1          {
+ 165   2              LCD1602_ShowChar(xpos++,ypos,*p++);
+ 166   2              if(*p=='\n')
+ 167   2              {
+ 168   3                  xpos=0;
+ 169   3                  ypos++;
+ 170   3                  p++;
+ 171   3              }
+ 172   2          }
+ 173   1      }
+ 174          
+ 175          uchar Adc(unsigned char n)//采集第几通道的数据
+ 176          {
+ 177   1        unsigned char i;  
+ 178   1        uint result=0;
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN_JIAN                                                 07/06/2022 10:08:46 PAGE 4   
+
+ 179   1      
+ 180   1        ADC_CONTR = ADC_CONTR|0x80;  //10000000 开启转换电源
+ 181   1        delay(10);
+ 182   1        i = 0x01<<n;
+ 183   1          P1M0 = P1M0|i;
+ 184   1          P1M1 = P1M1|i;   //采样的通道开漏
+ 185   1          delay(10); 
+ 186   1          ADC_CONTR = 0xE0|n;   //打开adc电源,设置转换速率 设置P1.n模拟通道  1110_0000|n
+ 187   1          delay(10);    //延时一端时间，使输入电压达到稳定
+ 188   1        ADC_DATA = 0;   
+ 189   1        ADC_LOW2 = 0; //清A/D转换结果寄存器
+ 190   1        ADC_CONTR = ADC_CONTR|0x08;  //ADC_START=1,开始转换   0000_1000
+ 191   1        delay(10);
+ 192   1          ADC_CONTR = ADC_CONTR&0xE7;  //将ADC_FLAG软件清零   1110_0111  
+ 193   1        result = ADC_DATA;
+ 194   1        result<<=2;
+ 195   1        result = result&0x03FC;   //0000_0011_1111_1100
+ 196   1        result = result|(ADC_LOW2 & 0x03);
+ 197   1        return(ADC_DATA);       //(16位)的结果
+ 198   1      }
+ 199          
+ 200          void send(uchar i)
+ 201          {
+ 202   1        TI=0;
+ 203   1        SBUF=i;
+ 204   1        while(TI==0);
+ 205   1        TI=0;
+ 206   1      }
+ 207          
+ 208          void main()
+ 209          {
+ 210   1        uint  temp;
+ 211   1          LCD1602_Init();
+ 212   1      
+ 213   1          while (1)
+ 214   1          {
+ 215   2              temp=Adc(7);
+ 216   2              LCD1602_ShowStr(0,0,"V:");
+ 217   2          //��һ������ת�ַ����ĳ���
+ 218   2          send(temp);
+ 219   2              //send(temp & 0x0003);
+ 220   2              LCD1602_ShowNum(3,1,temp); 
+ 221   2          }
+ 222   1      }
+ 223          //temp=445 串口输出FE FE
+ 224          //1BD 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    643    ----
+   CONSTANT SIZE    =      3    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      19
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

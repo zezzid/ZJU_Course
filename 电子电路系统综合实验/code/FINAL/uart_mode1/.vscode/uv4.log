@@ -1,0 +1,13 @@
+Build target 'Target 1'
+compiling exam2.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY_MS?EXAM2
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CHECK?EXAM2
+
+Program Size: data=45.0 xdata=0 code=2602
+creating hex file from "exam2"...
+"exam2" - 0 Error(s), 2 Warning(s).
+Build Time Elapsed:  00:00:00

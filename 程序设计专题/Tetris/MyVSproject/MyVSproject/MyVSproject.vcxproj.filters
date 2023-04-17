@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="draw">
+      <UniqueIdentifier>{b850e464-1e50-411b-8af2-4cb13ef9d83a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="file">
+      <UniqueIdentifier>{6c90a057-a82e-4201-a20c-898de5f18357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="图形库">
+      <UniqueIdentifier>{51d16d8b-6a5e-4b78-a3ca-26f1a2f8db91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="图形库\libgraphics">
+      <UniqueIdentifier>{a93b2c5f-9dcb-4ce1-a8a5-ecf9b0d366c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="图形库\simpleGUI">
+      <UniqueIdentifier>{a85e272d-eb5e-428e-8d90-0751c5a604b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="主函数">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MyVSproject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\boolean.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\exception.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\extgraph.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\gcalloc.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\genlib.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\graphics.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\linkedlist.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\random.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\simpio.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\libgraphics\strlib.h">
+      <Filter>图形库\libgraphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\simpleGUI\imgui.h">
+      <Filter>图形库\simpleGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Mycode\draw.h">
+      <Filter>draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Mycode\file.h">
+      <Filter>file</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Mycode\Tetris.h">
+      <Filter>资源文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MyVSproject.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="MyVSproject.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Mycode\Tetris.c">
+      <Filter>主函数</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libgraphics\exceptio.c">
+      <Filter>图形库\libgraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libgraphics\genlib.c">
+      <Filter>图形库\libgraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libgraphics\graphics.c">
+      <Filter>图形库\libgraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libgraphics\linkedlist.c">
+      <Filter>图形库\libgraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libgraphics\random.c">
+      <Filter>图形库\libgraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libgraphics\simpio.c">
+      <Filter>图形库\libgraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\libgraphics\strlib.c">
+      <Filter>图形库\libgraphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\simpleGUI\imgui.c">
+      <Filter>图形库\simpleGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Mycode\draw.c">
+      <Filter>draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Mycode\file.c">
+      <Filter>file</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

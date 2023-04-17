@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\PWM.obj" 
+TO ".\Objects\AD_LCD" 
+PRINT(".\Listings\AD_LCD.m51") RAMSIZE(256) 

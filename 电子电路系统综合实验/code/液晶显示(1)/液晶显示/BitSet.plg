@@ -1,0 +1,367 @@
+<html>
+<body>
+<pre>
+<h1>礦ision3 Build Log</h1>
+<h2>Project:</h2>
+E:\公司文档\暑假短学期\位操作实验\BitSet.uv2
+Project File Date:  08/24/2007
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDRESET?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?COMINIT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AD_FILTER?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CUR_MEATURE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURFENGDANG?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURDISP?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TYPE_TEST?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPINT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPTHINKNESS?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPCHAR?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_READ?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SECTOR_ERASE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_PROGRAM?SRTT_II_MAIN
+Program Size: data=94.0 xdata=0 code=3583
+"BitSet" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDRESET?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?COMINIT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AD_FILTER?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CUR_MEATURE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURFENGDANG?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURDISP?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TYPE_TEST?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPINT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPTHINKNESS?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPCHAR?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_READ?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SECTOR_ERASE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_PROGRAM?SRTT_II_MAIN
+Program Size: data=94.0 xdata=0 code=3583
+"BitSet" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDRESET?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?COMINIT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AD_FILTER?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CUR_MEATURE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURFENGDANG?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURDISP?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TYPE_TEST?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPINT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPTHINKNESS?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPCHAR?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_READ?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SECTOR_ERASE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_PROGRAM?SRTT_II_MAIN
+Program Size: data=94.0 xdata=0 code=3583
+creating hex file from "BitSet"...
+"BitSet" - 0 Error(s), 13 Warning(s).
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+source\SRTT_II main.c(6): warning C318: can't open file 'STC12C.h'
+SOURCE\SRTT_II MAIN.C(293): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(296): error C202: 'P1M0': undefined identifier
+SOURCE\SRTT_II MAIN.C(297): error C202: 'P1M1': undefined identifier
+SOURCE\SRTT_II MAIN.C(299): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(301): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(302): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(303): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(305): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(306): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(309): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(813): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(814): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(815): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(823): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(824): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(825): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(826): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(829): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(830): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(832): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(839): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(840): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(842): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(843): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(845): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(846): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(856): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(857): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(858): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(859): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(860): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(862): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(863): error C202: 'ISP_TRIG': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+source\SRTT_II main.c(6): warning C318: can't open file 'STC12C.h'
+SOURCE\SRTT_II MAIN.C(293): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(296): error C202: 'P1M0': undefined identifier
+SOURCE\SRTT_II MAIN.C(297): error C202: 'P1M1': undefined identifier
+SOURCE\SRTT_II MAIN.C(299): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(301): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(302): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(303): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(305): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(306): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(309): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(813): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(814): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(815): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(823): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(824): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(825): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(826): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(829): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(830): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(832): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(839): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(840): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(842): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(843): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(845): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(846): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(856): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(857): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(858): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(859): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(860): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(862): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(863): error C202: 'ISP_TRIG': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+source\SRTT_II main.c(6): warning C318: can't open file 'STC12C.h'
+SOURCE\SRTT_II MAIN.C(293): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(296): error C202: 'P1M0': undefined identifier
+SOURCE\SRTT_II MAIN.C(297): error C202: 'P1M1': undefined identifier
+SOURCE\SRTT_II MAIN.C(299): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(301): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(302): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(303): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(305): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(306): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(309): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(813): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(814): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(815): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(823): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(824): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(825): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(826): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(829): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(830): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(832): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(839): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(840): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(842): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(843): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(845): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(846): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(856): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(857): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(858): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(859): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(860): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(862): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(863): error C202: 'ISP_TRIG': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+source\SRTT_II main.c(6): warning C318: can't open file 'STC12C.h'
+SOURCE\SRTT_II MAIN.C(293): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(296): error C202: 'P1M0': undefined identifier
+SOURCE\SRTT_II MAIN.C(297): error C202: 'P1M1': undefined identifier
+SOURCE\SRTT_II MAIN.C(299): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(301): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(302): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(303): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(305): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(306): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(309): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(813): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(814): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(815): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(823): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(824): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(825): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(826): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(829): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(830): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(832): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(839): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(840): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(842): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(843): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(845): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(846): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(856): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(857): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(858): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(859): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(860): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(862): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(863): error C202: 'ISP_TRIG': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+source\SRTT_II main.c(6): warning C318: can't open file 'STC12C.h'
+SOURCE\SRTT_II MAIN.C(293): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(296): error C202: 'P1M0': undefined identifier
+SOURCE\SRTT_II MAIN.C(297): error C202: 'P1M1': undefined identifier
+SOURCE\SRTT_II MAIN.C(299): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(301): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(302): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(303): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(305): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(306): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(309): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(813): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(814): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(815): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(823): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(824): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(825): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(826): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(829): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(830): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(832): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(839): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(840): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(842): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(843): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(845): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(846): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(856): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(857): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(858): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(859): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(860): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(862): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(863): error C202: 'ISP_TRIG': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+source\SRTT_II main.c(6): warning C318: can't open file 'STC12C.h'
+SOURCE\SRTT_II MAIN.C(293): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(296): error C202: 'P1M0': undefined identifier
+SOURCE\SRTT_II MAIN.C(297): error C202: 'P1M1': undefined identifier
+SOURCE\SRTT_II MAIN.C(299): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(301): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(302): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(303): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(305): error C202: 'ADC_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(306): error C202: 'ADC_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(309): error C202: 'ADC_LOW2': undefined identifier
+SOURCE\SRTT_II MAIN.C(813): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(814): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(815): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(823): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(824): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(825): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(826): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(829): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(830): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(832): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(839): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(840): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(842): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(843): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(845): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(846): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(856): error C202: 'ISP_CONTR': undefined identifier
+SOURCE\SRTT_II MAIN.C(857): error C202: 'ISP_CMD': undefined identifier
+SOURCE\SRTT_II MAIN.C(858): error C202: 'ISP_ADDRH': undefined identifier
+SOURCE\SRTT_II MAIN.C(859): error C202: 'ISP_ADDRL': undefined identifier
+SOURCE\SRTT_II MAIN.C(860): error C202: 'ISP_DATA': undefined identifier
+SOURCE\SRTT_II MAIN.C(862): error C202: 'ISP_TRIG': undefined identifier
+SOURCE\SRTT_II MAIN.C(863): error C202: 'ISP_TRIG': undefined identifier
+Target not created
+Build target 'Target 1'
+assembling STARTUP.A51...
+compiling SRTT_II main.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDRESET?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?COMINIT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_AD_FILTER?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CUR_MEATURE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURFENGDANG?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_CURDISP?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TYPE_TEST?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPINT?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPTHINKNESS?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPCHAR?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_READ?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SECTOR_ERASE?SRTT_II_MAIN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_BYTE_PROGRAM?SRTT_II_MAIN
+Program Size: data=94.0 xdata=0 code=3583
+creating hex file from "BitSet"...
+"BitSet" - 0 Error(s), 13 Warning(s).

@@ -1,0 +1,387 @@
+ ****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+  Copyright (c) 1986 - 2021 by Synopsys, Inc. All Rights Reserved.              
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: CS_amp_DC.sp                                                      
+  Command line options: D:\Hspice_K-2015.06-3\WIN64\hspice.exe -i CS_amp_DC.sp -o D:\_University\_current\text6_15\CS_amp_DC.lis
+  lic:  
+  lic: FLEXlm: v11.2.1 
+  lic: USER:   Zezzid               HOSTNAME: LAPTOP-NBK8184L 
+  lic: HOSTID: "68545a57211d"       PID:      50680 
+  lic: Using FLEXlm license file: 
+  lic: 27000@LAPTOP-NBK8184L 
+  lic: Checkout 1 hspice 
+  lic: License/Maintenance for hspice will expire on 30-dec-2030/2029.2029 
+  lic: 1(in_use)/99(total) FLOATING license(s) on SERVER 27000@LAPTOP-NBK8184L 
+  lic:   
+ Init: read install configuration file: D:\Hspice_K-2015.06-3\meta.cfg
+
+ **warning**  runlvl smaller than 5, reset to 5 when accurate turned on
+  **warning** (..\models\ms018.mdl:33) Model n18 device geometries will not be checked against the limits set by lmin, lmax, wmin and wmax. To enable this check, add a period(.) to the model name(i.e. enable model selector).
+
+ **warning**  runlvl smaller than 5, reset to 5 when accurate turned on
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title cs_amp_dc
+
+ ****** circuit name directory
+ circuit number to circuit name directory
+   number circuitname                     definition         multiplier
+        0 main circuit
+        1 x1.                             cs_amp             1.00 
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title cs_amp_dc
+
+ ****** mos   model parameters tnom=  25.000 temp=  25.000 ******
+ ***************************************************************************
+ ***        model parameters  model name:   0:n18      model type:nmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+       hspver=    2006.03               level=         49         
+      version=       3.24            paramchk=          0         
+       apwarn=          1                lite=          0         
+       vgslim=          0             binUnit=          2         
+       capMod=          3               xpart=          1         
+       mobMod=          1              nqsMod=          0         
+       stiMod=          0                 elm=          5         
+     sfvtflag=          0                 tox=  3.87e-009 meter   
+           xj=   1.6e-007 meter       binflag=          0         
+         lmin=   1.5e-007 meter          lmax=     1e-005 meter   
+         wmin=   1.9e-007 meter          wmax=     0.0001 meter   
+         lref=          0 meter          wref=          0 meter   
+         lint=1.57571e-008 meter          wint=-1.44505e-009 meter   
+        lmult=          1               wmult=          1         
+           ll=2.63528e-016                 lln=     1.1206         
+           lw=-2.26256e-016                 lwn=       0.92         
+          lwl=-2.05767e-022                  wl=-2.36646e-016         
+          wln=       1.06                  ww=-3.64097e-014         
+          wwn=   0.876847                 wwl=    -4e-021         
+          dwg= -5.96e-009 m/V             dwb=   4.5e-009 m/V^1/2 
+           xl=   1.8e-008                  xw=          0         
+           a0=       0.83                 ags=       0.32 V^-1    
+           b0=     6e-008 meter            b1=          0 meter   
+         keta=     -0.003 V^-1           voff=     -0.103 V       
+        ngate=          0 cm^-3           vbx=          0 V       
+          vbm=         -3 V                xt=  1.55e-007 meter   
+         vth0=       0.39 V               nch=3.8694e+017 cm^-3   
+         nsub=     6e+016 cm^-3           nlx=7.5451e-008 meter   
+       gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+           k1=   0.680104 V^1/2            k2= -0.0499778         
+           k3=         10                 k3b=         -3 V^-1    
+           w0=5.58201e-007 meter          dvt0=        1.3         
+         dvt1=   0.577163                dvt2=  -0.171755 V^-1    
+        dvt0w=          0 meter^-1      dvt1w=          0 meter^-1
+        dvt2w=          0 V^-1           dsub=        0.4         
+         eta0=      0.028                etab=     -0.027 V^-1    
+           u0=      0.034 m^2/V/sec         ua= -1.03e-009 m/V     
+           ub=2.36667e-018 (m/V)^2          uc=   1.2e-010 V^-1    
+         vsat=      82500 m/sec            a1=          0 v^-1    
+           a2=       0.99               delta=       0.01 V       
+         rdsw=    55.5497 ohm-um         prwg=        0.4 V^-1    
+         prwb=      -0.24 V^-1/2           wr=          1         
+         pclm=        1.2             pdiblc1=      0.025         
+      pdiblc2=     0.0038             pdiblcb=          0 V^-1    
+       pscbe1=  3.45e+008 V/m          pscbe2=     1e-006 V/m     
+        drout=       0.56                pvag=          0         
+      nfactor=       1.25                cdsc=          0 f/m^2   
+        cdscb=          0 f/V/m^2       cdscd=     0.0001 f/V/m^2 
+          cit=          0 f/m^2        alpha0=1.7754e-008 m/V     
+        beta0=    11.1684 V               dlc=   8.5e-009 meter   
+          dwc=   4.5e-008 meter           clc=     1e-007 meter   
+          cle=        0.6                cgso=   3.7e-010 f/m     
+         cgdo=   3.7e-010 f/m            cgbo=8.03054e-010 f/m     
+         cgsl=          0 f/m            cgdl=          0 f/m     
+       ckappa=        0.6                  cf=          0 f/m     
+         acde=       0.64 m/V            moin=         24 V^1/2   
+         toxm=  3.87e-009 m            dtoxcv=          0 m       
+          vfb (not used)                alpha1=     0.1764 1/V     
+         ijth=        0.1 A              noff=     1.2025         
+       voffcv=          0                 tcj=   0.000842 1/K     
+        tcjsw=   0.000669 1/K          tcjswg=   0.000669 1/K     
+          tpb=    0.00147 V/K           tpbsw=   0.000868 V/K     
+       tpbswg=   0.000868 V/K             llc=2.63528e-016         
+          lwc=-2.26256e-016                lwlc=-2.05767e-022         
+          wlc=-2.36646e-016                 wwc=-3.64097e-014         
+         wwlc=    -4e-021                tnom=     298.15 K       
+          kt1=  -0.257287 V              kt1l=    -1e-009         
+          kt2=      -0.04                 ute=      -1.55         
+          ua1=  1.76e-009 m/V             ub1=  -2.4e-018 (m/V)^2 
+          uc1=    -1e-010 m/V^2            at=      37000 m/s     
+          prt=        -55         
+          using Berkeley noise model       noiMod=          2         
+         noia=8.2282e+019                noib=      13327         
+         noic=-2.4937e-014                  em=1.7767e+007         
+           ef=      0.818                  af=          1         
+           kf=          0              gdsnoi=-1.23457e-029         
+          using Berkeley diodes          using ACM 
+          acm=        12                 hdif=    2e-007 meter    
+         ldif=    7e-008 meter             js= 3.52e-007 amp/m^2  
+          jsw=    3e-013 amp/m            xti=      3.25          
+           nj=    1.0392                   cj=  0.000968 f/m^2    
+           mj=     0.346                   pb=       0.7 V        
+         cjsw= 7.95e-011 f/m             mjsw=     0.538          
+          php (not used)                  pbsw=         1 V        
+       cjgate (not used)                 cjswg= 4.18e-010 f/m      
+        mjswg=     0.538                pbswg=         1 V        
+        lketa=  -1.7e-009               lvoff=  -3.3e-009         
+          lu0=2.30577e-011                 lua=7.73498e-019         
+     lnfactor=   4.5e-008                lua1=     6e-018         
+         luc1=   1.7e-017             lalpha1= 7.625e-009         
+        wvth0=-2.97095e-008                 wk1=-2.48968e-008         
+          wu0=-3.10097e-009                wua1=  -1.1e-016         
+        pvth0=     5e-016                 pk1=   1.3e-015         
+          pua=    -1e-024                 puc=   1.5e-024         
+        pvsat=  -8.3e-010               ppclm=     3e-015         
+     ppdiblc2=   2.7e-016                pua1=    -5e-025         
+         puc1=    -3e-024                 pat=  -7.5e-010         
+ 
+
+  
+      
+ **info** set option symb=1 internally to help for convergence.
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 5         bypass  = 2         
+  Opening plot unit= 79
+ file=D:\_University\_current\text6_15\CS_amp_DC.pa0
+
+
+
+
+
+ ****     small-signal transfer characteristics
+
+        vvin       input resistance at vvin      output resistance at v(vout)     v(vout)/vvin     
+
+       0.                1.000e+20                     816.3994x                  764.7060m
+      20.0000m           1.000e+20                     806.9488x                  761.5632m
+      40.0000m           1.000e+20                     801.5162x                  762.1014m
+      60.0000m           1.000e+20                     797.7649x                  764.1698m
+      80.0000m           1.000e+20                     794.0232x                  766.1903m
+     100.0000m           1.000e+20                     790.2918x                  768.1643m
+     120.0000m           1.000e+20                     786.5715x                  770.0932m
+     140.0000m           1.000e+20                     782.8631x                  771.9784m
+     160.0000m           1.000e+20                     779.1672x                  773.8211m
+     180.0000m           1.000e+20                     775.4844x                  775.6226m
+     200.0000m           1.000e+20                     771.8155x                  777.3841m
+     220.0000m           1.000e+20                     768.1607x                  779.1067m
+     240.0000m           1.000e+20                     764.5206x                  780.7915m
+     260.0000m           1.000e+20                     760.8957x                  782.4395m
+     280.0000m           1.000e+20                     757.2864x                  784.0518m
+     300.0000m           1.000e+20                     753.6926x                  785.6292m
+     320.0000m           1.000e+20                     750.1150x                  787.1728m
+     340.0000m           1.000e+20                     746.5537x                  788.6835m
+     360.0000m           1.000e+20                     743.0087x                  790.1620m
+     380.0000m           1.000e+20                     739.4802x                  791.6092m
+     400.0000m           1.000e+20                     735.9688x                  793.0260m
+     420.0000m           1.000e+20                     732.4740x                  794.4130m
+     440.0000m           1.000e+20                     728.9961x                  795.7710m
+     460.0000m           1.000e+20                     725.5352x                  797.1007m
+     480.0000m           1.000e+20                     722.0910x                  798.4029m
+     500.0000m           1.000e+20                     718.6632x                  799.6780m
+     520.0000m           1.000e+20                     715.2529x                  800.9269m
+     540.0000m           1.000e+20                     711.8589x                  802.1499m
+     560.0000m           1.000e+20                     708.4816x                  803.3479m
+     580.0000m           1.000e+20                     705.1207x                  804.5213m
+     600.0000m           1.000e+20                     701.7759x                  805.6707m
+     620.0000m           1.000e+20                     698.4471x                  806.7966m
+     640.0000m           1.000e+20                     695.1342x                  807.8995m
+     660.0000m           1.000e+20                     691.8369x                  808.9799m
+     680.0000m           1.000e+20                     688.5549x                  810.0383m
+     700.0000m           1.000e+20                     685.2883x                  811.0750m
+     720.0000m           1.000e+20                     682.0361x                  812.0907m
+     740.0000m           1.000e+20                     678.7988x                  813.0856m
+     760.0000m           1.000e+20                     675.5756x                  814.0601m
+     780.0000m           1.000e+20                     672.3663x                  815.0148m
+     800.0000m           1.000e+20                     669.1703x                  815.9499m
+     820.0000m           1.000e+20                     665.9877x                  816.8658m
+     840.0000m           1.000e+20                     662.8174x                  817.7629m
+     860.0000m           1.000e+20                     659.6604x                  818.6414m
+     880.0000m           1.000e+20                     656.5148x                  819.5018m
+     900.0000m           1.000e+20                     653.3807x                  820.3443m
+     920.0000m           1.000e+20                     650.2586x                  821.1692m
+     940.0000m           1.000e+20                     647.1464x                  821.9769m
+     960.0000m           1.000e+20                     644.0450x                  822.7676m
+     980.0000m           1.000e+20                     640.9537x                  823.5415m
+       1.0000            1.000e+20                     637.8717x                  824.2989m
+       1.0200            1.000e+20                     634.7986x                  825.0401m
+       1.0400            1.000e+20                     631.7346x                  825.7653m
+       1.0600            1.000e+20                     628.6784x                  826.4748m
+       1.0800            1.000e+20                     625.6293x                  827.1686m
+       1.1000            1.000e+20                     622.5882x                  827.8471m
+       1.1200            1.000e+20                     619.5536x                  828.5105m
+       1.1400            1.000e+20                     616.5251x                  829.1588m
+       1.1600            1.000e+20                     613.5025x                  829.7924m
+       1.1800            1.000e+20                     610.4860x                  830.4113m
+       1.2000            1.000e+20                     607.4733x                  831.0157m
+       1.2200            1.000e+20                     604.4655x                  831.6057m
+       1.2400            1.000e+20                     601.4616x                  832.1815m
+       1.2600            1.000e+20                     598.4612x                  832.7432m
+       1.2800            1.000e+20                     595.4633x                  833.2909m
+       1.3000            1.000e+20                     592.4687x                  833.8246m
+       1.3200            1.000e+20                     589.4754x                  834.3446m
+       1.3400            1.000e+20                     586.4840x                  834.8507m
+       1.3600            1.000e+20                     583.4931x                  835.3431m
+       1.3800            1.000e+20                     580.5037x                  835.8217m
+       1.4000            1.000e+20                     577.5141x                  836.2866m
+       1.4200            1.000e+20                     574.5242x                  836.7378m
+       1.4400            1.000e+20                     571.5333x                  837.1752m
+       1.4600            1.000e+20                     568.5417x                  837.5987m
+       1.4800            1.000e+20                     565.5475x                  838.0083m
+       1.5000            1.000e+20                     562.5512x                  838.4037m
+       1.5200            1.000e+20                     559.5531x                  838.7848m
+       1.5400            1.000e+20                     556.5511x                  839.1515m
+       1.5600            1.000e+20                     553.5445x                  839.5033m
+       1.5800            1.000e+20                     550.5351x                  839.8400m
+       1.6000            1.000e+20                     547.5208x                  840.1611m
+       1.6200            1.000e+20                     544.5005x                  840.4661m
+       1.6400            1.000e+20                     541.4745x                  840.7545m
+       1.6600            1.000e+20                     538.4415x                  841.0256m
+       1.6800            1.000e+20                     535.4013x                  841.2783m
+       1.7000            1.000e+20                     532.3524x                  841.5119m
+       1.7200            1.000e+20                     529.2952x                  841.7248m
+       1.7400            1.000e+20                     526.2281x                  841.9159m
+       1.7600            1.000e+20                     523.1493x                  842.0832m
+       1.7800            1.000e+20                     520.0580x                  842.2244m
+       1.8000            1.000e+20                     516.9521x                  842.3371m
+  
+ **info** dc convergence successful at Newton-Raphson method 
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title cs_amp_dc
+
+ ****** operating point information tnom=  25.000 temp=  27.000 ******
+ ****** operating point status is all       simulation time is     0.     
+    node    =voltage      node    =voltage      node    =voltage
+
+ +0:gnda    =   0.      0:vbias   =  -1.2200  0:vdda    =   1.8000 
+ +0:vin     = 500.0000m 0:vout    = 370.6301m 0:vss     =  -1.8000 
+
+
+ **** voltage sources
+
+ subckt                                                         
+ element  0:vvin     0:vgnda    0:vvbias   0:vvdda    0:vvss    
+  volts    500.0000m    0.        -1.2200     1.8000    -1.8000 
+  current    0.      -139.1593m    0.       -40.0262p  139.1593m
+  power      0.         0.         0.        72.0472p  250.4867m
+
+     total voltage source power dissipation=  250.4867m       watts
+
+
+
+
+ **** mosfets
+
+
+ subckt   x1         x1        
+ element  1:mm1      1:mm2     
+ model    0:n18      0:n18     
+ region       Cutoff   Saturati
+  id        36.7917p   36.0327p
+  ibs     -7.380e-19  139.1593m
+  ibd       -5.1389f   -5.6491f
+  vgs      129.3699m  580.0000m
+  vds        1.4294     2.1706 
+  vbs     -370.6301m    1.8000 
+  vth      520.4353m  286.8235m
+  vdsat     42.9503m   37.0596m
+  vod     -391.0654m  293.1765m
+  beta     726.4487u  701.1275u
+  gam eff  754.9770m  701.5892m
+  gm         1.1127n  917.0721p
+  gds       23.0864p    7.5359p
+  gmb      244.0831p  104.8229p
+  cdtot    407.0723a  518.9137a
+  cgtot    583.4456a  709.3036a
+  cstot    518.9374a  834.2945a
+  cbtot    943.0996a    1.2821f
+  cgs      141.6032a  355.6685a
+  cgd      141.5776a  141.5778a
+
+
+
+
+
+
+
+ ****     small-signal transfer characteristics
+
+      v(vout)/vvin                             =  799.6780m
+      input resistance at             vvin     =  1.000e+20
+      output resistance at v(vout)             =  718.6634x
+
+
+
+ ***************************************************
+   ******   pole/zero analysis  
+  
+  
+    input =  0:vvin          output = v(vout)
+  
+       poles (rad/sec)                 poles ( hertz)
+ real            imag            real            imag            
+ -1.38603k       0.              -220.594        0.              
+  
+       zeros (rad/sec)                 zeros ( hertz)
+ real            imag            real            imag            
+ -7.85844x       0.              -1.25071x       0.              
+  
+  ***** constant factor = 141.450u
+
+          ***** job concluded
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title cs_amp_dc
+
+ ****** job statistics summary tnom=  25.000 temp=  27.000 ******
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =      11 # elements   =       8
+  # resistors   =       0 # capacitors =       1 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       5
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       2 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1          28
+  dc sweep           0.00          91         209
+  readin             0.01
+  errchk             0.00
+  setup              0.00
+  output             0.00
+
+
+           peak memory used         50.52 megabytes
+           total cpu time            0.02 seconds
+           total elapsed time        0.17 seconds
+           job started at     21:21:21 11/28/2021
+           job ended   at     21:21:22 11/28/2021
+
+
+  lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        0.15(s)

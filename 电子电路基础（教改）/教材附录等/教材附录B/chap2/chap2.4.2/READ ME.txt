@@ -1,0 +1,5 @@
+bandpass是滤波器
+firststage是前置放大部分
+firststage_Avc是AD620单独
+laststage是末级放大器
+notch是陷波器

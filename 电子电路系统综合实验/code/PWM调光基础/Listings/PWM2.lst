@@ -1,0 +1,85 @@
+C51 COMPILER V9.60.0.0   PWM2                                                              06/29/2022 14:16:17 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PWM2
+OBJECT MODULE PLACED IN .\Objects\PWM2.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE PWM2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\PWM2.lst) TABS(2) OBJECT(.\Objects\PWM2.obj)
+
+line level    source
+
+   1          #include<reg52.h> //包含头文件，一般情况不需要改动，头文件包含特殊功能寄存器�
+             -�定义
+   2          
+   3          //sbit LED0=P1^0;// 用sbit 关键字 定义 LED到P1.0端口，LED是自己任意定义且容易记忆的
+             -符号
+   4          sbit P20=P1^3;
+   5          sbit LED1 = P2^6;
+   6          sbit LED2 = P2^7;
+   7          sbit LED3 = P2^1;
+   8          
+   9          void Delay(unsigned int t); //函数声明
+  10          /*------------------------------------------------
+  11                              主函数
+  12          ------------------------------------------------*/
+  13          void main (void)
+  14          {
+  15   1          //unsigned int kk;                  
+  16   1          unsigned int CYCLE=1,PWM_LOW=0;//定义周期并赋值    //   
+  17   1          while (1)         //主循环
+  18   1          {
+  19   2              if(P20==0)
+  20   2              {
+  21   3                  Delay(3);
+  22   3                  if(P20==0)
+  23   3                  {
+  24   4                      CYCLE=CYCLE+100;
+  25   4                      if(CYCLE==1101)
+  26   4                      {
+  27   5                          CYCLE=1;
+  28   5                      }
+  29   4                      while(P20==0);
+  30   4                  }
+  31   3              }
+  32   2              //P1=0XFF;// LED0=1;
+  33   2              LED1 = 1;
+  34   2              LED2 = 1;
+  35   2              LED3 = 1; 
+  36   2              //点亮LED  
+  37   2              LED1 = 0;
+  38   2              LED2 = 0;
+  39   2              LED3 = 0;
+  40   2              Delay(CYCLE);//延时长度
+  41   2              //熄灭LED
+  42   2              LED1 = 1;
+  43   2              LED2 = 1;
+  44   2              LED3 = 1;
+  45   2              Delay(1200-CYCLE);//延时长度
+  46   2                              //主循环中添加其他需要一直工作的程序
+  47   2          }
+  48   1      }
+  49          /*------------------------------------------------
+  50           延时函数，含有输入参数 unsigned int t，无返回值
+  51           unsigned int 是定义无符号整形变量，其值的范围是
+  52           0~65535
+C51 COMPILER V9.60.0.0   PWM2                                                              06/29/2022 14:16:17 PAGE 2   
+
+  53          ------------------------------------------------*/
+  54          void Delay(unsigned int t)
+  55          {
+  56   1       while(--t);
+  57   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    105    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

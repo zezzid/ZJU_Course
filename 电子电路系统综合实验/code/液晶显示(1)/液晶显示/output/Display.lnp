@@ -1,0 +1,4 @@
+".\output\STARTUP.obj",
+".\output\SRTT_II main.obj" 
+TO ".\output\Display" 
+PRINT(".\Display.m51") RAMSIZE(256) 

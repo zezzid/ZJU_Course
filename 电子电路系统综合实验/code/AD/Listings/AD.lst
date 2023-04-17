@@ -1,0 +1,203 @@
+C51 COMPILER V9.60.0.0   AD                                                                07/05/2022 17:53:58 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE AD
+OBJECT MODULE PLACED IN .\Objects\AD.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE AD.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listin
+                    -gs\AD.lst) TABS(2) OBJECT(.\Objects\AD.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          
+   4          #define FOSC 18432000L
+   5          #define BAUD 9600
+   6          
+   7          typedef unsigned char BYTE;
+   8          typedef unsigned int WORD;
+   9          
+  10          //Declare SFR associated with the ADC
+  11          sfr AUXR      = 0x8e;
+  12          sfr ADC_CONTR = 0xC5;
+  13          sfr ADC_DATA  = 0xC6;
+  14          sfr ADC_LOW2  = 0xBE;
+  15          sfr P1M0      = 0x91;
+  16          sfr P1M1      = 0x92;
+  17          
+  18          //Define
+  19          sbit RED = P1^0;
+  20          sbit GREEN = P1^1;
+  21          sbit BLUE = P1^2;
+  22          sbit D3 = P1^4;
+  23          sbit BEEP = P1^7;
+  24          
+  25          
+  26          
+  27          //Define ADC operation const for ADC_CONTR
+  28          #define ADC_POWER   0x80
+  29          #define ADC_FLAG    0x10
+  30          #define ADC_START   0x08
+  31          #define ADC_SPEEDLL 0x00
+  32          #define ADC_SPEEDL  0x20
+  33          #define ADC_SPEEDH  0x40
+  34          #define ADC_SPEEDHH 0x60
+  35          
+  36          void InitUart();
+  37          void SendData(BYTE dat);
+  38          void Delay(WORD n);
+  39          void InitADC();
+  40          void check(WORD data1);
+  41          BYTE ch1 = 6;
+  42          BYTE ch2 = 3;
+  43          WORD ADC_COUNT = 0;
+  44          BYTE check_flag = 0;
+  45          WORD x;
+  46          
+  47          void main()
+  48          {
+  49   1          InitUart();
+  50   1          InitADC();
+  51   1        P1M0 = 0x48;
+  52   1        P1M1 = 0x4F;
+  53   1          RED = 0;
+  54   1          GREEN = 0;
+C51 COMPILER V9.60.0.0   AD                                                                07/05/2022 17:53:58 PAGE 2   
+
+  55   1          BLUE = 0;
+  56   1          BEEP = 1;
+  57   1          D3 = 0;
+  58   1          AUXR |= 0x10;
+  59   1          IE = 0xa0;
+  60   1          EA = 1;
+  61   1      
+  62   1      
+  63   1          while (1)
+  64   1          {
+  65   2              if(check_flag)
+  66   2              {
+  67   3                  EA = 0;//关闭中断
+  68   3                  //蓝牙发送报警
+  69   3                  //LCD显示感叹号
+  70   3                  while(1)
+  71   3                  {
+  72   4                      D3 = 1;
+  73   4                      //BEEP = 1;
+  74   4                      Delay(10);
+  75   4                      D3 = 0;
+  76   4                      //BEEP = 0;
+  77   4                      Delay(10);
+  78   4                  }
+  79   3              }
+  80   2          }
+  81   1      }
+  82          
+  83          void adc_isr() interrupt 5 using 1
+  84          {
+  85   1          ADC_CONTR &= !ADC_FLAG;
+  86   1          switch (ADC_COUNT)
+  87   1          {
+  88   2          case 0://判断红灯通断
+  89   2              RED = 1;
+  90   2              GREEN = 0;
+  91   2              BLUE = 0;
+  92   2              ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START |ch2;
+  93   2              SendData(ADC_DATA);
+  94   2              SendData(ADC_LOW2);
+  95   2      
+  96   2              x =(int)ADC_DATA<<2 + (int)ADC_LOW2;
+  97   2              SendData(x);
+  98   2              check(x);
+  99   2              ADC_COUNT++;
+ 100   2              break;
+ 101   2          case 1://判断绿灯通断
+ 102   2              RED = 0;
+ 103   2              GREEN = 1;
+ 104   2              BLUE = 0;
+ 105   2              ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START | ch2;
+ 106   2          
+ 107   2              SendData(ADC_DATA);
+ 108   2              SendData(ADC_LOW2);
+ 109   2          
+ 110   2              //check(ADC_LOW2);
+ 111   2              ADC_COUNT++;
+ 112   2              break;
+ 113   2          case 2://判断蓝灯通断
+ 114   2              RED = 0;
+ 115   2              GREEN = 0;
+ 116   2              BLUE = 1;
+C51 COMPILER V9.60.0.0   AD                                                                07/05/2022 17:53:58 PAGE 3   
+
+ 117   2              ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START | ch2;
+ 118   2          
+ 119   2              SendData(ADC_DATA);
+ 120   2              SendData(ADC_LOW2);
+ 121   2          
+ 122   2              //check(ADC_LOW2);
+ 123   2              ADC_COUNT++;
+ 124   2              break;
+ 125   2          default://采样光敏电阻
+ 126   2              ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START | ch1;
+ 127   2              //控制RGB通断、模式
+ 128   2              break;
+ 129   2          }
+ 130   1      }
+ 131          
+ 132          void InitADC()
+ 133          {
+ 134   1          ADC_DATA = 0;
+ 135   1          ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START |ch2;
+ 136   1          Delay(2);
+ 137   1      }
+ 138          
+ 139          void InitUart()
+ 140          {
+ 141   1          SCON = 0x5a;
+ 142   1          TMOD = 0x20;
+ 143   1          TH1 = TL1 = -(FOSC/12/32/BAUD);
+ 144   1          TR1 = 1;
+ 145   1      }
+ 146          
+ 147          void check(WORD data1)
+ 148          {
+ 149   1          if(data1 == 0)
+ 150   1          {
+ 151   2              check_flag = 1;
+ 152   2          }
+ 153   1      }
+ 154          
+ 155          void SendData(BYTE dat)
+ 156          {
+ 157   1          while(!TI);
+ 158   1          TI = 0;
+ 159   1          SBUF = dat;
+ 160   1      }
+ 161          
+ 162          void Delay(WORD n)
+ 163          {
+ 164   1          WORD x;
+ 165   1      
+ 166   1          while(n--)
+ 167   1          {
+ 168   2              x= 5000;
+ 169   2              while(x--);
+ 170   2          }
+ 171   1      }
+ 172          
+ 173          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    308    ----
+   CONSTANT SIZE    =   ----    ----
+C51 COMPILER V9.60.0.0   AD                                                                07/05/2022 17:53:58 PAGE 4   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

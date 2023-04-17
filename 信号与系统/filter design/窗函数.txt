@@ -1,0 +1,33 @@
+clear all;
+N = 15;
+Np = 1000;
+
+window = ones(1,N);
+window = [window,zeros(1,Np-length(window))];
+y=fftshift(ifft(window));
+subplot(5,2,1);plot(window);title('矩形窗频域');xlim([0 20]);
+subplot(5,2,2);plot(abs(y));title('矩形窗时域');
+
+window = hann(N)';
+window = [window,zeros(1,Np-length(window))];
+y=fftshift(ifft(window));
+subplot(5,2,3);plot(window);title('汉宁窗频域');xlim([0 20]);
+subplot(5,2,4);plot(abs(y));title('汉宁窗时域');
+
+window = hamming(N)';
+window = [window,zeros(1,Np-length(window))];
+y=fftshift(ifft(window));
+subplot(5,2,5);plot(window);title('汉明窗频域');xlim([0 20]);
+subplot(5,2,6);plot(abs(y));title('汉明窗时域');
+
+window = kaiser(N)';
+window = [window,zeros(1,Np-length(window))];
+y=fftshift(ifft(window));
+subplot(5,2,7);plot(window);title('凯瑟尔窗频域');xlim([0 20]);
+subplot(5,2,8);plot(abs(y));title('凯瑟尔窗时域');
+
+window = blackman(N)';
+window = [window,zeros(1,Np-length(window))];
+y=fftshift(ifft(window));
+subplot(5,2,9);plot(window);title('布莱克曼窗频域');xlim([0 20]);
+subplot(5,2,10);plot(abs(y));title('布莱克曼窗时域');

@@ -1,0 +1,60 @@
+****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******
+ Input File: OPA_unity_gain.sp
+ lic:
+ lic: FLEXlm: v11.2.1
+ lic: USER:   Zezzid               HOSTNAME: LAPTOP-NBK8184L
+ lic: HOSTID: "68545a57211d"       PID:      56784
+ lic: Using FLEXlm license file:
+ lic: 27000@LAPTOP-NBK8184L
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 30-dec-2030/2029.2029
+ lic: 1(in_use)/99(total) FLOATING license(s) on SERVER 27000@LAPTOP-NBK8184L
+ lic:
+ init: begin read circuit files,  cpu clock=  1.97E-01
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\AD\
+       option search = D:\Hspice_K-2015.06-3\parts\XILINX\
+       option search = D:\Hspice_K-2015.06-3\parts\TLINE\
+       option search = D:\Hspice_K-2015.06-3\parts\TI\
+       option search = D:\Hspice_K-2015.06-3\parts\SIGNET\
+       option search = D:\Hspice_K-2015.06-3\parts\PCI\
+       option search = D:\Hspice_K-2015.06-3\parts\LIN_TECH\
+       option search = D:\Hspice_K-2015.06-3\parts\PET\
+       option search = D:\Hspice_K-2015.06-3\parts\DI0\
+       option search = D:\Hspice_K-2015.06-3\parts\COMLINE\
+       option search = D:\Hspice_K-2015.06-3\parts\BURR_BRM\
+       option search = D:\Hspice_K-2015.06-3\parts\BJT\
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\AD\
+       option runlvl
+       option post
+       option accurate
+       option probe
+ init: end read circuit files,  cpu clock=  2.00E-01 peak memory=        47 mb
+ init: begin check errors,  cpu clock=  2.00E-01
+ init: end check errors,  cpu clock=  2.03E-01 peak memory=        50 mb
+ init: begin setup matrix, pivot=     0 cpu clock=  2.03E-01
+       establish matrix -- done,  cpu clock=  2.04E-01 peak memory=        50 mb
+       re-order matrix -- done,  cpu clock=  2.04E-01 peak memory=        50 mb
+ init: end setup matrix,  cpu clock=  2.05E-01 peak memory=        50 mb
+ output: D:\_University\_sophomore year\电基\text6.22\OPA_unity_gain.sw0
+ sweep: dc dc0    begin, #sweeps=  51 cpu clock=  2.07E-01
+ sweep: dc dc0    end,  cpu clock=  2.08E-01 peak memory=        50 mb
+ dcop: begin dcop,  cpu clock=  2.09E-01
+ dcop: end dcop,  cpu clock=  2.11E-01 peak memory=        50 mb  tot_iter=       6
+ output: D:\_University\_sophomore year\电基\text6.22\OPA_unity_gain.tr0
+ sweep: tran tran0    begin, stop_t=  1.00E-05 #sweeps= 201 cpu clock=  2.12E-01
+ tran: time= 1.0419E-06 tot_iter=     169 conv_iter=      63 cpu clock= 2.14E-01
+ tran: time= 2.0000E-06 tot_iter=     177 conv_iter=      66 cpu clock= 2.14E-01
+ tran: time= 3.3889E-06 tot_iter=     404 conv_iter=     144 cpu clock= 2.17E-01
+ tran: time= 4.0000E-06 tot_iter=     408 conv_iter=     146 cpu clock= 2.17E-01
+ tran: time= 5.1860E-06 tot_iter=     590 conv_iter=     216 cpu clock= 2.19E-01
+ tran: time= 6.0000E-06 tot_iter=     594 conv_iter=     218 cpu clock= 2.19E-01
+ tran: time= 7.0913E-06 tot_iter=     663 conv_iter=     248 cpu clock= 2.19E-01
+ tran: time= 8.0000E-06 tot_iter=     667 conv_iter=     250 cpu clock= 2.20E-01
+ tran: time= 9.2756E-06 tot_iter=     733 conv_iter=     279 cpu clock= 2.20E-01
+ tran: time= 1.0000E-05 tot_iter=     737 conv_iter=     281 cpu clock= 2.20E-01
+ sweep: tran tran0    end,  cpu clock=  2.20E-01 peak memory=        50 mb
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)

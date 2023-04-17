@@ -1,0 +1,516 @@
+ ****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+  Copyright (c) 1986 - 2021 by Synopsys, Inc. All Rights Reserved.              
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: answer6.5.sp                                                      
+  Command line options: D:\Hspice_K-2015.06-3\WIN64\hspice.exe -i answer6.5.sp -o D:\_University\_current\text1114\answer6.5.lis
+  lic:  
+  lic: FLEXlm: v11.2.1 
+  lic: USER:   Zezzid               HOSTNAME: LAPTOP-NBK8184L 
+  lic: HOSTID: "68545a57211d"       PID:      43024 
+  lic: Using FLEXlm license file: 
+  lic: 27000@LAPTOP-NBK8184L 
+  lic: Checkout 1 hspice 
+  lic: License/Maintenance for hspice will expire on 30-dec-2030/2029.2029 
+  lic: 1(in_use)/99(total) FLOATING license(s) on SERVER 27000@LAPTOP-NBK8184L 
+  lic:   
+ Init: read install configuration file: D:\Hspice_K-2015.06-3\meta.cfg
+  **warning** (..\models\ms018.mdl:33) Model n18 device geometries will not be checked against the limits set by lmin, lmax, wmin and wmax. To enable this check, add a period(.) to the model name(i.e. enable model selector).
+
+ **warning**  runlvl smaller than 5, reset to 5 when accurate turned on
+
+ **warning**  runlvl smaller than 5, reset to 5 when accurate turned on
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title hw_chap6.5
+
+ ****** mos   model parameters tnom=  25.000 temp=  25.000 ******
+ ***************************************************************************
+ ***        model parameters  model name:   0:n18      model type:nmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+       hspver=    2006.03               level=         49         
+      version=       3.24            paramchk=          0         
+       apwarn=          1                lite=          0         
+       vgslim=          0             binUnit=          2         
+       capMod=          3               xpart=          1         
+       mobMod=          1              nqsMod=          0         
+       stiMod=          0                 elm=          5         
+     sfvtflag=          0                 tox=  3.87e-009 meter   
+           xj=   1.6e-007 meter       binflag=          0         
+         lmin=   1.5e-007 meter          lmax=     1e-005 meter   
+         wmin=   1.9e-007 meter          wmax=     0.0001 meter   
+         lref=          0 meter          wref=          0 meter   
+         lint=1.57571e-008 meter          wint=-1.44505e-009 meter   
+        lmult=          1               wmult=          1         
+           ll=2.63528e-016                 lln=     1.1206         
+           lw=-2.26256e-016                 lwn=       0.92         
+          lwl=-2.05767e-022                  wl=-2.36646e-016         
+          wln=       1.06                  ww=-3.64097e-014         
+          wwn=   0.876847                 wwl=    -4e-021         
+          dwg= -5.96e-009 m/V             dwb=   4.5e-009 m/V^1/2 
+           xl=   1.8e-008                  xw=          0         
+           a0=       0.83                 ags=       0.32 V^-1    
+           b0=     6e-008 meter            b1=          0 meter   
+         keta=     -0.003 V^-1           voff=     -0.103 V       
+        ngate=          0 cm^-3           vbx=          0 V       
+          vbm=         -3 V                xt=  1.55e-007 meter   
+         vth0=       0.39 V               nch=3.8694e+017 cm^-3   
+         nsub=     6e+016 cm^-3           nlx=7.5451e-008 meter   
+       gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+           k1=   0.680104 V^1/2            k2= -0.0499778         
+           k3=         10                 k3b=         -3 V^-1    
+           w0=5.58201e-007 meter          dvt0=        1.3         
+         dvt1=   0.577163                dvt2=  -0.171755 V^-1    
+        dvt0w=          0 meter^-1      dvt1w=          0 meter^-1
+        dvt2w=          0 V^-1           dsub=        0.4         
+         eta0=      0.028                etab=     -0.027 V^-1    
+           u0=      0.034 m^2/V/sec         ua= -1.03e-009 m/V     
+           ub=2.36667e-018 (m/V)^2          uc=   1.2e-010 V^-1    
+         vsat=      82500 m/sec            a1=          0 v^-1    
+           a2=       0.99               delta=       0.01 V       
+         rdsw=    55.5497 ohm-um         prwg=        0.4 V^-1    
+         prwb=      -0.24 V^-1/2           wr=          1         
+         pclm=        1.2             pdiblc1=      0.025         
+      pdiblc2=     0.0038             pdiblcb=          0 V^-1    
+       pscbe1=  3.45e+008 V/m          pscbe2=     1e-006 V/m     
+        drout=       0.56                pvag=          0         
+      nfactor=       1.25                cdsc=          0 f/m^2   
+        cdscb=          0 f/V/m^2       cdscd=     0.0001 f/V/m^2 
+          cit=          0 f/m^2        alpha0=1.7754e-008 m/V     
+        beta0=    11.1684 V               dlc=   8.5e-009 meter   
+          dwc=   4.5e-008 meter           clc=     1e-007 meter   
+          cle=        0.6                cgso=   3.7e-010 f/m     
+         cgdo=   3.7e-010 f/m            cgbo=8.03054e-010 f/m     
+         cgsl=          0 f/m            cgdl=          0 f/m     
+       ckappa=        0.6                  cf=          0 f/m     
+         acde=       0.64 m/V            moin=         24 V^1/2   
+         toxm=  3.87e-009 m            dtoxcv=          0 m       
+          vfb (not used)                alpha1=     0.1764 1/V     
+         ijth=        0.1 A              noff=     1.2025         
+       voffcv=          0                 tcj=   0.000842 1/K     
+        tcjsw=   0.000669 1/K          tcjswg=   0.000669 1/K     
+          tpb=    0.00147 V/K           tpbsw=   0.000868 V/K     
+       tpbswg=   0.000868 V/K             llc=2.63528e-016         
+          lwc=-2.26256e-016                lwlc=-2.05767e-022         
+          wlc=-2.36646e-016                 wwc=-3.64097e-014         
+         wwlc=    -4e-021                tnom=     298.15 K       
+          kt1=  -0.257287 V              kt1l=    -1e-009         
+          kt2=      -0.04                 ute=      -1.55         
+          ua1=  1.76e-009 m/V             ub1=  -2.4e-018 (m/V)^2 
+          uc1=    -1e-010 m/V^2            at=      37000 m/s     
+          prt=        -55         
+          using Berkeley noise model       noiMod=          2         
+         noia=8.2282e+019                noib=      13327         
+         noic=-2.4937e-014                  em=1.7767e+007         
+           ef=      0.818                  af=          1         
+           kf=          0              gdsnoi=-1.23457e-029         
+          using Berkeley diodes          using ACM 
+          acm=        12                 hdif=    2e-007 meter    
+         ldif=    7e-008 meter             js= 3.52e-007 amp/m^2  
+          jsw=    3e-013 amp/m            xti=      3.25          
+           nj=    1.0392                   cj=  0.000968 f/m^2    
+           mj=     0.346                   pb=       0.7 V        
+         cjsw= 7.95e-011 f/m             mjsw=     0.538          
+          php (not used)                  pbsw=         1 V        
+       cjgate (not used)                 cjswg= 4.18e-010 f/m      
+        mjswg=     0.538                pbswg=         1 V        
+        lketa=  -1.7e-009               lvoff=  -3.3e-009         
+          lu0=2.30577e-011                 lua=7.73498e-019         
+     lnfactor=   4.5e-008                lua1=     6e-018         
+         luc1=   1.7e-017             lalpha1= 7.625e-009         
+        wvth0=-2.97095e-008                 wk1=-2.48968e-008         
+          wu0=-3.10097e-009                wua1=  -1.1e-016         
+        pvth0=     5e-016                 pk1=   1.3e-015         
+          pua=    -1e-024                 puc=   1.5e-024         
+        pvsat=  -8.3e-010               ppclm=     3e-015         
+     ppdiblc2=   2.7e-016                pua1=    -5e-025         
+         puc1=    -3e-024                 pat=  -7.5e-010         
+ 
+
+  
+      
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 5         bypass  = 2         
+ ******
+ .title hw_chap6.5
+
+ ****** dc transfer curves tnom=  25.000 temp=  27.000 ******
+  *** parameter w1 =     5.0000u       ***
+  
+ x
+
+ volt         voltage    voltage   id         
+             net2       net1       net1       
+    0.          0.       750.0000m    0.      
+  100.00000m  100.0000m  750.0000m  186.4502u 
+  200.00000m  200.0000m  750.0000m  266.2018u 
+  300.00000m  300.0000m  750.0000m  295.9953u 
+  400.00000m  400.0000m  750.0000m  312.1262u 
+  500.00000m  500.0000m  750.0000m  323.3871u 
+  600.00000m  600.0000m  750.0000m  332.3101u 
+  700.00000m  700.0000m  750.0000m  339.9100u 
+  800.00000m  800.0000m  750.0000m  346.6951u 
+  900.00000m  900.0000m  750.0000m  352.9449u 
+    1.00000     1.0000   750.0000m  358.8264u 
+    1.10000     1.1000   750.0000m  364.4455u 
+    1.20000     1.2000   750.0000m  369.8737u 
+    1.30000     1.3000   750.0000m  375.1626u 
+    1.40000     1.4000   750.0000m  380.3523u 
+    1.50000     1.5000   750.0000m  385.4802u 
+    1.60000     1.6000   750.0000m  390.5852u 
+    1.70000     1.7000   750.0000m  395.7122u 
+    1.80000     1.8000   750.0000m  400.9157u 
+y
+ x
+
+ volt        gm         gds        cgs        cgd        
+                                                         
+    0.          0.         2.5961m   -5.0490f    4.7248f 
+  100.00000m  819.7439u    1.2551m   -6.2109f    2.9398f 
+  200.00000m    1.3841m  452.3042u   -6.6187f    1.9548f 
+  300.00000m    1.6295m  204.3777u   -6.6454f    1.8121f 
+  400.00000m    1.7367m  131.2047u   -6.6419f    1.7854f 
+  500.00000m    1.7988m   98.9958u   -6.6363f    1.7776f 
+  600.00000m    1.8410m   81.8514u   -6.6308f    1.7747f 
+  700.00000m    1.8726m   71.6616u   -6.6256f    1.7733f 
+  800.00000m    1.8978m   65.1397u   -6.6206f    1.7726f 
+  900.00000m    1.9190m   60.7369u   -6.6156f    1.7722f 
+    1.00000     1.9374m   57.6445u   -6.6108f    1.7719f 
+    1.10000     1.9538m   55.4072u   -6.6060f    1.7717f 
+    1.20000     1.9688m   53.7575u   -6.6012f    1.7716f 
+    1.30000     1.9826m   52.5385u   -6.5964f    1.7716f 
+    1.40000     1.9956m   51.6688u   -6.5917f    1.7715f 
+    1.50000     2.0079m   51.1249u   -6.5869f    1.7715f 
+    1.60000     2.0196m   50.9309u   -6.5822f    1.7714f 
+    1.70000     2.0311m   51.1507u   -6.5774f    1.7714f 
+    1.80000     2.0424m   51.8797u   -6.5727f    1.7714f 
+y
+ ******
+ .title hw_chap6.5
+
+ ****** dc transfer curves tnom=  25.000 temp=  27.000 ******
+  *** parameter w1 =    10.0000u       ***
+  
+ x
+
+ volt         voltage    voltage   id         
+             net2       net1       net1       
+    0.          0.       750.0000m    0.      
+  100.00000m  100.0000m  750.0000m  373.8239u 
+  200.00000m  200.0000m  750.0000m  534.5586u 
+  300.00000m  300.0000m  750.0000m  594.6498u 
+  400.00000m  400.0000m  750.0000m  627.0928u 
+  500.00000m  500.0000m  750.0000m  649.6875u 
+  600.00000m  600.0000m  750.0000m  667.5931u 
+  700.00000m  700.0000m  750.0000m  682.8320u 
+  800.00000m  800.0000m  750.0000m  696.4308u 
+  900.00000m  900.0000m  750.0000m  708.9535u 
+    1.00000     1.0000   750.0000m  720.7361u 
+    1.10000     1.1000   750.0000m  731.9919u 
+    1.20000     1.2000   750.0000m  742.8659u 
+    1.30000     1.3000   750.0000m  753.4576u 
+    1.40000     1.4000   750.0000m  763.8510u 
+    1.50000     1.5000   750.0000m  774.1203u 
+    1.60000     1.6000   750.0000m  784.3432u 
+    1.70000     1.7000   750.0000m  794.6096u 
+    1.80000     1.8000   750.0000m  805.0283u 
+y
+ x
+
+ volt        gm         gds        cgs        cgd        
+                                                         
+    0.          0.         5.2380m  -10.1457f    9.5020f 
+  100.00000m    1.6440m    2.5396m  -12.4678f    5.9359f 
+  200.00000m    2.7822m  917.4078u  -13.2942f    3.9417f 
+  300.00000m    3.2794m  413.2351u  -13.3485f    3.6512f 
+  400.00000m    3.4960m  264.7091u  -13.3414f    3.5970f 
+  500.00000m    3.6214m  199.4825u  -13.3300f    3.5813f 
+  600.00000m    3.7063m  164.8194u  -13.3190f    3.5753f 
+  700.00000m    3.7698m  144.2408u  -13.3084f    3.5725f 
+  800.00000m    3.8205m  131.0805u  -13.2982f    3.5711f 
+  900.00000m    3.8630m  122.2021u  -13.2882f    3.5702f 
+    1.00000     3.9000m  115.9692u  -13.2784f    3.5697f 
+    1.10000     3.9329m  111.4618u  -13.2687f    3.5694f 
+    1.20000     3.9629m  108.1390u  -13.2590f    3.5692f 
+    1.30000     3.9907m  105.6840u  -13.2494f    3.5690f 
+    1.40000     4.0167m  103.9321u  -13.2398f    3.5689f 
+    1.50000     4.0413m  102.8352u  -13.2302f    3.5689f 
+    1.60000     4.0649m  102.4416u  -13.2206f    3.5688f 
+    1.70000     4.0878m  102.8791u  -13.2111f    3.5688f 
+    1.80000     4.1104m  104.3395u  -13.2015f    3.5687f 
+y
+ ******
+ .title hw_chap6.5
+
+ ****** dc transfer curves tnom=  25.000 temp=  27.000 ******
+  *** parameter w1 =    15.0000u       ***
+  
+ x
+
+ volt         voltage    voltage   id         
+             net2       net1       net1       
+    0.          0.       750.0000m    0.      
+  100.00000m  100.0000m  750.0000m  559.2265u 
+  200.00000m  200.0000m  750.0000m  800.9510u 
+  300.00000m  300.0000m  750.0000m  891.3373u 
+  400.00000m  400.0000m  750.0000m  940.0076u 
+  500.00000m  500.0000m  750.0000m  973.8367u 
+  600.00000m  600.0000m  750.0000m    1.0007m 
+  700.00000m  700.0000m  750.0000m    1.0235m 
+  800.00000m  800.0000m  750.0000m    1.0438m 
+  900.00000m  900.0000m  750.0000m    1.0626m 
+    1.00000     1.0000   750.0000m    1.0802m 
+    1.10000     1.1000   750.0000m    1.0970m 
+    1.20000     1.2000   750.0000m    1.1133m 
+    1.30000     1.3000   750.0000m    1.1291m 
+    1.40000     1.4000   750.0000m    1.1447m 
+    1.50000     1.5000   750.0000m    1.1600m 
+    1.60000     1.6000   750.0000m    1.1753m 
+    1.70000     1.7000   750.0000m    1.1907m 
+    1.80000     1.8000   750.0000m    1.2062m 
+y
+ x
+
+ volt        gm         gds        cgs        cgd        
+                                                         
+    0.          0.         7.8837m  -15.2438f   14.2812f 
+  100.00000m    2.4598m    3.8346m  -18.7162f    8.9525f 
+  200.00000m    4.1731m    1.3880m  -19.9696f    5.9337f 
+  300.00000m    4.9248m  623.0798u  -20.0525f    5.4918f 
+  400.00000m    5.2517m  398.4329u  -20.0417f    5.4096f 
+  500.00000m    5.4404m  299.9872u  -20.0245f    5.3858f 
+  600.00000m    5.5682m  247.7375u  -20.0078f    5.3767f 
+  700.00000m    5.6637m  216.7449u  -19.9919f    5.3725f 
+  800.00000m    5.7399m  196.9373u  -19.9765f    5.3703f 
+  900.00000m    5.8038m  183.5811u  -19.9615f    5.3691f 
+    1.00000     5.8593m  174.2083u  -19.9467f    5.3683f 
+    1.10000     5.9088m  167.4325u  -19.9320f    5.3678f 
+    1.20000     5.9538m  162.4386u  -19.9175f    5.3675f 
+    1.30000     5.9955m  158.7489u  -19.9030f    5.3673f 
+    1.40000     6.0345m  156.1149u  -19.8885f    5.3671f 
+    1.50000     6.0715m  154.4631u  -19.8741f    5.3670f 
+    1.60000     6.1069m  153.8643u  -19.8597f    5.3669f 
+    1.70000     6.1413m  154.5097u  -19.8452f    5.3668f 
+    1.80000     6.1752m  156.6855u  -19.8308f    5.3668f 
+y
+ ******
+ .title hw_chap6.5
+
+ ****** dc transfer curves tnom=  25.000 temp=  27.000 ******
+  *** parameter w1 =    20.0000u       ***
+  
+ x
+
+ volt         voltage    voltage   id         
+             net2       net1       net1       
+    0.          0.       750.0000m    0.      
+  100.00000m  100.0000m  750.0000m  742.4841u 
+  200.00000m  200.0000m  750.0000m    1.0651m 
+  300.00000m  300.0000m  750.0000m    1.1857m 
+  400.00000m  400.0000m  750.0000m    1.2505m 
+  500.00000m  500.0000m  750.0000m    1.2954m 
+  600.00000m  600.0000m  750.0000m    1.3311m 
+  700.00000m  700.0000m  750.0000m    1.3614m 
+  800.00000m  800.0000m  750.0000m    1.3884m 
+  900.00000m  900.0000m  750.0000m    1.4133m 
+    1.00000     1.0000   750.0000m    1.4367m 
+    1.10000     1.1000   750.0000m    1.4591m 
+    1.20000     1.2000   750.0000m    1.4807m 
+    1.30000     1.3000   750.0000m    1.5017m 
+    1.40000     1.4000   750.0000m    1.5224m 
+    1.50000     1.5000   750.0000m    1.5427m 
+    1.60000     1.6000   750.0000m    1.5630m 
+    1.70000     1.7000   750.0000m    1.5834m 
+    1.80000     1.8000   750.0000m    1.6041m 
+y
+ x
+
+ volt        gm         gds        cgs        cgd        
+                                                         
+    0.          0.        10.5305m  -20.3421f   19.0609f 
+  100.00000m    3.2669m    5.1384m  -24.9552f   11.9874f 
+  200.00000m    5.5560m    1.8632m  -26.6432f    7.9301f 
+  300.00000m    6.5647m  833.5838u  -26.7557f    7.3331f 
+  400.00000m    7.0024m  532.1905u  -26.7411f    7.2224f 
+  500.00000m    7.2547m  400.3839u  -26.7181f    7.1905f 
+  600.00000m    7.4256m  330.5101u  -26.6958f    7.1783f 
+  700.00000m    7.5530m  289.0957u  -26.6744f    7.1727f 
+  800.00000m    7.6548m  262.6428u  -26.6538f    7.1698f 
+  900.00000m    7.7400m  244.8136u  -26.6337f    7.1681f 
+    1.00000     7.8140m  232.3065u  -26.6140f    7.1671f 
+    1.10000     7.8800m  223.2674u  -26.5944f    7.1664f 
+    1.20000     7.9401m  216.6071u  -26.5749f    7.1660f 
+    1.30000     7.9957m  211.6862u  -26.5555f    7.1657f 
+    1.40000     8.0477m  208.1718u  -26.5362f    7.1655f 
+    1.50000     8.0970m  205.9641u  -26.5169f    7.1653f 
+    1.60000     8.1443m  205.1557u  -26.4976f    7.1652f 
+    1.70000     8.1901m  205.9994u  -26.4783f    7.1651f 
+    1.80000     8.2354m  208.8749u  -26.4590f    7.1650f 
+y
+ ******
+ .title hw_chap6.5
+
+ ****** dc transfer curves tnom=  25.000 temp=  27.000 ******
+  *** parameter w1 =    25.0000u       ***
+  
+ x
+
+ volt         voltage    voltage   id         
+             net2       net1       net1       
+    0.          0.       750.0000m    0.      
+  100.00000m  100.0000m  750.0000m  923.5865u 
+  200.00000m  200.0000m  750.0000m    1.3269m 
+  300.00000m  300.0000m  750.0000m    1.4777m 
+  400.00000m  400.0000m  750.0000m    1.5585m 
+  500.00000m  500.0000m  750.0000m    1.6145m 
+  600.00000m  600.0000m  750.0000m    1.6589m 
+  700.00000m  700.0000m  750.0000m    1.6966m 
+  800.00000m  800.0000m  750.0000m    1.7302m 
+  900.00000m  900.0000m  750.0000m    1.7612m 
+    1.00000     1.0000   750.0000m    1.7903m 
+    1.10000     1.1000   750.0000m    1.8181m 
+    1.20000     1.2000   750.0000m    1.8450m 
+    1.30000     1.3000   750.0000m    1.8712m 
+    1.40000     1.4000   750.0000m    1.8969m 
+    1.50000     1.5000   750.0000m    1.9222m 
+    1.60000     1.6000   750.0000m    1.9475m 
+    1.70000     1.7000   750.0000m    1.9728m 
+    1.80000     1.8000   750.0000m    1.9985m 
+y
+ x
+
+ volt        gm         gds        cgs        cgd        
+                                                         
+    0.          0.        13.1777m  -25.4406f   23.8407f 
+  100.00000m    4.0654m    6.4505m  -31.1847f   15.0399f 
+  200.00000m    6.9308m    2.3429m  -33.3147f    9.9305f 
+  300.00000m    8.1989m    1.0447m  -33.4576f    9.1750f 
+  400.00000m    8.7481m  665.9390u  -33.4394f    9.0355f 
+  500.00000m    9.0641m  500.6439u  -33.4105f    8.9953f 
+  600.00000m    9.2780m  413.1157u  -33.3824f    8.9799f 
+  700.00000m    9.4375m  361.2758u  -33.3557f    8.9729f 
+  800.00000m    9.5648m  328.1818u  -33.3299f    8.9692f 
+  900.00000m    9.6714m  305.8862u  -33.3047f    8.9671f 
+    1.00000     9.7639m  290.2514u  -33.2799f    8.9659f 
+    1.10000     9.8465m  278.9553u  -33.2553f    8.9650f 
+    1.20000     9.9216m  270.6336u  -33.2310f    8.9645f 
+    1.30000     9.9911m  264.4854u  -33.2067f    8.9641f 
+    1.40000    10.0561m  260.0928u  -33.1825f    8.9638f 
+    1.50000    10.1177m  257.3286u  -33.1583f    8.9636f 
+    1.60000    10.1768m  256.3064u  -33.1342f    8.9635f 
+    1.70000    10.2341m  257.3392u  -33.1100f    8.9633f 
+    1.80000    10.2906m  260.8987u  -33.0858f    8.9633f 
+y
+ **info** dc convergence successful at Newton-Raphson method 
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title hw_chap6.5
+
+ ****** operating point information tnom=  25.000 temp=  27.000 ******
+ ****** operating point status is all       simulation time is     0.     
+    node    =voltage      node    =voltage
+
+ +0:net1    = 750.0000m 0:net2    =   1.8000 
+
+
+ **** voltage sources
+
+ subckt                        
+ element  0:vvds     0:vvgs    
+  volts      1.8000   750.0000m
+  current -400.9157u    0.     
+  power    721.6482u    0.     
+
+     total voltage source power dissipation=  721.6482u       watts
+
+
+
+
+ **** mosfets
+
+
+ subckt             
+ element  0:mnm0    
+ model    0:n18     
+ region     Saturati
+  id       400.7171u
+  ibs     -1.581e-19
+  ibd     -198.5012n
+  vgs      750.0000m
+  vds        1.8000 
+  vbs        0.     
+  vth      463.8470m
+  vdsat    206.7342m
+  vod      286.1530m
+  beta      10.8271m
+  gam eff  771.0519m
+  gm         2.0424m
+  gds       51.8797u
+  gmb      475.4409u
+  cdtot      4.5399f
+  cgtot      9.1868f
+  cstot     11.7318f
+  cbtot      9.0992f
+  cgs        6.5727f
+  cgd        1.7714f
+
+
+
+
+          ***** job concluded
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title hw_chap6.5
+
+ ****** job statistics summary tnom=  25.000 temp=  27.000 ******
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =       5 # elements   =       3
+  # resistors   =       0 # capacitors =       0 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       2
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       1 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1           4
+  dc sweep           0.00          95         249
+  readin             0.02
+  errchk             0.00
+  setup              0.00
+  output             0.00
+
+
+           peak memory used         50.55 megabytes
+           total cpu time            0.04 seconds
+           total elapsed time        0.21 seconds
+           job started at     19:35:51 11/15/2021
+           job ended   at     19:35:51 11/15/2021
+
+
+  lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        0.17(s)

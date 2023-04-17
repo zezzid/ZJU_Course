@@ -1,0 +1,4 @@
+".\output\STARTUP.obj",
+".\output\SRTT_II main_jian.obj" 
+TO ".\output\ADandDisplay" 
+PRINT(".\ADandDisplay.m51") RAMSIZE(256) 

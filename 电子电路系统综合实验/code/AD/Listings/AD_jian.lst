@@ -1,0 +1,166 @@
+C51 COMPILER V9.60.0.0   AD_JIAN                                                           07/06/2022 09:50:06 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE AD_JIAN
+OBJECT MODULE PLACED IN .\Objects\AD_jian.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE AD_jian.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\L
+                    -istings\AD_jian.lst) TABS(2) OBJECT(.\Objects\AD_jian.obj)
+
+line level    source
+
+   1          #include <reg52.h>
+   2          #include <intrins.h>
+   3          
+   4          #define FOSC 18432000L
+   5          #define BAUD 9600
+   6          
+   7          typedef unsigned char BYTE;
+   8          typedef unsigned int WORD;
+   9          
+  10          //Declare SFR associated with the ADC
+  11          sfr AUXR      = 0x8e;
+  12          sfr ADC_CONTR = 0xC5;
+  13          sfr ADC_DATA  = 0xC6;
+  14          sfr ADC_LOW2  = 0xBE;
+  15          sfr P1M0      = 0x91;
+  16          sfr P1M1      = 0x92;
+  17          
+  18          //Define
+  19          sbit RED = P1^0;
+  20          sbit GREEN = P1^1;
+  21          sbit BLUE = P1^2;
+  22          sbit D3 = P1^4;
+  23          sbit BEEP = P1^7;
+  24          
+  25          
+  26          
+  27          //Define ADC operation const for ADC_CONTR
+  28          #define ADC_POWER   0x80
+  29          #define ADC_FLAG    0x10
+  30          #define ADC_START   0x08
+  31          #define ADC_SPEEDLL 0x00
+  32          #define ADC_SPEEDL  0x20
+  33          #define ADC_SPEEDH  0x40
+  34          #define ADC_SPEEDHH 0x60
+  35          
+  36          void InitUart();
+  37          void SendData(BYTE dat);
+  38          void Delay(WORD n);
+  39          void InitADC();
+  40          void check(WORD data1);
+  41          BYTE ch1 = 6;
+  42          BYTE ch2 = 3;
+  43          WORD ADC_COUNT = 0;
+  44          BYTE check_flag = 0;
+  45          WORD x;
+  46          
+  47          void main()
+  48          {
+  49   1          InitUart();
+  50   1          InitADC();
+  51   1      
+  52   1        P1M0 = 0x48;
+  53   1        P1M1 = 0x4F;
+  54   1      
+C51 COMPILER V9.60.0.0   AD_JIAN                                                           07/06/2022 09:50:06 PAGE 2   
+
+  55   1          RED = 0;
+  56   1          GREEN = 0;
+  57   1          BLUE = 1;
+  58   1          BEEP = 1;
+  59   1          D3 = 0;
+  60   1      
+  61   1          AUXR |= 0x10;
+  62   1          IE = 0xa0;
+  63   1          EA = 1;
+  64   1      
+  65   1      
+  66   1          while (1)
+  67   1          {
+  68   2              if(check_flag)//电路断开，报警
+  69   2              {
+  70   3                  EA = 0;//关闭中断
+  71   3                  //蓝牙发送报警
+  72   3                  //LCD显示感叹号
+  73   3                  while(1)
+  74   3                  {
+  75   4                      D3 = 1;
+  76   4                      //BEEP = 1;
+  77   4                      Delay(10);
+  78   4                      D3 = 0;
+  79   4                      //BEEP = 0;
+  80   4                      Delay(10);
+  81   4                  }
+  82   3              }
+  83   2          }
+  84   1      }
+  85          
+  86          void adc_isr() interrupt 5 using 1
+  87          {
+  88   1          ADC_CONTR &= ~ADC_FLAG;
+  89   1          x=(int) ADC_DATA<<2 + (int)ADC_LOW2;
+  90   1          SendData((x>>8));SendData(x&0xff);
+  91   1          ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START |ch2;//ch1是P1.6脚，有输出；这里改成ch2（P
+             -1.3），输出全是0
+  92   1      }
+  93          
+  94          void InitADC()
+  95          {
+  96   1          ADC_DATA = 0;
+  97   1          ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START |ch2;
+  98   1          Delay(2);
+  99   1          ADC_CONTR &= !ADC_FLAG;
+ 100   1          ADC_CONTR = ADC_POWER | ADC_SPEEDLL | ADC_START |ch2;//先多做一次ADC，第一次的值不稳定
+ 101   1      }
+ 102          
+ 103          void InitUart()
+ 104          {
+ 105   1          SCON = 0x5a;
+ 106   1          TMOD = 0x20;
+ 107   1          TH1 = TL1 = -(FOSC/12/32/BAUD);
+ 108   1          TR1 = 1;
+ 109   1      }
+ 110          
+ 111          void check(WORD data1)
+ 112          {
+ 113   1          if(data1 == 0)
+ 114   1          {
+ 115   2              check_flag = 1;
+C51 COMPILER V9.60.0.0   AD_JIAN                                                           07/06/2022 09:50:06 PAGE 3   
+
+ 116   2          }
+ 117   1      }
+ 118          
+ 119          void SendData(BYTE dat)
+ 120          {
+ 121   1          while(!TI);
+ 122   1          TI = 0;
+ 123   1          SBUF = dat;
+ 124   1      }
+ 125          
+ 126          void Delay(WORD n)
+ 127          {
+ 128   1          WORD x;
+ 129   1      
+ 130   1          while(n--)
+ 131   1          {
+ 132   2              x= 5000;
+ 133   2              while(x--);
+ 134   2          }
+ 135   1      }
+ 136          
+ 137          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    213    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

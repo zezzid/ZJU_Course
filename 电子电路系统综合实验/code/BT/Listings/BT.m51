@@ -1,0 +1,198 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    07/06/2022  15:38:43  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\SOFTWARE\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\BT.obj TO .\Objects\BT PRINT (.\Listings\BT.m51) R
+>> AMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\BT.obj (BT)
+  D:\SOFTWARE\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  .\Objects\BT (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0011H     UNIT         ?DT?BT
+                    0019H     0007H                  *** GAP ***
+            BIT     0020H.0   0000H.1   UNIT         ?BI?BT
+                    0020H.1   0000H.7                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0020H     UNIT         ?PR?MAIN?BT
+            CODE    0023H     0003H     ABSOLUTE     
+            CODE    0026H     008CH     UNIT         ?C_C51STARTUP
+            CODE    00B2H     0086H     UNIT         ?PR?JUDGE_ORDER?BT
+            CODE    0138H     0009H     UNIT         ?C_INITSEG
+            CODE    0141H     0008H     UNIT         ?PR?SERIAL?BT
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\BT (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?BT
+  +--> ?C_INITSEG
+
+?PR?MAIN?BT
+  +--> ?PR?JUDGE_ORDER?BT
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\BT (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  07/06/2022  15:38:43  PAGE 2
+
+
+
+  -------         MODULE        ?C_STARTUP
+  C:0026H         SEGMENT       ?C_C51STARTUP
+  I:0021H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0029H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0026H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0026H         LINE#         133
+  C:0028H         LINE#         134
+  C:0029H         LINE#         135
+  C:002AH         LINE#         136
+  C:002CH         LINE#         185
+  C:002FH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        BT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:0008H         PUBLIC        R_P
+  C:0141H         PUBLIC        serial
+  B:00A8H.7       PUBLIC        EA
+  D:000AH         PUBLIC        clock
+  C:00B2H         PUBLIC        judge_order
+  D:000CH         PUBLIC        MOD1
+  B:00A8H.4       PUBLIC        ES
+  B:0098H.0       PUBLIC        RI
+  B:0098H.1       PUBLIC        TI
+  D:000EH         PUBLIC        order
+  C:0003H         PUBLIC        main
+  D:0099H         PUBLIC        SBUF
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:000FH         PUBLIC        mod
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  B:0088H.6       PUBLIC        TR1
+  D:0011H         PUBLIC        enable_clock
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  07/06/2022  15:38:43  PAGE 3
+
+
+  D:0013H         PUBLIC        enable_light
+  B:0020H.0       PUBLIC        r_flag
+  D:0015H         PUBLIC        B_P
+  D:0017H         PUBLIC        G_P
+  B:0090H.4       PUBLIC        D3
+  -------         PROC          MAIN
+  C:0003H         LINE#         21
+  C:0003H         LINE#         22
+  C:0003H         LINE#         23
+  C:0005H         LINE#         24
+  C:0008H         LINE#         25
+  C:000BH         LINE#         26
+  C:000EH         LINE#         27
+  C:0011H         LINE#         28
+  C:0013H         LINE#         29
+  C:0015H         LINE#         30
+  C:0017H         LINE#         31
+  C:0019H         LINE#         32
+  C:0019H         LINE#         33
+  C:0019H         LINE#         34
+  C:001CH         LINE#         35
+  C:001CH         LINE#         36
+  C:001FH         LINE#         37
+  C:0021H         LINE#         39
+  C:0021H         LINE#         40
+  -------         ENDPROC       MAIN
+  -------         PROC          JUDGE_ORDER
+  C:00B2H         LINE#         43
+  C:00B2H         LINE#         44
+  C:00B2H         LINE#         45
+  C:00BFH         LINE#         46
+  C:00E6H         LINE#         47
+  C:00E6H         LINE#         48
+  C:00E6H         LINE#         49
+  C:00EFH         LINE#         50
+  C:00F1H         LINE#         51
+  C:00F2H         LINE#         52
+  C:00F2H         LINE#         53
+  C:00FBH         LINE#         54
+  C:00FDH         LINE#         55
+  C:00FEH         LINE#         56
+  C:00FEH         LINE#         57
+  C:0107H         LINE#         58
+  C:0108H         LINE#         59
+  C:0108H         LINE#         60
+  C:0111H         LINE#         61
+  C:0112H         LINE#         62
+  C:0112H         LINE#         63
+  C:011BH         LINE#         64
+  C:0121H         LINE#         65
+  C:0122H         LINE#         66
+  C:0122H         LINE#         67
+  C:012BH         LINE#         68
+  C:0130H         LINE#         69
+  C:0131H         LINE#         70
+  C:0131H         LINE#         71
+  C:0137H         LINE#         72
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  07/06/2022  15:38:43  PAGE 4
+
+
+  C:0137H         LINE#         73
+  C:0137H         LINE#         75
+  -------         ENDPROC       JUDGE_ORDER
+  -------         PROC          SERIAL
+  C:0141H         LINE#         76
+  C:0141H         LINE#         78
+  C:0144H         LINE#         79
+  C:0146H         LINE#         80
+  C:0148H         LINE#         81
+  -------         ENDPROC       SERIAL
+  -------         ENDMOD        BT
+
+Program Size: data=26.1 xdata=0 code=329
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

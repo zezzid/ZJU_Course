@@ -1,0 +1,17 @@
+* "simulator" "HSPICE" 
+* "version" "K-2015.06-3 win64"
+* "format" "HSP"
+* "rundate" "22:59:03 11/15/2021 "
+* "netlist" "book_6.12.sp "
+* "runtitle" ".title pmos_dc"
+* time =    0.            
+* temperature =   27.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ 1 = 550.0000m       
++ 2 = 567.8518m       
++ 3 =   1.1230        
++ 4 =   1.8000        
+***   END: Saved Operating Point ***                     

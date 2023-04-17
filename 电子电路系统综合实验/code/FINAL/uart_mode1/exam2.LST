@@ -1,0 +1,920 @@
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE EXAM2
+OBJECT MODULE PLACED IN exam2.OBJ
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE exam2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #include<intrins.h>
+   3          
+   4          #define uchar unsigned char
+   5          #define uint unsigned int
+   6          
+   7          #define LCD1602_DB P2            //数据端口  D0~D7
+   8          
+   9          sfr AUXR      = 0x8e;
+  10          sfr ADC_CONTR = 0xC5;
+  11          sfr ADC_DATA  = 0xC6;
+  12          sfr ADC_LOW2  = 0xBE;
+  13          sfr P1M0      = 0x91;
+  14          sfr P1M1      = 0x92;
+  15          
+  16          sbit RED = P1^0;
+  17          sbit GREEN = P1^1;
+  18          sbit BLUE = P1^2;
+  19          sbit BEEP = P1^7;
+  20          sbit D3 = P1^4;
+  21          sbit LCD1602_RS = P3^2;         //1602的数据/指令选择控制线
+  22          sbit LCD1602_RW = P3^3;
+  23          sbit LCD1602_E  = P3^4;         //1602的使能控制线
+  24          
+  25          uint pwm_out_flag = 0;
+  26          uint pwm_renew_flag = 0;
+  27          uint clock_flag = 0;
+  28          uchar order = 0;
+  29          uchar R_OUT = 0, G_OUT = 0, B_OUT = 0; //定义占空比计数变量
+  30          uint MAX=200,MIN=1;           //定义变色起始级数，范围最大可以0-200
+  31          uint mod = 9;
+  32          uint MODEL = 0;
+  33          uint info;
+  34          uint light_data;
+  35          uchar index = 0;
+  36          uint clock;
+  37          
+  38          void ConfigUART(unsigned int baud)
+  39          {
+  40   1        SCON = 0X50;   //串口方式1
+  41   1        TMOD &= 0X0F; //定时器T1 ，工作方式 2 
+  42   1        TMOD |= 0X20;
+  43   1        TH1 = 256 - (11059200/12/32)/baud;
+  44   1        TL1 = TH1;
+  45   1      
+  46   1        ET1 = 0;   //  使用T1做波特率发生器，就要关了T1的定时中断
+  47   1        ES = 1;    // 串口中断打开
+  48   1        TR1 = 1;   //  T1开始定时
+  49   1      }
+  50          
+  51          void timer0init()//1ms中断
+  52          {
+  53   1        TMOD &= 0XF0;  //定时器T0，工作方式16位定时
+  54   1        TMOD |= 0X01;
+  55   1        TH0 = 0XFC;
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 2   
+
+  56   1        TL0 = 0X67;
+  57   1        TR0 = 1;
+  58   1        ET0 = 1;
+  59   1      }
+  60          
+  61          void delay(unsigned int t) //延时
+  62          {       
+  63   1          unsigned int i, j; 
+  64   1          for(i=0;i<t;i++)
+  65   1        { 
+  66   2            for(j=0;j<10;j++)
+  67   2          {;} 
+  68   2          } 
+  69   1      } 
+  70          
+  71          void InitADC()
+  72          {
+  73   1              ADC_DATA = 0;
+  74   1              ADC_LOW2 = 0;
+  75   1              ADC_CONTR = 0x60 | 3;   //设置在check口，转换速度最高
+  76   1              delay(10);
+  77   1      }
+  78          
+  79          void InterruptUART() interrupt 4
+  80          {
+  81   1        if (RI)
+  82   1        {
+  83   2          RI = 0;
+  84   2          order = SBUF;
+  85   2        }
+  86   1        if (TI)
+  87   1        {
+  88   2          //SBUF = order;
+  89   2          TI = 0;
+  90   2        }
+  91   1      }
+  92          void timer0routine() interrupt 1
+  93          {
+  94   1        static uint time_count;
+  95   1        TH0 = 0XFC;
+  96   1        TL0 = 0X67;
+  97   1        time_count = (time_count + 1) % 1000;
+  98   1        if (time_count % 2)
+  99   1        {
+ 100   2          pwm_out_flag = 1;
+ 101   2        }
+ 102   1        if(time_count % 10 == 9)
+ 103   1        {
+ 104   2          pwm_renew_flag = 1;
+ 105   2        }
+ 106   1        if(time_count == 999)
+ 107   1        {
+ 108   2          clock_flag = 1;//1s
+ 109   2        }
+ 110   1      }
+ 111          
+ 112          
+ 113          uint Adc(unsigned char n)//采集第几通道的数据
+ 114          {
+ 115   1        unsigned char i;  
+ 116   1        uint result=0;
+ 117   1      
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 3   
+
+ 118   1        ADC_CONTR = ADC_CONTR|0x80;  //10000000 开启转换电源
+ 119   1        delay(10);
+ 120   1        i = 0x01<<n;
+ 121   1              P1M0 = P1M0|i;
+ 122   1          P1M1 = P1M1|i;   //采样的通道开漏
+ 123   1              delay(10); 
+ 124   1              ADC_CONTR = 0xE0|n;   //打开adc电源,设置转换速率 设置P1.n模拟通道  1110_0000|n
+ 125   1              delay(10);    //延时一端时间，使输入电压达到稳定
+ 126   1        ADC_DATA = 0;   
+ 127   1        ADC_LOW2 = 0; //清A/D转换结果寄存器
+ 128   1        ADC_CONTR = ADC_CONTR|0x08;  //ADC_START=1,开始转换   0000_1000
+ 129   1        delay(10);
+ 130   1              ADC_CONTR = ADC_CONTR&0xE7;  //将ADC_FLAG软件清零   1110_0111  
+ 131   1        result = ADC_DATA;
+ 132   1        result<<=2;
+ 133   1        result = result&0x03FC;   //0000_0011_1111_1100
+ 134   1        result = result|(ADC_LOW2 & 0x03);
+ 135   1        return(result);       //10位的结果
+ 136   1      }
+ 137          
+ 138          //输出占空比
+ 139          void POUT() 
+ 140          {
+ 141   1          unsigned char cnt;  
+ 142   1          for(cnt=0;cnt<MAX;cnt++)
+ 143   1          {
+ 144   2              if(cnt<R_OUT)
+ 145   2                      RED=1;        //红色占空比大于计数值时红灯亮
+ 146   2              else
+ 147   2                      RED=0;        //否则就关闭红色
+ 148   2                     
+ 149   2              if(cnt<G_OUT)               
+ 150   2                      GREEN=1;                //绿色占空比大于计数值时绿灯亮
+ 151   2              else
+ 152   2                      GREEN=0;                //否则就关闭绿色
+ 153   2                     
+ 154   2              if(cnt<B_OUT)
+ 155   2                      BLUE=1;                //蓝色占空比大于计数值时蓝灯亮
+ 156   2              else
+ 157   2                      BLUE=0;                //否则就关闭蓝色
+ 158   2          }
+ 159   1      }
+ 160          
+ 161          void ConfigPWM(unsigned char t)  //PWM占空比处理函数
+ 162          {
+ 163   1              static unsigned char dir=0;    //定义变亮或变暗方向
+ 164   1              static unsigned int time=0;    //中间变量
+ 165   1              switch(index)
+ 166   1              {
+ 167   2          case 0: 
+ 168   2                              if(dir==0)      //红色由暗变亮
+ 169   2                              {
+ 170   3                                      time+=t;
+ 171   3                                      R_OUT=time;
+ 172   3                                      G_OUT=0;
+ 173   3                                      B_OUT=0;
+ 174   3                                      if(time>=MAX)
+ 175   3                                      {
+ 176   4                                              dir=1;
+ 177   4                                      }
+ 178   3                              }
+ 179   2                              else         //红色由亮变暗
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 4   
+
+ 180   2                              {
+ 181   3                                      time-=t;
+ 182   3                                      R_OUT=time;
+ 183   3                                      G_OUT=0;
+ 184   3                                      B_OUT=0;
+ 185   3                                      if(time<=MIN)
+ 186   3                                      {
+ 187   4                                              dir=0;
+ 188   4                                              time=0;
+ 189   4                                              if(mod == 1)
+ 190   4                                              {
+ 191   5                                                      index = 0;
+ 192   5                                              }
+ 193   4                                              else if(mod == 9)
+ 194   4                                              {
+ 195   5                                                      index = 1;
+ 196   5                                              }
+ 197   4                                              else
+ 198   4                                              {
+ 199   5                                                      index = 7;
+ 200   5                                              }
+ 201   4                                      }
+ 202   3                              }
+ 203   2                              break;
+ 204   2                                             
+ 205   2                      case 1:            
+ 206   2                              if(dir==0)                //橙色由暗变亮
+ 207   2                              {
+ 208   3                                      time+=t;
+ 209   3                                      R_OUT=time;
+ 210   3                      G_OUT=time/4;
+ 211   3                                      B_OUT=0;
+ 212   3                                      if(time>=MAX)
+ 213   3                                      {
+ 214   4                                              dir=1;
+ 215   4                                      }
+ 216   3                              }
+ 217   2                              else                        //橙色由亮变暗
+ 218   2                              {
+ 219   3                                      time-=t;
+ 220   3                                      R_OUT=time;
+ 221   3                      G_OUT=time/4;
+ 222   3                                      B_OUT=0;
+ 223   3                                      if(time<=MIN)
+ 224   3                                      {
+ 225   4                                              dir=0;
+ 226   4                                              time=0;
+ 227   4                                              if(mod == 2)
+ 228   4                                              {
+ 229   5                                                      index = 1;
+ 230   5                                              }
+ 231   4                                              else if(mod == 9)
+ 232   4                                              {
+ 233   5                              index = 2;
+ 234   5                                              }
+ 235   4                                              else
+ 236   4                                              {
+ 237   5                                                      index = 7;
+ 238   5                                              }
+ 239   4                                      }
+ 240   3                              }
+ 241   2                              break;
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 5   
+
+ 242   2                                             
+ 243   2                      case 2:            
+ 244   2                              if(dir==0)                //黄色由暗变亮
+ 245   2                              {
+ 246   3                                      time+=t;
+ 247   3                                      R_OUT=time;
+ 248   3                                      G_OUT=time/2;
+ 249   3                                      B_OUT=0;
+ 250   3                                      if(time>=MAX)
+ 251   3                                      {
+ 252   4                                              dir=1;
+ 253   4                                      }
+ 254   3                              }
+ 255   2                              else                        //黄色由亮变暗
+ 256   2                              {
+ 257   3                                      time-=t;
+ 258   3                                      R_OUT=time;
+ 259   3                                      G_OUT=time/2;
+ 260   3                                      B_OUT=0;
+ 261   3                                      if(time<=MIN)
+ 262   3                                      {
+ 263   4                                              dir=0;
+ 264   4                                              time=0;
+ 265   4                                              if(mod == 3)
+ 266   4                                              {
+ 267   5                                                      index = 2;
+ 268   5                                              }
+ 269   4                                              else if(mod == 9)
+ 270   4                                              {
+ 271   5                                                      index = 3;
+ 272   5                                              }
+ 273   4                                              else
+ 274   4                                              {
+ 275   5                                                      index = 7;
+ 276   5                                              }
+ 277   4                                      }
+ 278   3                              }
+ 279   2                              break;
+ 280   2                                             
+ 281   2                      case 3:            
+ 282   2                              if(dir==0)                //绿色由暗变亮
+ 283   2                              {
+ 284   3                                      time+=t;
+ 285   3                                      R_OUT=0;
+ 286   3                                      G_OUT=time;
+ 287   3                                      B_OUT=0;
+ 288   3                                      if(time>=MAX)
+ 289   3                                      {
+ 290   4                                              dir=1;
+ 291   4                                      }
+ 292   3                              }
+ 293   2                              else                        //绿色由亮变暗
+ 294   2                              {
+ 295   3                                      time-=t;
+ 296   3                                      R_OUT=0;
+ 297   3                                      G_OUT=time;
+ 298   3                                      B_OUT=0;
+ 299   3                                      if(time<=MIN)
+ 300   3                                      {
+ 301   4                                              dir=0;
+ 302   4                                              time=0;
+ 303   4                                              if(mod == 4)
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 6   
+
+ 304   4                                              {
+ 305   5                                                      index = 3;
+ 306   5                                              }
+ 307   4                                              else if(mod == 9)
+ 308   4                                              {
+ 309   5                                                      index = 4;
+ 310   5                                              }
+ 311   4                                              else
+ 312   4                                              {
+ 313   5                                                      index = 7;
+ 314   5                                              }
+ 315   4                                      }
+ 316   3                              }
+ 317   2                              break;
+ 318   2                                             
+ 319   2                      case 4:           
+ 320   2                              if(dir==0)                //青色由暗变亮
+ 321   2                              {
+ 322   3                                      time+=t;
+ 323   3                                      R_OUT=0;
+ 324   3                                      G_OUT=time;
+ 325   3                                      B_OUT=time/2;
+ 326   3                                      if(time>=MAX)
+ 327   3                                      {
+ 328   4                                              dir=1;
+ 329   4                                      }
+ 330   3                              }
+ 331   2                              else                        //青色由亮变暗
+ 332   2                              {
+ 333   3                                      time-=t;
+ 334   3                                      R_OUT=0;
+ 335   3                                      G_OUT=time;
+ 336   3                                      B_OUT=time/2;
+ 337   3                                      if(time<=MIN)
+ 338   3                                      {
+ 339   4                                              dir=0;
+ 340   4                                              time=0;
+ 341   4                                              if(mod == 5)
+ 342   4                                              {
+ 343   5                                                      index = 4;
+ 344   5                                              }
+ 345   4                                              else if(mod == 9)
+ 346   4                                              {
+ 347   5                                                      index = 5;
+ 348   5                                              }
+ 349   4                                              else
+ 350   4                                              {
+ 351   5                                                      index = 7;
+ 352   5                                              }
+ 353   4                                      }
+ 354   3                              }
+ 355   2                              break;
+ 356   2                                             
+ 357   2                      case 5:            
+ 358   2                              if(dir==0)                //蓝色由暗变亮
+ 359   2                              {
+ 360   3                                      time+=t;
+ 361   3                                      R_OUT=0;
+ 362   3                                      G_OUT=0;
+ 363   3                                      B_OUT=time;
+ 364   3                                      if(time>=MAX)
+ 365   3                                      {
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 7   
+
+ 366   4                                              dir=1;
+ 367   4                                      }
+ 368   3                              }
+ 369   2                              else                        //蓝色由亮变暗
+ 370   2                              {
+ 371   3                                      time-=t;
+ 372   3                                      R_OUT=0;
+ 373   3                                      G_OUT=0;
+ 374   3                                      B_OUT=time;
+ 375   3                                      if(time<=MIN)
+ 376   3                                      {
+ 377   4                                              dir=0;
+ 378   4                                              time=0;
+ 379   4                                              if(mod == 6)
+ 380   4                                              {
+ 381   5                                                      index = 5;
+ 382   5                                              }
+ 383   4                                              else if(mod == 9)
+ 384   4                                              {
+ 385   5                                                      index = 6;
+ 386   5                                              }
+ 387   4                                              else
+ 388   4                                              {
+ 389   5                                                      index = 7;
+ 390   5                                              }
+ 391   4                                      }
+ 392   3                              }
+ 393   2                              break;
+ 394   2                                             
+ 395   2                      case 6:            
+ 396   2                              if(dir==0)                //紫色由暗变亮
+ 397   2                              {
+ 398   3                                      time+=t;
+ 399   3                                      R_OUT=time/3;
+ 400   3                                      G_OUT=0;
+ 401   3                                      B_OUT=time;
+ 402   3                                      if(time>=MAX)
+ 403   3                                      {
+ 404   4                                              dir=1;
+ 405   4                                      }
+ 406   3                              }
+ 407   2                              else                        //紫色由亮变暗
+ 408   2                              {
+ 409   3                                      time-=t;
+ 410   3                                      R_OUT=time/3;
+ 411   3                                      G_OUT=0;
+ 412   3                                      B_OUT=time;
+ 413   3                                      if(time<=MIN)
+ 414   3                                      {
+ 415   4                                              dir=0;
+ 416   4                                              time=0;
+ 417   4                                              if(mod == 7)
+ 418   4                                              {
+ 419   5                                                      index = 6;
+ 420   5                                              }
+ 421   4                                              else
+ 422   4                                              {
+ 423   5                                                      index = 7;
+ 424   5                                              }
+ 425   4                                      }
+ 426   3                              }
+ 427   2                              break;
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 8   
+
+ 428   2                                             
+ 429   2                      case 7:            
+ 430   2                              if(dir==0)                //白色由暗变亮
+ 431   2                              {
+ 432   3                                      time+=t;
+ 433   3                                      G_OUT=time;
+ 434   3                                      B_OUT=time;
+ 435   3                                      R_OUT=time;
+ 436   3                                      if(time>=MAX)
+ 437   3                                      {
+ 438   4                                              dir=1;
+ 439   4                                      }
+ 440   3                              }
+ 441   2                              else                        //白色由亮变暗
+ 442   2                              {
+ 443   3                                      time-=t;
+ 444   3                                      G_OUT=time;
+ 445   3                                      B_OUT=time;
+ 446   3                                      R_OUT=time;
+ 447   3                                      if(time<=MIN)
+ 448   3                                      {
+ 449   4                                              dir=0;
+ 450   4                                              time=0;
+ 451   4                                              if(mod == 8)
+ 452   4                                              {
+ 453   5                                                      index = 7;
+ 454   5                                              }
+ 455   4                                              else if(mod == 9)
+ 456   4                                              {
+ 457   5                              index = 0;
+ 458   5                                              }
+ 459   4                                              else
+ 460   4                                              {
+ 461   5                                                      index = 7;
+ 462   5                                              }
+ 463   4                                      }
+ 464   3                              }
+ 465   2                              break;
+ 466   2                       
+ 467   2              }
+ 468   1      }
+ 469          
+ 470          void Delay_ms(unsigned int nms)        //@11.0592MHz   nms为要延时的ms数  
+ 471          {
+ 472   1          unsigned char i, j;    
+ 473   1          while(nms--)
+ 474   1          {
+ 475   2              i = 15;
+ 476   2              j = 90;
+ 477   2              do
+ 478   2              {
+ 479   3                  while (--j);
+ 480   3              } while (--i);
+ 481   2          }
+ 482   1      }
+ 483          
+ 484          void LcdWaitReady()    /* 等待液晶准备好 */
+ 485          {
+ 486   1          unsigned char sta;
+ 487   1          
+ 488   1          LCD1602_DB = 0xFF;
+ 489   1          LCD1602_RS = 0;
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 9   
+
+ 490   1          LCD1602_RW = 1;       //读状态
+ 491   1          do {
+ 492   2              LCD1602_E = 1;
+ 493   2              sta = LCD1602_DB; //读取状态字
+ 494   2              LCD1602_E = 0;
+ 495   2          } while (sta & 0x80); //bit7等于1表示液晶正忙，重复检测直到其等于0为止
+ 496   1      }
+ 497          
+ 498          void LCD1602_write_cmd(unsigned char cmd)    //写命令函数
+ 499          {
+ 500   1          LcdWaitReady();
+ 501   1          LCD1602_RS = 0;
+ 502   1          LCD1602_RW = 0;
+ 503   1          LCD1602_DB = cmd;
+ 504   1          LCD1602_E  = 1;
+ 505   1          _nop_();_nop_();
+ 506   1          LCD1602_E  = 0;
+ 507   1      }
+ 508          
+ 509          void LCD1602_Init()    //1602初始化函数 
+ 510          {
+ 511   1          LCD1602_write_cmd(0x01);    //显示清屏
+ 512   1          LCD1602_write_cmd(0x38);    //显示模式设置
+ 513   1          LCD1602_write_cmd(0x0C);    //显示开及光标设置
+ 514   1          LCD1602_write_cmd(0x06);    //显示光标移动位置
+ 515   1      }
+ 516          
+ 517          void LCD1602_write_data(unsigned char date)    //写数据函数 
+ 518          {
+ 519   1          LcdWaitReady();
+ 520   1          LCD1602_RS = 1;
+ 521   1          LCD1602_RW = 0;
+ 522   1          LCD1602_DB = date;
+ 523   1          LCD1602_E  = 1;
+ 524   1          _nop_();_nop_();
+ 525   1          LCD1602_E  = 0;
+ 526   1      }
+ 527          
+ 528          void LCD1602_Clear()    //1602清屏函数
+ 529          {
+ 530   1          LCD1602_write_cmd(0x01);
+ 531   1      }
+ 532          
+ 533          void LCD1602_SetCursor(unsigned char x,unsigned char y)//设置1602光标位置函数
+ 534          {
+ 535   1          unsigned char addr;
+ 536   1          if(y==0)     //由输入的屏幕坐标计算显示RAM的地址
+ 537   1              addr=0x00+x;
+ 538   1          else
+ 539   1              addr=0x40+x;
+ 540   1          LCD1602_write_cmd(addr | 0x80);//设置RAM地址
+ 541   1      }
+ 542          
+ 543          void LCD1602_ShowNum(char x, char y, unsigned int num)  //指定位置显示数字函数
+ 544          {
+ 545   1          unsigned int i,j,k,l,n;
+ 546   1          i=num/10000;
+ 547   1          j=(num-10000*i)/1000;
+ 548   1          k=(num-10000*i-1000*j)/100;
+ 549   1          l=(num-10000*i-1000*j-100*k)/10;
+ 550   1          n=num%10;
+ 551   1          LCD1602_SetCursor(x,y);  //设置起始地址
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 10  
+
+ 552   1          if(i!=0)LCD1602_write_data(i+0x30);
+ 553   1          if((i!=0)||(j!=0))LCD1602_write_data(j+0x30);
+ 554   1          if((i!=0)||(j!=0)||(k!=0))LCD1602_write_data(k+0x30);
+ 555   1          if((i!=0)||(j!=0)||(k!=0)||(l!=0))LCD1602_write_data(l+0x30);
+ 556   1          LCD1602_write_data(n+0x30);
+ 557   1      }
+ 558          
+ 559          void LCD1602_ShowChar(unsigned char xpos,unsigned char ypos,char xsz)    //指定位置显示字符函数
+ 560          {
+ 561   1          ypos%=2;
+ 562   1          if(ypos==0)
+ 563   1          {
+ 564   2              LCD1602_write_cmd(0x80+xpos);
+ 565   2          }
+ 566   1          else
+ 567   1          {
+ 568   2              LCD1602_write_cmd(0x80+0x40+xpos);
+ 569   2          }
+ 570   1          LCD1602_write_data(xsz);
+ 571   1      }
+ 572          
+ 573          void LCD1602_ShowStr(unsigned char xpos,unsigned char ypos,char *p) //指定位置显示字符串函数
+ 574          {
+ 575   1          if(ypos>1)return;
+ 576   1          while(*p!='\0')
+ 577   1          {
+ 578   2              LCD1602_ShowChar(xpos++,ypos,*p++);
+ 579   2              if(*p=='\n')
+ 580   2              {
+ 581   3                  xpos=0;
+ 582   3                  ypos++;
+ 583   3                  p++;
+ 584   3              }
+ 585   2          }
+ 586   1      }
+ 587          
+ 588          void check(uint data1)
+ 589          {
+ 590   1          if(data1 < 15)
+ 591   1          {
+ 592   2              EA = 0;//关闭全局中断
+ 593   2              //蓝牙发送报警
+ 594   2              while(1)
+ 595   2              {
+ 596   3                  LCD1602_ShowStr(15,1,"!");  //LCD显示感叹号
+ 597   3                  D3 = 1;                     //灯闪烁，蜂鸣器间歇性报警
+ 598   3                  BEEP = 1;
+ 599   3                  delay(40000);
+ 600   3                  D3 = 0;
+ 601   3                  BEEP = 0;
+ 602   3                  delay(40000);
+ 603   3              }
+ 604   2          }
+ 605   1          else EA = 1;
+ 606   1      }
+ 607          
+ 608          /******************故障检测****************/
+ 609          void LED_check()
+ 610          {
+ 611   1          //判断蓝灯通断
+ 612   1              RED = 0;
+ 613   1              GREEN = 0;
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 11  
+
+ 614   1              BLUE = 1;
+ 615   1              Delay_ms(500);
+ 616   1              check(Adc(3));
+ 617   1      
+ 618   1              //判断红灯通断
+ 619   1              RED = 1;
+ 620   1              GREEN = 0;
+ 621   1              BLUE = 0;
+ 622   1              Delay_ms(500);
+ 623   1              check(Adc(3));
+ 624   1              
+ 625   1              //判断绿灯通断
+ 626   1              RED = 0;
+ 627   1              GREEN = 1;
+ 628   1              BLUE = 0;
+ 629   1              Delay_ms(500);
+ 630   1              check(Adc(3));
+ 631   1      }
+ 632          
+ 633          void main()
+ 634          {
+ 635   1        static uint clock_count; 
+ 636   1        static uint MODEL_OLD;
+ 637   1        static uint info_old;
+ 638   1        static uint clock_enable;
+ 639   1        static uint change_enable;
+ 640   1        static uint light_count;
+ 641   1      
+ 642   1        P1M0 = 0x48;
+ 643   1        P1M1 = 0x4F;
+ 644   1        EA = 1;
+ 645   1        ConfigUART(9600);
+ 646   1        timer0init();
+ 647   1          LCD1602_Init();//LCD初始化
+ 648   1        InitADC();//ADC端口模式初始化
+ 649   1      
+ 650   1        RED = 0;
+ 651   1        GREEN = 0;
+ 652   1        BLUE = 0;
+ 653   1        D3 = 0;
+ 654   1        light_count = 200;
+ 655   1      
+ 656   1        LCD1602_Clear();
+ 657   1      
+ 658   1          LED_check();//故障检测
+ 659   1      
+ 660   1        do
+ 661   1        { 
+ 662   2          LCD1602_ShowStr(0,1,"order:");
+ 663   2          MODEL = (order & 0xF0) >> 4;
+ 664   2          LCD1602_ShowNum(6,1,MODEL); 
+ 665   2          info = order & 0x0F;
+ 666   2          LCD1602_ShowNum(7,1,info);  
+ 667   2      
+ 668   2          light_data = Adc(6);
+ 669   2      
+ 670   2          if(MODEL != MODEL_OLD || info != info_old)
+ 671   2          {
+ 672   3            LCD1602_Clear();
+ 673   3            MODEL_OLD = MODEL;
+ 674   3            info_old = info;
+ 675   3            if(MODEL == 4 || MODEL == 5)
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 12  
+
+ 676   3            {
+ 677   4              clock_enable = 1;
+ 678   4            }
+ 679   3            if(MODEL == 0)
+ 680   3            {
+ 681   4              change_enable = 1;
+ 682   4            }
+ 683   3          }
+ 684   2      
+ 685   2          switch(MODEL)
+ 686   2          {
+ 687   3            case 0:
+ 688   3              if(change_enable)
+ 689   3              {
+ 690   4                change_enable = 0;
+ 691   4                mod = info;
+ 692   4                index = (mod == 9)? 1: (mod - 1);
+ 693   4              }
+ 694   3              LCD1602_ShowStr(0,0,"mod:");
+ 695   3              LCD1602_ShowNum(5,0,mod);
+ 696   3              _nop_();_nop_();
+ 697   3              if(pwm_out_flag)
+ 698   3              {
+ 699   4                pwm_out_flag = 0;
+ 700   4                POUT();
+ 701   4              }
+ 702   3              if(pwm_renew_flag)
+ 703   3              {
+ 704   4                pwm_renew_flag = 0;
+ 705   4                ConfigPWM(1);
+ 706   4              }
+ 707   3              break;
+ 708   3            case 1:
+ 709   3              R_OUT = info*20;
+ 710   3              LCD1602_ShowStr(0,0,"R:");
+ 711   3              LCD1602_ShowNum(2,0,R_OUT/2);
+ 712   3              LCD1602_ShowStr(5,0,"G:");
+ 713   3              LCD1602_ShowNum(7,0,G_OUT/2);
+ 714   3              LCD1602_ShowStr(10,0,"B:");
+ 715   3              LCD1602_ShowNum(12,0,B_OUT/2);
+ 716   3              _nop_();_nop_();
+ 717   3              if(pwm_out_flag)
+ 718   3              {
+ 719   4                pwm_out_flag = 0;
+ 720   4                POUT();
+ 721   4              }
+ 722   3              break;
+ 723   3            case 2:
+ 724   3              G_OUT = info*20;
+ 725   3              LCD1602_ShowStr(0,0,"R:");
+ 726   3              LCD1602_ShowNum(2,0,R_OUT/2);
+ 727   3              LCD1602_ShowStr(5,0,"G:");
+ 728   3              LCD1602_ShowNum(7,0,G_OUT/2);
+ 729   3              LCD1602_ShowStr(10,0,"B:");
+ 730   3              LCD1602_ShowNum(12,0,B_OUT/2);
+ 731   3              _nop_();_nop_();
+ 732   3              if(pwm_out_flag)
+ 733   3              {
+ 734   4                pwm_out_flag = 0;
+ 735   4                POUT();
+ 736   4              }
+ 737   3              break;
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 13  
+
+ 738   3            case 3:
+ 739   3              B_OUT = info*20;
+ 740   3              LCD1602_ShowStr(0,0,"R:");
+ 741   3              LCD1602_ShowNum(2,0,R_OUT/2);
+ 742   3              LCD1602_ShowStr(5,0,"G:");
+ 743   3              LCD1602_ShowNum(7,0,G_OUT/2);
+ 744   3              LCD1602_ShowStr(10,0,"B:");
+ 745   3              LCD1602_ShowNum(12,0,B_OUT/2);
+ 746   3              _nop_();_nop_();
+ 747   3              if(pwm_out_flag)
+ 748   3              {
+ 749   4                pwm_out_flag = 0;
+ 750   4                POUT();
+ 751   4              }
+ 752   3              break;
+ 753   3            case 4:
+ 754   3              if(clock_enable)//第一次做MODEL = 4
+ 755   3              {
+ 756   4                clock_enable = 0;
+ 757   4                clock = info;
+ 758   4                clock_count = 0;
+ 759   4                //灭
+ 760   4                RED = 0;
+ 761   4                GREEN = 0;
+ 762   4                BLUE = 0;
+ 763   4              }
+ 764   3      
+ 765   3              LCD1602_ShowStr(0,0,"clock:");
+ 766   3              _nop_();_nop_();
+ 767   3      
+ 768   3              if(clock_flag)
+ 769   3              {
+ 770   4                clock_flag = 0;
+ 771   4                clock_count++;
+ 772   4              }
+ 773   3              if(clock_count >= clock * 60)
+ 774   3              {
+ 775   4                LCD1602_ShowNum(6,0,0);
+ 776   4                _nop_();_nop_();
+ 777   4                if(pwm_out_flag)
+ 778   4                {
+ 779   5                  pwm_out_flag = 0;
+ 780   5                  POUT();
+ 781   5                }
+ 782   4                if(pwm_renew_flag)
+ 783   4                {
+ 784   5                  pwm_renew_flag = 0;
+ 785   5                  ConfigPWM(1);
+ 786   5                }
+ 787   4              }
+ 788   3              else{
+ 789   4                if(clock*60 - clock_count < 10) LCD1602_ShowStr(7,0," ");
+ 790   4                else if(clock*60 - clock_count < 100) LCD1602_ShowStr(8,0," ");
+ 791   4                LCD1602_ShowNum(6,0,clock*60 - clock_count);
+ 792   4                _nop_();_nop_();
+ 793   4              }
+ 794   3              break;
+ 795   3            case 5:
+ 796   3              if(clock_enable)//第一次做MODEL = 5
+ 797   3              {
+ 798   4                clock_enable = 0;
+ 799   4                clock = info;
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 14  
+
+ 800   4                clock_count = 0;
+ 801   4              }
+ 802   3      
+ 803   3              LCD1602_ShowStr(0,0,"clock:");
+ 804   3              _nop_();_nop_();
+ 805   3              
+ 806   3              if(clock_flag)
+ 807   3              {
+ 808   4                clock_flag = 0;
+ 809   4                clock_count++;
+ 810   4              }
+ 811   3              if(clock_count <= clock * 60)
+ 812   3              {
+ 813   4                if(clock*60 - clock_count < 10) LCD1602_ShowStr(7,0," ");
+ 814   4                else if(clock*60 - clock_count < 100) LCD1602_ShowStr(8,0," ");
+ 815   4                LCD1602_ShowNum(6,0,clock*60 - clock_count);
+ 816   4                _nop_();_nop_();
+ 817   4                if(pwm_out_flag)
+ 818   4                {
+ 819   5                  pwm_out_flag = 0;
+ 820   5                  POUT();
+ 821   5                }
+ 822   4                if(pwm_renew_flag)
+ 823   4                {
+ 824   5                  pwm_renew_flag = 0;
+ 825   5                  ConfigPWM(1);
+ 826   5                }
+ 827   4              }
+ 828   3              else
+ 829   3              {
+ 830   4                LCD1602_ShowNum(6,0,0);
+ 831   4                _nop_();_nop_();
+ 832   4                RED = 0;
+ 833   4                GREEN = 0;
+ 834   4                BLUE = 0;
+ 835   4              }
+ 836   3              break;
+ 837   3            case 6:
+ 838   3              light_count++;
+ 839   3              if(light_count >= 200)
+ 840   3              {
+ 841   4                light_count = 0;
+ 842   4                LCD1602_ShowStr(0,0,"light:");
+ 843   4                LCD1602_ShowNum(6,0,light_data);
+ 844   4                _nop_();_nop_();
+ 845   4              }
+ 846   3              
+ 847   3              if(light_data > 400)
+ 848   3              {
+ 849   4                RED = 0;
+ 850   4                GREEN = 0;
+ 851   4                BLUE = 0;
+ 852   4              }
+ 853   3              else
+ 854   3              {
+ 855   4                if(pwm_out_flag)
+ 856   4                {
+ 857   5                  pwm_out_flag = 0;
+ 858   5                  POUT();
+ 859   5                }
+ 860   4                if(pwm_renew_flag)
+ 861   4                {
+C51 COMPILER V9.60.0.0   EXAM2                                                             07/07/2022 16:18:06 PAGE 15  
+
+ 862   5                  pwm_renew_flag = 0;
+ 863   5                  ConfigPWM(1);
+ 864   5                }
+ 865   4              }
+ 866   3          }
+ 867   2          
+ 868   2        }while(1);
+ 869   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   3009    ----
+   CONSTANT SIZE    =     39    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     42      15
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

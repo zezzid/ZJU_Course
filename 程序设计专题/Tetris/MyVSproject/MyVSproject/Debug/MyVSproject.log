@@ -1,0 +1,12 @@
+﻿  Tetris.c
+d:\_university\_current\tetris\mycode\file.h(10): warning C4091: “extern ”: 没有声明变量时忽略“link”的左侧
+d:\_university\_current\tetris\mycode\draw.h(30): warning C4091: “extern ”: 没有声明变量时忽略“BLOCK”的左侧
+d:\_university\_current\tetris\mycode\tetris.c(304): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  draw.c
+d:\_university\_current\tetris\mycode\file.h(10): warning C4091: “extern ”: 没有声明变量时忽略“link”的左侧
+d:\_university\_current\tetris\mycode\draw.h(30): warning C4091: “extern ”: 没有声明变量时忽略“BLOCK”的左侧
+d:\_university\_current\tetris\mycode\draw.c(120): warning C4244: “函数”: 从“double”转换到“int”，可能丢失数据
+  正在生成代码...
+d:\_university\_current\tetris\mycode\tetris.c(205): warning C4715: “Transferx”: 不是所有的控件路径都返回值
+d:\_university\_current\tetris\mycode\tetris.c(217): warning C4715: “Transfery”: 不是所有的控件路径都返回值
+  MyVSproject.vcxproj -> D:\_University\_current\Tetris\MyVSproject\Debug\MyVSproject.exe

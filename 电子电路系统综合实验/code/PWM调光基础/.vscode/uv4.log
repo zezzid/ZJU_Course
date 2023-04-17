@@ -1,0 +1,7 @@
+Build target 'Target 1'
+compiling PWM1.c...
+PWM1.c(21): error C247: non-address/-constant initializer
+PWM1.c(22): error C247: non-address/-constant initializer
+PWM1.c(23): error C247: non-address/-constant initializer
+Target not created.
+Build Time Elapsed:  00:00:00

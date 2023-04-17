@@ -1,0 +1,15 @@
+* "simulator" "HSPICE" 
+* "version" "K-2015.06-3 win64"
+* "format" "HSP"
+* "rundate" "19:35:51 11/15/2021 "
+* "netlist" "answer6.5.sp "
+* "runtitle" ".title hw_chap6.5"
+* time =    0.            
+* temperature =   27.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ net1 = 750.0000m       
++ net2 =   1.8000        
+***   END: Saved Operating Point ***                     

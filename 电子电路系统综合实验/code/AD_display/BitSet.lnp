@@ -1,0 +1,4 @@
+"STARTUP.obj",
+"SRTT_II main.obj" 
+TO "BitSet" 
+RAMSIZE(256) 

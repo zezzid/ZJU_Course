@@ -1,0 +1,58 @@
+****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******
+ Input File: CS_amp_ac.sp
+ lic:
+ lic: FLEXlm: v11.2.1
+ lic: USER:   Zezzid               HOSTNAME: LAPTOP-NBK8184L
+ lic: HOSTID: "68545a57211d"       PID:      37672
+ lic: Using FLEXlm license file:
+ lic: 27000@LAPTOP-NBK8184L
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 30-dec-2030/2029.2029
+ lic: 1(in_use)/99(total) FLOATING license(s) on SERVER 27000@LAPTOP-NBK8184L
+ lic:
+ init: begin read circuit files,  cpu clock=  1.65E-01
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\AD\
+       option search = D:\Hspice_K-2015.06-3\parts\XILINX\
+       option search = D:\Hspice_K-2015.06-3\parts\TLINE\
+       option search = D:\Hspice_K-2015.06-3\parts\TI\
+       option search = D:\Hspice_K-2015.06-3\parts\SIGNET\
+       option search = D:\Hspice_K-2015.06-3\parts\PCI\
+       option search = D:\Hspice_K-2015.06-3\parts\LIN_TECH\
+       option search = D:\Hspice_K-2015.06-3\parts\PET\
+       option search = D:\Hspice_K-2015.06-3\parts\DI0\
+       option search = D:\Hspice_K-2015.06-3\parts\COMLINE\
+       option search = D:\Hspice_K-2015.06-3\parts\BURR_BRM\
+       option search = D:\Hspice_K-2015.06-3\parts\BJT\
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\AD\
+       option runlvl
+       option post
+       option accurate
+       option probe
+ init: end read circuit files,  cpu clock=  1.68E-01 peak memory=        48 mb
+ init: begin check errors,  cpu clock=  1.68E-01
+ init: end check errors,  cpu clock=  1.71E-01 peak memory=        50 mb
+ init: begin setup matrix, pivot=     0 cpu clock=  1.71E-01
+       establish matrix -- done,  cpu clock=  1.71E-01 peak memory=        50 mb
+       re-order matrix -- done,  cpu clock=  1.71E-01 peak memory=        50 mb
+ init: end setup matrix,  cpu clock=  1.72E-01 peak memory=        50 mb
+ dcop: begin dcop,  cpu clock=  1.73E-01
+ dcop: end dcop,  cpu clock=  1.74E-01 peak memory=        50 mb  tot_iter=      16
+ output: D:\_University\_current\text1128\CS_amp_ac.ac0
+ sweep: ac ac0    begin, #sweeps=  81 cpu clock=  1.75E-01
+ ac: frequency=    1.26E+01
+ ac: frequency=    6.31E+01
+ ac: frequency=    3.98E+02
+ ac: frequency=    2.51E+03
+ ac: frequency=    1.58E+04
+ ac: frequency=    1.00E+05
+ ac: frequency=    6.31E+05
+ ac: frequency=    3.98E+06
+ ac: frequency=    2.51E+07
+ ac: frequency=    1.58E+08
+ ac: frequency=    1.00E+09
+ sweep: ac ac0    end,  cpu clock=  1.78E-01 peak memory=        50 mb
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)

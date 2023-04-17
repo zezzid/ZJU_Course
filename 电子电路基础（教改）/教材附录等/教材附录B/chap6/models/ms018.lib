@@ -1,0 +1,397 @@
+* This file contains 1.8V, 3.3V and BJT corner model parameters.
+* Five corners are supported: TT, FF, SS, SNFP, and FNSP.
+* This file should be used with the model parameter files 'ms018.mdl'.
+
+.LIB TT
+.PARAM
+*1.8V core NMOS 
++DTOX_N18      = 0            DXL_N18       = 0            DXW_N18       = 0 
++DVTH_N18      = 0            DCJ_N18       = 0            DCJSW_N18     = 0
++DCJSWG_N18    = 0            DCGDO_N18     = 0            DCGSO_N18     = 0
++DPVTH0_N18    = 0
+
+*1.8V core PMOS
++DTOX_P18      = 0            DXL_P18       = 0            DXW_P18       = 0 
++DVTH_P18      = 0	      DCJ_P18       = 0            DCJSW_P18     = 0
++DCJSWG_P18    = 0	      DCGDO_P18     = 0            DCGSO_P18     = 0
++DPVTH0_P18    = 0
+
+*3.3V IO NMOS 
++DTOX_N33      = 0            DXL_N33       = 0            DXW_N33       = 0 
++DVTH_N33      = 0            DCJ_N33       = 0            DCJSW_N33     = 0
++DCJSWG_N33    = 0            DCGDO_N33     = 0            DCGSO_N33     = 0
++DPVTH0_N33    = 0
+
+*3.3V IO PMOS
++DTOX_P33      = 0            DXL_P33       = 0            DXW_P33       = 0 
++DVTH_P33      = 0	      DCJ_P33       = 0            DCJSW_P33     = 0
++DCJSWG_P33    = 0	      DCGDO_P33     = 0            DCGSO_P33     = 0
++DPVTH0_P33    = 0
+
+*1.8V CORE NATIVE NMOS 
++DTOX_NNT18      = 0          DXL_NNT18     = 0            DXW_NNT18     = 0 
++DVTH_NNT18      = 0          DCJ_NNT18     = 0            DCJSW_NNT18   = 0
++DCJSWG_NNT18    = 0          DCGDO_NNT18   = 0            DCGSO_NNT18   = 0
++DPVTH0_NNT18    = 0
+
+*3.3V IO NATIVE NMOS 
++DTOX_NNT33      = 0          DXL_NNT33     = 0            DXW_NNT33     = 0 
++DVTH_NNT33      = 0          DCJ_NNT33     = 0            DCJSW_NNT33   = 0
++DCJSWG_NNT33    = 0          DCGDO_NNT33   = 0            DCGSO_NNT33   = 0
++DPVTH0_NNT33    = 0
+
+*1.8V core MEDIUM NMOS 
++DTOX_NMVT18      = 0         DXL_NMVT18       = 0         DXW_NMVT18       = 0 
++DVTH_NMVT18      = 0         DCJ_NMVT18       = 0         DCJSW_NMVT18     = 0
++DCJSWG_NMVT18    = 0         DCGDO_NMVT18     = 0         DCGSO_NMVT18     = 0
++DPVTH0_NMVT18    = 0
+
+*1.8V core MEDIUM PMOS
++DTOX_PMVT18      = 0         DXL_PMVT18       = 0         DXW_PMVT18       = 0 
++DVTH_PMVT18      = 0	      DCJ_PMVT18       = 0         DCJSW_PMVT18     = 0
++DCJSWG_PMVT18    = 0	      DCGDO_PMVT18     = 0         DCGSO_PMVT18     = 0
++DPVTH0_PMVT18    = 0
+
+*3.3V IO MEDIUM NMOS 
++DTOX_NMVT33      = 0         DXL_NMVT33       = 0         DXW_NMVT33       = 0 
++DVTH_NMVT33      = 0         DCJ_NMVT33       = 0         DCJSW_NMVT33     = 0
++DCJSWG_NMVT33    = 0         DCGDO_NMVT33     = 0         DCGSO_NMVT33     = 0
++DPVTH0_NMVT33    = 0
+
+.INC 'ms018.mdl'  
+.ENDL  TT
+
+.LIB FF
+.PARAM
+*1.8V core NMOS 
++DTOX_N18      = -1.0E-10     DXL_N18       = -1.0E-8      DXW_N18       = 2.2E-8 
++DVTH_N18      = -0.04        DCJ_N18       = -4.84E-5     DCJSW_N18     = -3.975E-12
++DCJSWG_N18    = -2.09E-11    DCGDO_N18     = 1.85E-11     DCGSO_N18     = 1.85E-11
++DPVTH0_N18    = -3e-15
+
+*1.8V core PMOS
++DTOX_P18      = -1.0E-10     DXL_P18       = -1.0E-8      DXW_P18       = 2.2E-8 
++DVTH_P18      = 0.02         DCJ_P18       = -5.35E-5     DCJSW_P18     = -4.945E-12
++DCJSWG_P18    = -2.535E-11   DCGDO_P18     = 2.1E-11      DCGSO_P18     = 2.1E-11
++DPVTH0_P18    = 1e-15
+
+*3.3V IO NMOS  
++DTOX_N33      = -3.0E-10     DXL_N33       = -1.4E-8      DXW_N33       = 2.2E-8 
++DVTH_N33      = -0.05        DCJ_N33       = -4.225E-5    DCJSW_N33     = -4.575E-12
++DCJSWG_N33    = -1.705E-11   DCGDO_N33     = 1.93E-11     DCGSO_N33     = 1.93E-11
++DPVTH0_N33    = -3.5e-15
+
+*3.3V IO PMOS
++DTOX_P33      = -3.0E-10     DXL_P33       = -1.4E-8      DXW_P33       = 2.2E-8 
++DVTH_P33      = 0.04	      DCJ_P33       = -5.05E-5     DCJSW_P33     = -4.48E-12
++DCJSWG_P33    = -1.595E-11   DCGDO_P33     = 1.615E-11    DCGSO_P33     = 1.615E-11
++DPVTH0_P33    = 2e-15
+
+*1.8V CORE NATIVE NMOS 
++DTOX_NNT18      = -1.0E-10   DXL_NNT18     = -1.0E-8      DXW_NNT18     = 2.2E-8 
++DVTH_NNT18      = -0.095     DCJ_NNT18     = -7.25e-6     DCJSW_NNT18   = -8.15E-12
++DCJSWG_NNT18    = -5.0E-12   DCGDO_NNT18   = 1.33E-11     DCGSO_NNT18   = 1.33E-11
++DPVTH0_NNT18    = -1e-15
+
+*3.3V IO NATIVE NMOS    
++DTOX_NNT33      = -3.0E-10   DXL_NNT33     = -1.4E-8      DXW_NNT33     = 2.5E-8 
++DVTH_NNT33      = -0.093     DCJ_NNT33     = -7.4E-6      DCJSW_NNT33   = -1.08E-11
++DCJSWG_NNT33    = -6.0E-12   DCGDO_NNT33   = 6.7E-12      DCGSO_NNT33   = 6.7E-12
++DPVTH0_NNT33    = -6e-15
+
+*1.8V core MEDIUM NMOS 
++DTOX_NMVT18      = -1.0E-10   DXL_NMVT18       = -1.0E-8  DXW_NMVT18       = 2.2E-8 
++DVTH_NMVT18      = -0.083     DCJ_NMVT18       = -4.67E-5 DCJSW_NMVT18     = -3.91E-12
++DCJSWG_NMVT18    = -2.125E-11 DCGDO_NMVT18     = 2.09E-11 DCGSO_NMVT18     = 2.09E-11
++DPVTH0_NMVT18    = -3e-15
+
+*1.8V core MEDIUM PMOS
++DTOX_PMVT18      = -1.0E-10   DXL_PMVT18       = -1.0E-8  DXW_PMVT18       = 2.2E-8 
++DVTH_PMVT18      = 0.06       DCJ_PMVT18       = -3.67E-5 DCJSW_PMVT18     = -3.07E-12
++DCJSWG_PMVT18    = -3.075E-11 DCGDO_PMVT18     = 2.43E-11 DCGSO_PMVT18     = 2.43E-11
++DPVTH0_PMVT18    = 1e-15
+
+*3.3V IO MEDIUM NMOS  
++DTOX_NMVT33      = -3.0E-10   DXL_NMVT33       = -1.4E-8    DXW_NMVT33       = 2.2E-8 
++DVTH_NMVT33      = -0.059     DCJ_NMVT33       = -4.285E-5  DCJSW_NMVT33     = -5.5E-12
++DCJSWG_NMVT33    = -1.725E-11 DCGDO_NMVT33     = 2.495E-11  DCGSO_NMVT33     = 2.495E-11
++DPVTH0_NMVT33    = -6e-15
+
+.INC 'ms018.mdl'  
+.ENDL  FF
+
+.LIB SS
+.PARAM
+*1.8V core NMOS 
++DTOX_N18      = 1.0E-10      DXL_N18       = 1.0E-8       DXW_N18       = -2.2E-8 
++DVTH_N18      = 0.045        DCJ_N18       = 4.84E-5      DCJSW_N18     = 3.975E-12
++DCJSWG_N18    = 2.09E-11     DCGDO_N18     = -1.85E-11    DCGSO_N18     = -1.85E-11
++DPVTH0_N18    = 3e-15
+
+*1.8V core PMOS
++DTOX_P18      = 1.0E-10      DXL_P18       = 1.0E-8       DXW_P18       = -2.2E-8 
++DVTH_P18      = -0.02        DCJ_P18       = 5.35E-5      DCJSW_P18     = 4.945E-12
++DCJSWG_P18    = 2.535E-11    DCGDO_P18     = -2.1E-11     DCGSO_P18     = -2.1E-11
++DPVTH0_P18    = -1e-15
+
+*3.3V IO NMOS  
++DTOX_N33      = 3.0E-10      DXL_N33       = 1.4E-8       DXW_N33       = -2.2E-8 
++DVTH_N33      = 0.05         DCJ_N33       = 4.225E-5     DCJSW_N33     = 4.575E-12
++DCJSWG_N33    = 1.705E-11    DCGDO_N33     = -1.93E-11    DCGSO_N33     = -1.93E-11
++DPVTH0_N33    = 3.5e-15
+
+*3.3V IO PMOS
++DTOX_P33      = 3.0E-10      DXL_P33       = 1.4E-8       DXW_P33       = -2.2E-8 
++DVTH_P33      = -0.04	      DCJ_P33       = 5.05E-5      DCJSW_P33     = 4.48E-12
++DCJSWG_P33    = 1.595E-11    DCGDO_P33     = -1.615E-11   DCGSO_P33     = -1.615E-11
++DPVTH0_P33    = -2e-15
+
+*1.8V CORE NATIVE NMOS 
++DTOX_NNT18      = 1.0E-10    DXL_NNT18     = 1.0E-8       DXW_NNT18     = -2.2E-8 
++DVTH_NNT18      = 0.095      DCJ_NNT18     = 7.25e-6      DCJSW_NNT18   = 8.15E-12
++DCJSWG_NNT18    = 5.0E-12    DCGDO_NNT18   = -1.33E-11    DCGSO_NNT18   = -1.33E-11
++DPVTH0_NNT18    = 1e-15
+
+*3.3V IO NATIVE NMOS    
++DTOX_NNT33      = 3.0E-10    DXL_NNT33     = 1.4E-8       DXW_NNT33     = -2.5E-8 
++DVTH_NNT33      = 0.093      DCJ_NNT33     = 7.4E-6       DCJSW_NNT33   = 1.08E-11
++DCJSWG_NNT33    = 6.0E-12    DCGDO_NNT33   = -6.7E-12     DCGSO_NNT33   = -6.7E-12
++DPVTH0_NNT33    = 6e-15
+
+*1.8V core MEDIUM NMOS 
++DTOX_NMVT18      = 1.0E-10   DXL_NMVT18       = 1.0E-8    DXW_NMVT18       = -2.2E-8 
++DVTH_NMVT18      = 0.083     DCJ_NMVT18       = 4.67E-5    DCJSW_NMVT18     = 3.91E-12
++DCJSWG_NMVT18    = 2.125E-11 DCGDO_NMVT18     = -2.09E-11  DCGSO_NMVT18     = -2.09E-11
++DPVTH0_NMVT18    = 3e-15
+
+*1.8V core MEDIUM PMOS
++DTOX_PMVT18      = 1.0E-10   DXL_PMVT18       = 1.0E-8     DXW_PMVT18       = -2.2E-8 
++DVTH_PMVT18      = -0.06     DCJ_PMVT18       = 3.67E-5     DCJSW_PMVT18     = 3.07E-12
++DCJSWG_PMVT18    = 3.075E-11 DCGDO_PMVT18     = -2.43E-11   DCGSO_PMVT18     = -2.43E-11
++DPVTH0_PMVT18    = -1e-15
+
+*3.3V IO MEDIUM NMOS  
++DTOX_NMVT33      = 3.0E-10   DXL_NMVT33       = 1.4E-8       DXW_NMVT33       = -2.2E-8 
++DVTH_NMVT33      = 0.059     DCJ_NMVT33       = 4.285E-5     DCJSW_NMVT33     = 5.5E-12
++DCJSWG_NMVT33    = 1.725E-11 DCGDO_NMVT33     = -2.495E-11   DCGSO_NMVT33     = -2.495E-11
++DPVTH0_NMVT33    = 6e-15
+
+.INC 'ms018.mdl'  
+.ENDL  SS
+
+.LIB FNSP
+.PARAM
+*1.8V core NMOS 
++DTOX_N18      = 0            DXL_N18       = -1.00E-8     DXW_N18       = 1.8E-8 
++DVTH_N18      = -0.04        DCJ_N18       = -4.84E-5     DCJSW_N18     = -3.975E-12
++DCJSWG_N18    = -2.09E-11    DCGDO_N18     = 0            DCGSO_N18     = 0
++DPVTH0_N18    = -3e-15
+
+*1.8V core PMOS
++DTOX_P18      = 0            DXL_P18       = 1.00E-8      DXW_P18       = -1.8E-8 
++DVTH_P18      = -0.02        DCJ_P18       = 5.35E-5      DCJSW_P18     = 4.945E-12
++DCJSWG_P18    = 2.535E-11    DCGDO_P18     = 0            DCGSO_P18     = 0
++DPVTH0_P18    = -1e-15
+
+*3.3V IO NMOS  
++DTOX_N33      = 0            DXL_N33       = -1.15E-8     DXW_N33       = 1.8E-8 
++DVTH_N33      = -0.05        DCJ_N33       = -4.225E-5    DCJSW_N33     = -4.575E-12
++DCJSWG_N33    = -1.705E-11   DCGDO_N33     = 0            DCGSO_N33     = 0
++DPVTH0_N33    = -3.5e-15
+
+*3.3V IO PMOS
++DTOX_P33      = 0            DXL_P33       = 1.15E-8      DXW_P33       = -1.8E-8 
++DVTH_P33      = -0.04	      DCJ_P33       = 5.05E-5      DCJSW_P33     = 4.48E-12
++DCJSWG_P33    = 1.595E-11    DCGDO_P33     = 0            DCGSO_P33     = 0 
++DPVTH0_P33    = -2e-15
+
+*1.8V core NATIVE NMOS 
++DTOX_NNT18      = 0          DXL_NNT18       = -1.00E-8   DXW_NNT18       = 1.8E-8 
++DVTH_NNT18      = -0.095    DCJ_NNT18       = -7.25E-6   DCJSW_NNT18     = -8.15E-12
++DCJSWG_NNT18    = -5E-12     DCGDO_NNT18     = 0          DCGSO_NNT18     = 0
++DPVTH0_NNT18    = -1e-15
+
+*3.3V IO NATIVE NMOS    
++DTOX_NNT33      = 0          DXL_NNT33     = -1.15E-8     DXW_NNT33     = 1.8E-8 
++DVTH_NNT33      = -0.093     DCJ_NNT33     = -7.4E-6      DCJSW_NNT33   = -1.08E-11
++DCJSWG_NNT33    = -6.0E-12   DCGDO_NNT33   = 0            DCGSO_NNT33   = 0
++DPVTH0_NNT33    = -6e-15
+
+*1.8V core MEDIUM NMOS 
++DTOX_NMVT18      = 0          DXL_NMVT18       = -1.00E-8  DXW_NMVT18       = 1.8E-8 
++DVTH_NMVT18      = -0.083     DCJ_NMVT18       = -4.67E-5  DCJSW_NMVT18     = -3.91E-12
++DCJSWG_NMVT18    = -2.125E-11 DCGDO_NMVT18     = 0         DCGSO_NMVT18     = 0
++DPVTH0_NMVT18    = -3e-15
+
+*1.8V core MEDIUM PMOS
++DTOX_PMVT18      = 0         DXL_PMVT18       = 1.00E-8   DXW_PMVT18       = -1.8E-8 
++DVTH_PMVT18      = -0.06     DCJ_PMVT18       = 3.67E-5   DCJSW_PMVT18     = 3.07E-12
++DCJSWG_PMVT18    = 3.075E-11 DCGDO_PMVT18     = 0         DCGSO_PMVT18     = 0
++DPVTH0_PMVT18    = -1e-15
+
+*3.3V IO MEDIUM NMOS  
++DTOX_NMVT33      = 0          DXL_NMVT33       = -1.15E-8   DXW_NMVT33       = 1.8E-8 
++DVTH_NMVT33      = -0.059     DCJ_NMVT33       = -4.285E-5  DCJSW_NMVT33     = -5.5E-12
++DCJSWG_NMVT33    = -1.725E-11 DCGDO_NMVT33     = 0          DCGSO_NMVT33     = 0
++DPVTH0_NMVT33    = -6e-15
+
+.INC 'ms018.mdl'  
+.ENDL  FNSP
+
+.LIB SNFP
+.PARAM
+*1.8V core NMOS 
++DTOX_N18      = 0            DXL_N18       = 1.00E-8      DXW_N18       = -1.8E-8 
++DVTH_N18      = 0.045        DCJ_N18       = 4.84E-5      DCJSW_N18     = 3.975E-12
++DCJSWG_N18    = 2.09E-11     DCGDO_N18     = 0            DCGSO_N18     = 0
++DPVTH0_N18    = 3e-15
+
+*1.8V core PMOS
++DTOX_P18      = 0            DXL_P18       = -1.00E-8     DXW_P18       = 1.8E-8 
++DVTH_P18      = 0.02         DCJ_P18       = -5.35E-5     DCJSW_P18     = -4.945E-12
++DCJSWG_P18    = -2.535E-11   DCGDO_P18     = 0            DCGSO_P18     = 0
++DPVTH0_P18    = 1e-15
+
+*3.3V IO NMOS  
++DTOX_N33      = 0            DXL_N33       = 1.15E-8      DXW_N33       = -1.8E-8 
++DVTH_N33      = 0.05         DCJ_N33       = 4.225E-5     DCJSW_N33     = 4.575E-12
++DCJSWG_N33    = 1.705E-11    DCGDO_N33     = 0            DCGSO_N33     = 0
++DPVTH0_N33    = 3.5e-15
+
+*3.3V IO PMOS
++DTOX_P33      = 0            DXL_P33       = -1.15E-8     DXW_P33       = 1.8E-8 
++DVTH_P33      = 0.04	      DCJ_P33       = -5.05E-5     DCJSW_P33     = -4.48E-12
++DCJSWG_P33    = -1.595E-11   DCGDO_P33     = 0            DCGSO_P33     = 0
++DPVTH0_P33    = 2e-15
+
+*1.8V core NATIVE NMOS 
++DTOX_NNT18      = 0          DXL_NNT18       = 1.00E-8    DXW_NNT18       = -1.8E-8 
++DVTH_NNT18      = 0.095      DCJ_NNT18       = 7.25E-6    DCJSW_NNT18     = 8.15E-12
++DCJSWG_NNT18    = 5E-12      DCGDO_NNT18     = 0          DCGSO_NNT18     = 0
++DPVTH0_NNT18    = 1e-15
+
+*3.3V IO NATIVE NMOS    
++DTOX_NNT33      = 0          DXL_NNT33     = 1.15E-8      DXW_NNT33     = -1.8E-8 
++DVTH_NNT33      = 0.093      DCJ_NNT33     = 7.4E-6       DCJSW_NNT33   = 1.08E-11
++DCJSWG_NNT33    = 6.0E-12    DCGDO_NNT33   = 0            DCGSO_NNT33   = 0
++DPVTH0_NNT33    = 6e-15
+
+*1.8V core MEDIUM NMOS 
++DTOX_NMVT18      = 0         DXL_NMVT18       = 1.00E-8   DXW_NMVT18       = -1.8E-8 
++DVTH_NMVT18      = 0.083     DCJ_NMVT18       = 4.67E-5   DCJSW_NMVT18     = 3.91E-12
++DCJSWG_NMVT18    = 2.125E-11 DCGDO_NMVT18     = 0         DCGSO_NMVT18     = 0
++DPVTH0_NMVT18    = 3e-15
+
+*1.8V core MEDIUM PMOS
++DTOX_PMVT18      = 0          DXL_PMVT18       = -1.00E-8  DXW_PMVT18       = 1.8E-8 
++DVTH_PMVT18      = 0.06       DCJ_PMVT18       = -3.67E-5  DCJSW_PMVT18     = -3.07E-12
++DCJSWG_PMVT18    = -3.075E-11 DCGDO_PMVT18     = 0         DCGSO_PMVT18     = 0
++DPVTH0_PMVT18    = 1e-15
+
+*3.3V IO MEDIUM NMOS  
++DTOX_NMVT33      = 0         DXL_NMVT33       = 1.15E-8   DXW_NMVT33       = -1.8E-8 
++DVTH_NMVT33      = 0.059     DCJ_NMVT33       = 4.285E-5  DCJSW_NMVT33     = 5.5E-12
++DCJSWG_NMVT33    = 1.725E-11 DCGDO_NMVT33     = 0         DCGSO_NMVT33     = 0
++DPVTH0_NMVT33    = 6e-15
+
+.INC 'ms018.mdl'  
+.ENDL  SNFP
+
+.LIB BJT_TT
+.PARAM
+*1.8V CORE PNP
++DBF_PNP18A100     = 0.00      DIS_PNP18A100       = 0.00      DNF_PNP18A100       = 0.00         
++DBF_PNP18A25      = 0.00      DIS_PNP18A25        = 0.00      DNF_PNP18A25        = 0.00         
++DBF_PNP18A4       = 0.00      DIS_PNP18A4         = 0.00      DNF_PNP18A4         = 0.00         
++DCJE_PNP18A100    = 0.00      DCJE_PNP18A25       = 0.00      DCJE_PNP18A4        = 0.00            
++DCJC_PNP18A100    = 0.00      DCJC_PNP18A25       = 0.00      DCJC_PNP18A4        = 0.00 
+
+*1.8V CORE NPN
++DBF_NPN18A100     = 0.00      DIS_NPN18A100       = 0.00      DNF_NPN18A100       = 0.00         
++DBF_NPN18A25      = 0.00      DIS_NPN18A25        = 0.00      DNF_NPN18A25        = 0.00         
++DBF_NPN18A4       = 0.00      DIS_NPN18A4         = 0.00      DNF_NPN18A4         = 0.00         
++DCJE_NPN18A100    = 0.00      DCJE_NPN18A25       = 0.00      DCJE_NPN18A4        = 0.00            
++DCJC_NPN18A100    = 0.00      DCJC_NPN18A25       = 0.00      DCJC_NPN18A4        = 0.00 
+
+*3.3V IO PNP
++DBF_PNP33A100     = 0.00      DIS_PNP33A100       = 0.00      DNF_PNP33A100       = 0.00         
++DBF_PNP33A25      = 0.00      DIS_PNP33A25        = 0.00      DNF_PNP33A25        = 0.00         
++DBF_PNP33A4       = 0.00      DIS_PNP33A4         = 0.00      DNF_PNP33A4         = 0.00
++DCJE_PNP33A100    = 0.00      DCJE_PNP33A25       = 0.00      DCJE_PNP33A4        = 0.00            
++DCJC_PNP33A100    = 0.00      DCJC_PNP33A25       = 0.00      DCJC_PNP33A4        = 0.00 
+
+*3.3V IO NPN
++DBF_NPN33A100     = 0.00      DIS_NPN33A100       = 0.00      DNF_NPN33A100       = 0.00         
++DBF_NPN33A25      = 0.00      DIS_NPN33A25        = 0.00      DNF_NPN33A25        = 0.00         
++DBF_NPN33A4       = 0.00      DIS_NPN33A4         = 0.00      DNF_NPN33A4         = 0.00
++DCJE_NPN33A100    = 0.00      DCJE_NPN33A25       = 0.00      DCJE_NPN33A4        = 0.00            
++DCJC_NPN33A100    = 0.00      DCJC_NPN33A25       = 0.00      DCJC_NPN33A4        = 0.00 
+
+.INC 'ms018.mdl' 
+.ENDL BJT_TT
+
+.LIB BJT_FF
+.PARAM
+*1.8V CORE PNP
++DBF_PNP18A100     = 4.20E-1   DIS_PNP18A100       = -1.756E-18  DNF_PNP18A100       = 0.008         
++DBF_PNP18A25      = 5.20E-1   DIS_PNP18A25        = -7.751E-19  DNF_PNP18A25        = 0.008         
++DBF_PNP18A4       = 6.90E-1   DIS_PNP18A4         = -1.950E-19  DNF_PNP18A4         = 0.008         
++DCJC_PNP18A100    = -1.86E-15 DCJC_PNP18A25       = -8.75E-16   DCJC_PNP18A4        = -4.64E-16
++DCJE_PNP18A100    = -5.35E-15 DCJE_PNP18A25       = -1.34E-15   DCJE_PNP18A4        = -2.14E-16
+
+*1.8V CORE NPN
++DBF_NPN18A100     = 3.02E+00   DIS_NPN18A100       = -9.640E-18  DNF_NPN18A100       = 0.0101        
++DBF_NPN18A25      = 3.83E+00   DIS_NPN18A25        = -4.800E-18  DNF_NPN18A25        = 0.0101         
++DBF_NPN18A4       = 5.76E+00   DIS_NPN18A4         = -1.920E-18  DNF_NPN18A4         = 0.0101         
++DCJC_NPN18A100    = -7.2E-15   DCJC_NPN18A25       = -3.405E-15  DCJC_NPN18A4        = -1.8E-15
++DCJE_NPN18A100    = -4.84E-15  DCJE_NPN18A25       = -1.21E-15   DCJE_NPN18A4        = -1.935E-16
+
+*3.3V IO PNP
++DBF_PNP33A100     = 4.20E-1    DIS_PNP33A100       = -1.756E-18  DNF_PNP33A100       = 0.008         
++DBF_PNP33A25      = 5.20E-1    DIS_PNP33A25        = -7.751E-19  DNF_PNP33A25        = 0.008         
++DBF_PNP33A4       = 6.90E-1    DIS_PNP33A4         = -1.950E-19  DNF_PNP33A4         = 0.008
++DCJC_PNP33A100    = -1.86E-15  DCJC_PNP33A25       = -8.75E-16   DCJC_PNP33A4        = -4.64E-16
++DCJE_PNP33A100    = -5.35E-15  DCJE_PNP33A25       = -1.34E-15   DCJE_PNP33A4        = -2.14E-16
+
+*3.3V IO NPN
++DBF_NPN33A100     = 3.60E+00   DIS_NPN33A100       = -9.680E-18  DNF_NPN33A100       = 0.0101        
++DBF_NPN33A25      = 4.35E+00   DIS_NPN33A25        = -5.200E-18  DNF_NPN33A25        = 0.0101         
++DBF_NPN33A4       = 6.54E+00   DIS_NPN33A4         = -1.920E-18  DNF_NPN33A4         = 0.0101
++DCJC_NPN33A100    = -7.2E-15   DCJC_NPN33A25       = -3.405E-15  DCJC_NPN33A4        = -1.8E-15
++DCJE_NPN33A100    = -4.225E-15 DCJE_NPN33A25       = -1.055E-15  DCJE_NPN33A4        = -1.69E-16
+
+.INC 'ms018.mdl' 
+.ENDL BJT_FF
+
+.LIB BJT_SS
+.PARAM
+*1.8V CORE PNP
++DBF_PNP18A100     = -4.20E-1   DIS_PNP18A100       = 1.756E-18  DNF_PNP18A100       = -0.008         
++DBF_PNP18A25      = -5.20E-1   DIS_PNP18A25        = 7.751E-19  DNF_PNP18A25        = -0.008         
++DBF_PNP18A4       = -6.90E-1   DIS_PNP18A4         = 1.950E-19  DNF_PNP18A4         = -0.008         
++DCJC_PNP18A100    = 1.86E-15   DCJC_PNP18A25       = 8.75E-16   DCJC_PNP18A4        = 4.64E-16
++DCJE_PNP18A100    = 5.35E-15   DCJE_PNP18A25       = 1.34E-15   DCJE_PNP18A4        = 2.14E-16
+
+*1.8V CORE NPN
++DBF_NPN18A100     = -3.02E+00   DIS_NPN18A100       = 9.640E-18  DNF_NPN18A100       = -0.0101        
++DBF_NPN18A25      = -3.83E+00   DIS_NPN18A25        = 4.800E-18  DNF_NPN18A25        = -0.0101         
++DBF_NPN18A4       = -5.76E+00   DIS_NPN18A4         = 1.920E-18  DNF_NPN18A4         = -0.0101         
++DCJC_NPN18A100    = 7.2E-15     DCJC_NPN18A25       = 3.405E-15  DCJC_NPN18A4        = 1.8E-15
++DCJE_NPN18A100    = 4.84E-15    DCJE_NPN18A25       = 1.21E-15   DCJE_NPN18A4        = 1.935E-16
+
+*3.3V IO PNP
++DBF_PNP33A100     = -4.20E-1    DIS_PNP33A100       = 1.756E-18  DNF_PNP33A100       = -0.008         
++DBF_PNP33A25      = -5.20E-1    DIS_PNP33A25        = 7.751E-19  DNF_PNP33A25        = -0.008         
++DBF_PNP33A4       = -6.90E-1    DIS_PNP33A4         = 1.950E-19  DNF_PNP33A4         = -0.008
++DCJC_PNP33A100    = 1.86E-15    DCJC_PNP33A25       = 8.75E-16   DCJC_PNP33A4        = 4.64E-16
++DCJE_PNP33A100    = 5.35E-15    DCJE_PNP33A25       = 1.34E-15   DCJE_PNP33A4        = 2.14E-16
+
+*3.3V IO NPN
++DBF_NPN33A100     = -3.60E+00   DIS_NPN33A100       = 9.680E-18  DNF_NPN33A100       = -0.0101        
++DBF_NPN33A25      = -4.35E+00   DIS_NPN33A25        = 5.200E-18  DNF_NPN33A25        = -0.0101         
++DBF_NPN33A4       = -6.54E+00   DIS_NPN33A4         = 1.920E-18  DNF_NPN33A4         = -0.0101
++DCJC_NPN33A100    = 7.2E-15     DCJC_NPN33A25       = 3.405E-15  DCJC_NPN33A4        = 1.8E-15
++DCJE_NPN33A100    = 4.225E-15   DCJE_NPN33A25       = 1.055E-15  DCJE_NPN33A4        = 1.69E-16
+
+.INC 'ms018.mdl' 
+.ENDL BJT_SS

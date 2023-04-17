@@ -1,0 +1,381 @@
+BL51 BANKED LINKER/LOCATER V6.00                                                        08/24/2007  23:03:21  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.00, INVOKED BY:
+E:\KEIL\C51\BIN\BL51.EXE .\output\STARTUP.obj, .\output\SRTT_II main.obj TO .\output\BitSet PRINT (.\BitSet.m51) RAMSIZE
+>>  (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\output\STARTUP.obj (?C_STARTUP)
+  .\output\SRTT_II main.obj (SRTT_II_MAIN)
+  E:\KEIL\C51\LIB\C51S.LIB (?C_INIT)
+  E:\KEIL\C51\LIB\C51S.LIB (?C?SCDIV)
+
+
+LINK MAP OF MODULE:  .\output\BitSet (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0010H     UNIT         _DATA_GROUP_
+            DATA    0018H     000EH     UNIT         ?DT?SRTT_II_MAIN
+            DATA    0026H     0005H     UNIT         ?DT?_EPUTSTR?SRTT_II_MAIN
+            DATA    002BH     0002H     UNIT         ?DT?_DISPLAY?SRTT_II_MAIN
+            IDATA   002DH     0010H     UNIT         ?ID?SRTT_II_MAIN
+            IDATA   003DH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     008CH     UNIT         ?C_C51STARTUP
+            CODE    008FH     0089H     UNIT         ?PR?MAIN?SRTT_II_MAIN
+            CODE    0118H     004DH     UNIT         ?PR?_EPUTSTR?SRTT_II_MAIN
+            CODE    0165H     003CH     UNIT         ?PR?LCDRESET?SRTT_II_MAIN
+            CODE    01A1H     0029H     UNIT         ?CO?SRTT_II_MAIN
+            CODE    01CAH     0027H     UNIT         ?PR?_DISPLAY?SRTT_II_MAIN
+            CODE    01F1H     0025H     UNIT         ?PR?DELAY400MS?SRTT_II_MAIN
+            CODE    0216H     0022H     UNIT         ?C?LIB_CODE
+            CODE    0238H     0020H     UNIT         ?PR?_DELAY?SRTT_II_MAIN
+            CODE    0258H     001CH     UNIT         ?PR?_LCDWRITECOMMAND?SRTT_II_MAIN
+            CODE    0274H     001AH     UNIT         ?PR?_DISP_XY?SRTT_II_MAIN
+            CODE    028EH     0015H     UNIT         ?PR?_LCDWRITEDATA?SRTT_II_MAIN
+            CODE    02A3H     0014H     UNIT         ?PR?WAITFORENABLE?SRTT_II_MAIN
+            CODE    02B7H     0013H     UNIT         ?C_INITSEG
+            CODE    02CAH     000FH     UNIT         ?PR?DELAY5MS?SRTT_II_MAIN
+            CODE    02D9H     000AH     UNIT         ?PR?_DISPONECHAR?SRTT_II_MAIN
+
+
+
+OVERLAY MAP OF MODULE:   .\output\BitSet (?C_STARTUP)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/24/2007  23:03:21  PAGE 2
+
+
+  +--> ?PR?MAIN?SRTT_II_MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?SRTT_II_MAIN                     0008H    000EH
+  +--> ?CO?SRTT_II_MAIN
+  +--> ?PR?_DISPONECHAR?SRTT_II_MAIN
+  +--> ?PR?_LCDWRITECOMMAND?SRTT_II_MAIN
+  +--> ?PR?DELAY400MS?SRTT_II_MAIN
+
+?PR?_DISPONECHAR?SRTT_II_MAIN             0016H    0001H
+  +--> ?PR?_DISP_XY?SRTT_II_MAIN
+  +--> ?PR?_LCDWRITEDATA?SRTT_II_MAIN
+
+?PR?_DISP_XY?SRTT_II_MAIN                 -----    -----
+  +--> ?PR?_LCDWRITECOMMAND?SRTT_II_MAIN
+
+?PR?_LCDWRITECOMMAND?SRTT_II_MAIN         0017H    0001H
+  +--> ?PR?WAITFORENABLE?SRTT_II_MAIN
+
+?PR?_LCDWRITEDATA?SRTT_II_MAIN            0017H    0001H
+  +--> ?PR?WAITFORENABLE?SRTT_II_MAIN
+
+
+
+SYMBOL TABLE OF MODULE:  .\output\BitSet (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0003H         SEGMENT       ?C_C51STARTUP
+  I:003DH         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0006H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0003H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0003H         LINE#         133
+  C:0005H         LINE#         134
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/24/2007  23:03:21  PAGE 3
+
+
+  C:0006H         LINE#         135
+  C:0007H         LINE#         136
+  C:0009H         LINE#         185
+  C:000CH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        SRTT_II_MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:028EH         PUBLIC        _LcdWriteData
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  B:00B0H.4       PUBLIC        Elcm
+  D:00B0H         PUBLIC        P3
+  C:0274H         PUBLIC        _Disp_XY
+  C:02A3H         PUBLIC        WaitForEnable
+  D:00A8H         PUBLIC        IE
+  I:002DH         PUBLIC        word_storeroom
+  C:02D9H         PUBLIC        _DispOneChar
+  D:00B8H         PUBLIC        IP
+  C:0165H         PUBLIC        LcdReset
+  D:00D8H         PUBLIC        CCON
+  B:00B0H.2       PUBLIC        RS
+  C:008FH         PUBLIC        main
+  B:00B0H.3       PUBLIC        RW
+  D:0018H         PUBLIC        lcd_data
+  D:0098H         PUBLIC        SCON
+  D:0088H         PUBLIC        TCON
+  C:01CAH         PUBLIC        _Display
+  D:001DH         PUBLIC        disp_bool
+  C:025CH         PUBLIC        _LcdWriteCommand
+  C:01FDH         PUBLIC        Delay400Ms
+  C:0118H         PUBLIC        _ePutstr
+  D:001EH         PUBLIC        overflag
+  D:00C8H         PUBLIC        T2CON
+  C:02CAH         PUBLIC        Delay5Ms
+  D:001FH         PUBLIC        i
+  D:0021H         PUBLIC        j
+  D:0023H         PUBLIC        k
+  C:0238H         PUBLIC        _delay
+  D:00D0H         PUBLIC        PSW
+  D:0025H         PUBLIC        tempC
+  -------         PROC          _EPUTSTR
+  D:0026H         SYMBOL        x
+  D:0027H         SYMBOL        y
+  D:0028H         SYMBOL        ptr
+  -------         DO            
+  D:002AH         SYMBOL        i
+  D:0007H         SYMBOL        l
+  -------         ENDDO         
+  C:0118H         LINE#         78
+  C:0120H         LINE#         79
+  C:0122H         LINE#         80
+  C:0136H         LINE#         81
+  C:0150H         LINE#         82
+  C:0155H         LINE#         83
+  C:015BH         LINE#         84
+  C:015BH         LINE#         85
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/24/2007  23:03:21  PAGE 4
+
+
+  C:0164H         LINE#         86
+  -------         ENDPROC       _EPUTSTR
+  -------         PROC          _DISPLAY
+  D:002BH         SYMBOL        dd
+  -------         DO            
+  D:002CH         SYMBOL        i
+  -------         ENDDO         
+  C:01CAH         LINE#         91
+  C:01CCH         LINE#         95
+  C:01CFH         LINE#         96
+  C:01DAH         LINE#         97
+  C:01DDH         LINE#         98
+  C:01E7H         LINE#         99
+  C:01F0H         LINE#         100
+  -------         ENDPROC       _DISPLAY
+  -------         PROC          _DISP_XY
+  D:0007H         SYMBOL        posx
+  D:0005H         SYMBOL        posy
+  -------         DO            
+  D:0007H         SYMBOL        temp
+  -------         ENDDO         
+  C:0274H         LINE#         105
+  C:0274H         LINE#         109
+  C:027DH         LINE#         110
+  C:0280H         LINE#         111
+  C:0286H         LINE#         112
+  C:0289H         LINE#         113
+  -------         ENDPROC       _DISP_XY
+  -------         PROC          _DISPONECHAR
+  D:0007H         SYMBOL        x
+  D:0005H         SYMBOL        y
+  D:0016H         SYMBOL        Wdata
+  C:02D9H         LINE#         119
+  C:02DBH         LINE#         121
+  C:02DEH         LINE#         122
+  -------         ENDPROC       _DISPONECHAR
+  -------         PROC          LCDRESET
+  C:0165H         LINE#         128
+  C:0165H         LINE#         130
+  C:0168H         LINE#         131
+  C:016BH         LINE#         132
+  C:016EH         LINE#         133
+  C:0171H         LINE#         134
+  C:0174H         LINE#         135
+  C:0177H         LINE#         137
+  C:017EH         LINE#         138
+  C:0185H         LINE#         139
+  C:018CH         LINE#         140
+  C:0193H         LINE#         141
+  C:019AH         LINE#         142
+  -------         ENDPROC       LCDRESET
+  C:0258H         SYMBOL        L?0056
+  -------         PROC          L?0055
+  -------         ENDPROC       L?0055
+  C:0258H         SYMBOL        L?0056
+  -------         PROC          _LCDWRITECOMMAND
+  D:0017H         SYMBOL        CMD
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/24/2007  23:03:21  PAGE 5
+
+
+  D:0005H         SYMBOL        AttribC
+  C:025CH         LINE#         148
+  C:025EH         LINE#         150
+  C:0264H         LINE#         152
+  C:0269H         LINE#         154
+  C:026DH         LINE#         157
+  C:0273H         LINE#         158
+  -------         ENDPROC       _LCDWRITECOMMAND
+  -------         PROC          _LCDWRITEDATA
+  D:0017H         SYMBOL        dataW
+  C:028EH         LINE#         163
+  C:0290H         LINE#         165
+  C:0293H         LINE#         168
+  C:0298H         LINE#         170
+  C:029CH         LINE#         172
+  C:02A2H         LINE#         174
+  -------         ENDPROC       _LCDWRITEDATA
+  -------         PROC          WAITFORENABLE
+  C:02A3H         LINE#         180
+  C:02A3H         LINE#         182
+  C:02A6H         LINE#         184
+  C:02AFH         LINE#         186
+  C:02B4H         LINE#         188
+  C:02B6H         LINE#         189
+  -------         ENDPROC       WAITFORENABLE
+  -------         PROC          DELAY5MS
+  -------         DO            
+  D:0006H         SYMBOL        i
+  -------         ENDDO         
+  C:02CAH         LINE#         193
+  C:02CAH         LINE#         194
+  C:02CAH         LINE#         195
+  C:02CEH         LINE#         196
+  C:02D8H         LINE#         197
+  -------         ENDPROC       DELAY5MS
+  C:01F7H         SYMBOL        L?0054
+  -------         PROC          L?0053
+  -------         ENDPROC       L?0053
+  C:01F7H         SYMBOL        L?0054
+  -------         PROC          DELAY400MS
+  -------         DO            
+  D:0005H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:01FDH         LINE#         200
+  C:01FDH         LINE#         201
+  C:01FDH         LINE#         202
+  C:01FFH         LINE#         204
+  C:0205H         LINE#         205
+  C:0205H         LINE#         206
+  C:0209H         LINE#         207
+  C:0215H         LINE#         208
+  C:0215H         LINE#         209
+  -------         ENDPROC       DELAY400MS
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        t
+  -------         DO            
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/24/2007  23:03:21  PAGE 6
+
+
+  D:0004H         SYMBOL        i
+  D:0002H         SYMBOL        j
+  -------         ENDDO         
+  C:0238H         LINE#         211
+  C:0238H         LINE#         212
+  C:0238H         LINE#         214
+  C:0242H         LINE#         215
+  C:0242H         LINE#         216
+  C:0245H         LINE#         217
+  C:0250H         LINE#         218
+  C:0257H         LINE#         219
+  -------         ENDPROC       _DELAY
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        tmp
+  D:000AH         SYMBOL        i
+  D:000CH         SYMBOL        limit
+  D:0010H         SYMBOL        number1
+  D:0012H         SYMBOL        number2
+  D:0014H         SYMBOL        number3
+  -------         ENDDO         
+  C:008FH         LINE#         222
+  C:008FH         LINE#         223
+  C:008FH         LINE#         224
+  C:0094H         LINE#         227
+  C:009AH         LINE#         228
+  C:00A0H         LINE#         229
+  C:00A6H         LINE#         230
+  C:00A6H         LINE#         231
+  C:00A6H         LINE#         232
+  C:00ABH         LINE#         233
+  C:00ABH         LINE#         234
+  C:00C1H         LINE#         235
+  C:00D7H         LINE#         236
+  C:00E8H         LINE#         237
+  C:00EDH         LINE#         238
+  C:00EDH         LINE#         239
+  C:00F4H         LINE#         240
+  C:00F4H         LINE#         241
+  C:00F4H         LINE#         242
+  C:00F7H         LINE#         243
+  C:0108H         LINE#         244
+  C:0108H         LINE#         245
+  C:0108H         LINE#         246
+  C:0108H         LINE#         247
+  C:0108H         LINE#         248
+  C:010BH         LINE#         249
+  C:010BH         LINE#         250
+  C:010BH         LINE#         251
+  C:010BH         LINE#         252
+  C:010BH         LINE#         253
+  C:010EH         LINE#         254
+  C:0115H         LINE#         255
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SRTT_II_MAIN
+
+  -------         MODULE        ?C?SCDIV
+BL51 BANKED LINKER/LOCATER V6.00                                                      08/24/2007  23:03:21  PAGE 7
+
+
+  C:0216H         PUBLIC        ?C?SCDIV
+  -------         ENDMOD        ?C?SCDIV
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_EPUTSTR?SRTT_II_MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DISPLAY?SRTT_II_MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCDRESET?SRTT_II_MAIN
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY?SRTT_II_MAIN
+
+Program Size: data=62.0 xdata=0 code=739
+LINK/LOCATE RUN COMPLETE.  4 WARNING(S),  0 ERROR(S)

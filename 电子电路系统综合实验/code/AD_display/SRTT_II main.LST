@@ -1,0 +1,691 @@
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE SRTT_II_MAIN
+OBJECT MODULE PLACED IN .\output\SRTT_II main.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE SRTT_II main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS
+                    -(2) OBJECT(.\output\SRTT_II main.obj)
+
+line level    source
+
+   1          
+   2          #include <reg52.h>
+   3          #include <STC12C.h>
+   4          #include <math.h>
+   5          #include <intrins.h>              
+   6          
+   7          sbit LCD_RS=P3^2;    /*LCD寄存器选择信号*/
+   8          sbit LCD_R_W=P3^3;   /*LCD读写信号*/
+   9          sbit LCD_E=P3^4;     /*LCD片选信号*/
+  10          
+  11          //变量类型标识的宏定义，大家都喜欢这么做
+  12          #define Uchar unsigned char
+  13          #define Uint unsigned int
+  14          #define uchar unsigned char
+  15          #define uint unsigned int
+  16          
+  17          /* 定义命令 */
+  18          #define ISP_IAP_BYTE_READ    0x01        /*  字节读数据存储区   */
+  19          #define ISP_IAP_BYTE_PROGRAM     0x02        /*  字节编程数据存储区 */
+  20          #define ISP_IAP_SECTOR_ERASE     0x03        /*  扇区擦除数据存储区 */
+  21          
+  22          /* 定义Flash 操作等待时间 */
+  23          #define ENABLE_ISP        0x84
+  24          #define DATA_FLASH_START_ADDRESS           0x2800
+  25          
+  26          typedef     unsigned char INT8U;    /* 8 bit 无符号整型  */
+  27          typedef     unsigned int    INT16U;     /* 16 bit 无符号整型 */
+  28          #define   DELAY_CONST         60000
+  29          
+  30          /* 定义常量 */
+  31          #define ERROR   0
+  32          #define OK      1
+  33          
+  34          // 控制引脚定义，不同的连接必须修改的部分
+  35          sbit RS=P3^2;
+  36          sbit RW=P3^3; 
+  37          sbit Elcm=P3^4;  
+  38          
+  39          
+  40          sbit LED1=P1^0;
+  41          sbit LED2=P1^1;
+  42          sbit LED3=P1^2;
+  43          
+  44          sbit PA=P1^5;
+  45          sbit PB=P1^6;
+  46          sbit PC=P1^7;
+  47          
+  48          sbit PIN_RXD = P3^0;
+  49          sbit PIN_TXD = P3^1;
+  50          
+  51          unsigned int data AdcMem;
+  52          
+  53          
+  54          unsigned char data tempAdc;
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 2   
+
+  55          unsigned char lcd_data[5];
+  56          
+  57          unsigned int i,k,j;
+  58          unsigned char disp_bool;
+  59          unsigned char tempC;
+  60          unsigned char overflag;
+  61          unsigned char changeflag;
+  62          
+  63          bit RxdOrTxd = 0;
+  64          bit TxdEnd = 0;
+  65          unsigned char TxdBuf = 0;
+  66              
+  67          
+  68          
+  69          #define DataPort P2                // 数据端口
+  70          #define Busy    0x80
+  71          #define uchar unsigned char
+  72          #define uint unsigned int
+  73          #define ulong unsigned long
+  74          #define _Nop() _nop_()
+  75          
+  76          unsigned int thinkness;
+  77          
+  78          char idata word_storeroom[]=
+  79          {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'}; 
+  80          
+  81          
+  82          void Delay400Ms(void);
+  83          void Delay5Ms(void);
+  84          void WaitForEnable( void );
+  85          void LcdWriteData( char dataW );
+  86          void LcdWriteCommand( Uchar CMD,Uchar AttribC );
+  87          void LcdReset( void );
+  88          void Display( Uchar dd );
+  89          void DispOneChar(Uchar x,Uchar y,Uchar Wdata);
+  90          //void ePutstr(Uchar x,Uchar y, Uchar code *ptr);
+  91          void SmallCur(void);
+  92          void BigCur(void);
+  93          void send(uchar i);
+  94          void ConfigUART(unsigned int baud);
+  95          void StartTXD(unsigned char dat);
+  96          
+  97          /*=======================================================
+  98          显示字符串
+  99          =======================================================*/
+ 100          /*void ePutstr(Uchar x,Uchar y, Uchar code *ptr) {
+ 101          Uchar i,l=0;
+ 102              while (ptr[l] >31) {l++;};
+ 103              for (i=0;i<16;i++) { DispOneChar(x++,y,ptr[i]);
+ 104                  if ( x == 16 ){
+ 105                      x = 0; y ^= 1;
+ 106                  }
+ 107              }
+ 108          }*/
+ 109          
+ 110          /*=======================================================
+ 111          演示一行连续字符串，配合上位程序演示移动字串
+ 112          =======================================================*/
+ 113          /*void Display( Uchar dd ) {
+ 114          
+ 115          Uchar i;
+ 116          
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 3   
+
+ 117              for (i=0;i<16;i++) {
+ 118                  DispOneChar(i,1,dd++);
+ 119                  dd &= 0x7f;
+ 120                  if (dd<32) dd=32;
+ 121              }
+ 122          }*/
+ 123          
+ 124          /*=======================================================
+ 125          显示光标定位
+ 126          =======================================================*/
+ 127          void Disp_XY( char posx,char posy) {
+ 128   1      
+ 129   1      uchar temp;
+ 130   1      
+ 131   1          temp = posx %40;// & 0x07;
+ 132   1          posy &= 0x01;
+ 133   1          if ( posy==1)  {temp |= 0x40;}
+ 134   1          temp |= 0x80;
+ 135   1          LcdWriteCommand(temp,1);
+ 136   1      }
+ 137          
+ 138          /*=======================================================
+ 139          按指定位置显示数出一个字符
+ 140          =======================================================*/
+ 141          void DispOneChar(Uchar x,Uchar y,Uchar Wdata) {
+ 142   1      
+ 143   1          Disp_XY( x, y );                // 定位显示地址
+ 144   1          LcdWriteData( Wdata );            // 写字符
+ 145   1      }
+ 146          
+ 147          /*=======================================================
+ 148          初始化程序, 必须按照产品资料介绍的初始化过程进行
+ 149          =======================================================*/
+ 150          void LcdReset( void ) {
+ 151   1      
+ 152   1             LcdWriteCommand( 0x38, 0);            // 显示模式设置(不检测忙信号)
+ 153   1              Delay5Ms();
+ 154   1          LcdWriteCommand( 0x38, 0);            // 共三次
+ 155   1              Delay5Ms();
+ 156   1          LcdWriteCommand( 0x38, 0);
+ 157   1              Delay5Ms();
+ 158   1      
+ 159   1          LcdWriteCommand( 0x38, 1);            // 显示模式设置(以后均检测忙信号)
+ 160   1          LcdWriteCommand( 0x08, 1);            // 显示关闭
+ 161   1          LcdWriteCommand( 0x01, 1);            // 显示清屏
+ 162   1          LcdWriteCommand( 0x06, 1);            // 显示光标移动设置
+ 163   1          LcdWriteCommand( 0x0c, 1);            // 显示开及光标设置
+ 164   1          LcdWriteCommand( 0x02, 1);            // 显示开及光标设置
+ 165   1      }
+ 166          
+ 167          /*=======================================================
+ 168          写控制字符子程序: E=1 RS=0 RW=0
+ 169          =======================================================*/
+ 170          void LcdWriteCommand( Uchar CMD,Uchar AttribC ) {
+ 171   1      
+ 172   1          if (AttribC) WaitForEnable();                // 检测忙信号?
+ 173   1      
+ 174   1          RS = 0;    RW = 0; _nop_();
+ 175   1      
+ 176   1          DataPort = CMD; _nop_();
+ 177   1          // 送控制字子程序
+ 178   1      
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 4   
+
+ 179   1          Elcm = 1;_nop_();_nop_();Elcm = 0;            // 操作允许脉冲信号
+ 180   1      }
+ 181          
+ 182          /*=======================================================
+ 183          当前位置写字符子程序: E =1 RS=1 RW=0
+ 184          =======================================================*/
+ 185          void LcdWriteData( char dataW ) {
+ 186   1      
+ 187   1          WaitForEnable();
+ 188   1              // 检测忙信号
+ 189   1      
+ 190   1          RS = 1; RW = 0; _nop_();
+ 191   1      
+ 192   1          DataPort = dataW; _nop_();
+ 193   1      
+ 194   1          Elcm = 1; _nop_(); _nop_(); Elcm = 0;        // 操作允许脉冲信号
+ 195   1      
+ 196   1      }
+ 197          
+ 198          /*=======================================================
+ 199          正常读写操作之前必须检测LCD控制器状态:    CS=1 RS=0 RW=1
+ 200          DB7:    0  LCD控制器空闲; 1  LCD控制器忙
+ 201          ========================================================*/
+ 202          void WaitForEnable( void ) {
+ 203   1      
+ 204   1          DataPort = 0xff;
+ 205   1      
+ 206   1          RS =0; RW = 1; _nop_();    Elcm = 1; _nop_(); _nop_();
+ 207   1      
+ 208   1          while( DataPort & Busy );
+ 209   1      
+ 210   1          Elcm = 0;
+ 211   1      }
+ 212          
+ 213          
+ 214          // 短延时
+ 215          void Delay5Ms(void)
+ 216          {
+ 217   1          Uint i = 5552;
+ 218   1          while(i--);
+ 219   1      }
+ 220          
+ 221          //长延时
+ 222          void Delay400Ms(void)
+ 223          {
+ 224   1          Uchar i = 5;
+ 225   1          Uint j;
+ 226   1          while(i--)
+ 227   1          {
+ 228   2              j=7269;
+ 229   2              while(j--);
+ 230   2          };
+ 231   1      }
+ 232          
+ 233          void delay(unsigned int t) //延时
+ 234          {       
+ 235   1          unsigned int i, j; 
+ 236   1          for(i=0;i<t;i++)
+ 237   1        { 
+ 238   2            for(j=0;j<10;j++)
+ 239   2          {;} 
+ 240   2          } 
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 5   
+
+ 241   1      } 
+ 242          
+ 243          uint Adc(unsigned char n)
+ 244          {
+ 245   1        unsigned char i;  
+ 246   1        uint result=0;
+ 247   1      
+ 248   1        ADC_CONTR = ADC_CONTR|0x80;
+ 249   1        delay(10);
+ 250   1        i = 0x01<<n;
+ 251   1          P1M0 = P1M0|i;
+ 252   1          P1M1 = P1M1|i;
+ 253   1          delay(10); 
+ 254   1          ADC_CONTR = 0xE0|n;
+ 255   1          delay(10);
+ 256   1        ADC_DATA = 0;
+ 257   1        ADC_LOW2 = 0;
+ 258   1        ADC_CONTR = ADC_CONTR|0x08;
+ 259   1        delay(10);
+ 260   1          ADC_CONTR = ADC_CONTR&0xE7;
+ 261   1        result = ADC_DATA;
+ 262   1        result<<=2;
+ 263   1        result = result&0x03FC;
+ 264   1        result = result|(ADC_LOW2 & 0x03);
+ 265   1        return(result);
+ 266   1      }
+ 267          
+ 268          
+ 269          void cominit(void)
+ 270          {
+ 271   1        SCON=0X50;
+ 272   1        TMOD=0X20;
+ 273   1        TH1=0xfd;
+ 274   1        TL1=0xfd;
+ 275   1        TR1=1;
+ 276   1        //ES=1;
+ 277   1        //EA=1;
+ 278   1      }
+ 279          
+ 280          uint Adc6(void)
+ 281          {
+ 282   1        uint i,j,k;
+ 283   1        uint result=0;
+ 284   1        uint Tmin=0x3ff,Tmax=0;
+ 285   1        ulong T_tatol=0;
+ 286   1        uint temp1;
+ 287   1          uint comp;
+ 288   1      
+ 289   1        k=0;
+ 290   1          j=0;
+ 291   1          overflag=1;
+ 292   1      
+ 293   1          comp=3;// AdcMem; //值保存
+ 294   1      
+ 295   1          for(i=0;i<1000;i++)
+ 296   1        {
+ 297   2              temp1=Adc(2);// AdcMem; //值保存
+ 298   2          if(temp1<comp)
+ 299   2          {
+ 300   3            result=Adc(1);// AdcMem; //值保存
+ 301   3                  temp1=Adc(2);// AdcMem; //值保存
+ 302   3            if(temp1>comp)
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 6   
+
+ 303   3              continue;
+ 304   3          }
+ 305   2          else
+ 306   2              { 
+ 307   3                  j++;
+ 308   3                  if(j>900)
+ 309   3                      return 0;
+ 310   3            continue;
+ 311   3              }
+ 312   2          k++;
+ 313   2          if(Tmin>result)
+ 314   2            Tmin=result;
+ 315   2          if(Tmax<result)
+ 316   2            Tmax=result;
+ 317   2          T_tatol=T_tatol+result;
+ 318   2        
+ 319   2          if(k==21)  
+ 320   2          {
+ 321   3            T_tatol=T_tatol-Tmin;
+ 322   3            T_tatol=T_tatol-Tmax;
+ 323   3            T_tatol>>=2;
+ 324   3                  overflag=0;
+ 325   3            return((uint)T_tatol);
+ 326   3          }
+ 327   2        }
+ 328   1        return 0;
+ 329   1      }
+ 330          
+ 331          
+ 332          //void disptempC(uchar data1)
+ 333          //{
+ 334          //    tempAdc = data1%0x000A;
+ 335          //    lcd_data[0] = word_storeroom[tempAdc];
+ 336          //    data1 = data1/0x000A;
+ 337          //    tempAdc = data1%0x000A;
+ 338          //    lcd_data[1] = word_storeroom[tempAdc];
+ 339          //    data1 = data1/0x000A;
+ 340          //    tempAdc = data1%0x000A;
+ 341          //    lcd_data[2] = word_storeroom[tempAdc];
+ 342          //
+ 343          //    //显示BCD码
+ 344          //      DispOneChar(4,0,lcd_data[2]);
+ 345          //    DispOneChar(5,0,'.');
+ 346          //    DispOneChar(6,0,lcd_data[1]);
+ 347          //    DispOneChar(7,0,lcd_data[0]);
+ 348          //}
+ 349          void send(uchar i)
+ 350          {
+ 351   1        TI=0;
+ 352   1        SBUF=i;
+ 353   1        while(TI==0);
+ 354   1        TI=0;
+ 355   1      }
+ 356          
+ 357          
+ 358          
+ 359          void dispint(uint data1)
+ 360          {
+ 361   1       uint tempAdc;
+ 362   1          tempAdc = data1%0x000A;
+ 363   1          lcd_data[0] = word_storeroom[tempAdc];
+ 364   1          data1 = data1/0x000A;
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 7   
+
+ 365   1          tempAdc = data1%0x000A;
+ 366   1          lcd_data[1] = word_storeroom[tempAdc];
+ 367   1          data1 = data1/0x000A;
+ 368   1          tempAdc = data1%0x000A;
+ 369   1          lcd_data[2] = word_storeroom[tempAdc];
+ 370   1      
+ 371   1          //显示BCD码
+ 372   1            DispOneChar(4,1,lcd_data[2]);
+ 373   1          DispOneChar(5,1,'.');
+ 374   1          DispOneChar(6,1,lcd_data[1]);
+ 375   1          DispOneChar(7,1,lcd_data[0]);
+ 376   1      }
+ 377          
+ 378          
+ 379          void dispchar(uint data1)
+ 380          {
+ 381   1              uchar tempAdc;
+ 382   1          tempAdc = data1%0x000A;
+ 383   1          lcd_data[0] = word_storeroom[tempAdc];
+ 384   1          data1 = data1/0x000A;
+ 385   1          tempAdc = data1%0x000A;
+ 386   1          lcd_data[1] = word_storeroom[tempAdc];
+ 387   1          data1 = data1/0x000A;
+ 388   1          tempAdc = data1%0x000A;
+ 389   1          lcd_data[2] = word_storeroom[tempAdc];
+ 390   1          data1 = data1/0x000A;
+ 391   1          tempAdc = data1%0x000A;
+ 392   1          lcd_data[3] = word_storeroom[tempAdc];
+ 393   1      
+ 394   1          //显示BCD码
+ 395   1            DispOneChar(4,1,lcd_data[3]);
+ 396   1          DispOneChar(5,1,lcd_data[2]);
+ 397   1          DispOneChar(6,1,lcd_data[1]);
+ 398   1          DispOneChar(7,1,lcd_data[0]);
+ 399   1      }
+ 400          
+ 401          /* 关闭 ISP,IAP 功能 */
+ 402          void ISP_IAP_disable(void)
+ 403          {
+ 404   1        ISP_CONTR = 0;  /* 0111,1111 */
+ 405   1        ISP_CMD = 0;
+ 406   1        ISP_TRIG  = 0;
+ 407   1      //  EA      =   1;                  /* 开中断 */
+ 408   1      }
+ 409          /* 字节读 */
+ 410          uchar byte_read(uint byte_addr)
+ 411          {
+ 412   1        uchar tmp=0;
+ 413   1      
+ 414   1        ISP_CONTR   = ENABLE_ISP;
+ 415   1        ISP_CMD   = ISP_IAP_BYTE_READ;        /* 1111,1000 */
+ 416   1        ISP_ADDRH = (uchar)(byte_addr >> 8);
+ 417   1        ISP_ADDRL = (uchar)(byte_addr & 0x00ff);
+ 418   1      
+ 419   1      
+ 420   1        ISP_TRIG  = 0x46;
+ 421   1        ISP_TRIG  = 0xb9;
+ 422   1        _nop_();
+ 423   1        tmp=ISP_DATA;
+ 424   1        ISP_IAP_disable();
+ 425   1        return (tmp);
+ 426   1      }
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 8   
+
+ 427          /* 扇区擦除 */
+ 428          uchar sector_erase(uint sector_addr)
+ 429          {
+ 430   1        ISP_CONTR   =  ENABLE_ISP;
+ 431   1        ISP_CMD = ISP_IAP_SECTOR_ERASE;
+ 432   1      
+ 433   1        ISP_ADDRH = (uchar)(sector_addr >> 8);
+ 434   1        ISP_ADDRL = (uchar)(sector_addr & 0x00ff);
+ 435   1      
+ 436   1        ISP_TRIG  = 0x46;        /* 触发ISP_IAP命令 */
+ 437   1        ISP_TRIG  = 0xb9;        /* 触发ISP_IAP命令 */
+ 438   1         _nop_();
+ 439   1      
+ 440   1        ISP_IAP_disable();
+ 441   1        return OK;
+ 442   1      }
+ 443          
+ 444          /* 字节编程 */
+ 445          uchar byte_program(uint byte_addr, uchar original_data)
+ 446          {
+ 447   1        ISP_CONTR   =  ENABLE_ISP;
+ 448   1        ISP_CMD   = ISP_IAP_BYTE_PROGRAM;
+ 449   1        ISP_ADDRH = (uchar)(byte_addr >> 8);
+ 450   1        ISP_ADDRL = (uchar)(byte_addr & 0x00ff);
+ 451   1        ISP_DATA  = original_data;
+ 452   1      
+ 453   1        ISP_TRIG  = 0x46;        /* 触发ISP_IAP命令 */
+ 454   1        ISP_TRIG  = 0xb9;        /* 触发ISP_IAP命令 */
+ 455   1        _nop_();
+ 456   1      
+ 457   1        ISP_IAP_disable();
+ 458   1        return  OK;
+ 459   1      }
+ 460          
+ 461          void ConfigUART(unsigned int baud)
+ 462          {
+ 463   1        TMOD &= 0xF0;
+ 464   1        TMOD |= 0x02;
+ 465   1        TH0 = 256 - (11059200/12)/baud;
+ 466   1      }
+ 467          
+ 468          void  StartTXD(unsigned char dat)
+ 469          {
+ 470   1        TxdBuf = dat;
+ 471   1        TL0 = TH0;
+ 472   1        ET0 = 1;
+ 473   1        TR0 = 1;
+ 474   1        PIN_TXD = 0;
+ 475   1        TxdEnd = 0;
+ 476   1        RxdOrTxd = 1;
+ 477   1      }
+ 478          
+ 479          void InterruptTimer0() interrupt 1
+ 480          {
+ 481   1        static unsigned char cnt = 0;
+ 482   1      
+ 483   1        if(RxdOrTxd)
+ 484   1        {
+ 485   2          LED1 = 1;
+ 486   2          cnt++;
+ 487   2          if(cnt <= 8)
+ 488   2          {
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 9   
+
+ 489   3            PIN_TXD = TxdBuf & 0x01;
+ 490   3            TxdBuf >>= 1;
+ 491   3          }
+ 492   2          else if(cnt == 9)
+ 493   2          {
+ 494   3            PIN_TXD = 1;
+ 495   3          }
+ 496   2          else
+ 497   2          {
+ 498   3            cnt = 0;
+ 499   3            TR0 = 0;
+ 500   3            TxdEnd = 1;
+ 501   3            RxdOrTxd = 0;
+ 502   3          }
+ 503   2        }
+ 504   1        else{
+ 505   2          LED1 = 0;
+ 506   2        }
+ 507   1      }
+ 508          
+ 509          main()
+ 510          { 
+ 511   1          uint tmp=0;
+ 512   1          uint i;
+ 513   1        uint tmp_alarm;
+ 514   1          unsigned long limit;
+ 515   1          char code *number1="www.zju.edu.cn  ";
+ 516   1        char code *number6="edu.cn  ";
+ 517   1          char code *number2="         Ver2.71";
+ 518   1          char code *number3="Voltage: ";
+ 519   1        uint ge;
+ 520   1        uint shi;
+ 521   1        uint bai;
+ 522   1        uint qian;
+ 523   1        uint tmp_alarm_before = 0;
+ 524   1        
+ 525   1          EA = 1;
+ 526   1       
+ 527   1        ConfigUART(9600);
+ 528   1      
+ 529   1          LcdReset();
+ 530   1        Delay400Ms();
+ 531   1        cominit();  
+ 532   1      
+ 533   1      // Display "www.zju.edu.cn"
+ 534   1          for(i=0;i<16;i++)
+ 535   1            {
+ 536   2                DispOneChar(i,0,*(number1+i));
+ 537   2                DispOneChar(i,1,*(number6+i));
+ 538   2            }
+ 539   1          Delay400Ms();
+ 540   1            Delay400Ms();
+ 541   1            Delay400Ms();
+ 542   1            Delay400Ms();
+ 543   1            Delay400Ms();
+ 544   1            Delay400Ms();
+ 545   1            Delay400Ms();
+ 546   1            Delay400Ms();
+ 547   1            Delay400Ms();
+ 548   1            Delay400Ms();
+ 549   1          Delay400Ms();
+ 550   1            Delay400Ms();
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 10  
+
+ 551   1            Delay400Ms();
+ 552   1            Delay400Ms();
+ 553   1            Delay400Ms();
+ 554   1            Delay400Ms();
+ 555   1            Delay400Ms();
+ 556   1            Delay400Ms();
+ 557   1            Delay400Ms();
+ 558   1            Delay400Ms();
+ 559   1          Delay400Ms();
+ 560   1            Delay400Ms();
+ 561   1            Delay400Ms();
+ 562   1            Delay400Ms();
+ 563   1            Delay400Ms();
+ 564   1            Delay400Ms();
+ 565   1            Delay400Ms();
+ 566   1            Delay400Ms();
+ 567   1            Delay400Ms();
+ 568   1            Delay400Ms();
+ 569   1          Delay400Ms();
+ 570   1            Delay400Ms();
+ 571   1            Delay400Ms();
+ 572   1            Delay400Ms();
+ 573   1            Delay400Ms();
+ 574   1            Delay400Ms();
+ 575   1            Delay400Ms();
+ 576   1            Delay400Ms();
+ 577   1            Delay400Ms();
+ 578   1            Delay400Ms();
+ 579   1      
+ 580   1          //平移
+ 581   1          for(i=0;i<16;i++)
+ 582   1            {
+ 583   2                DispOneChar(i,0,*(number1+i));
+ 584   2                DispOneChar(i,1,*(number2+i));
+ 585   2            }
+ 586   1            for(i=0;i<8;i++)
+ 587   1            {
+ 588   2                LcdWriteCommand( 0x18, 1);            //平移
+ 589   2                Delay400Ms();
+ 590   2                Delay400Ms();
+ 591   2                Delay400Ms();
+ 592   2            }
+ 593   1      
+ 594   1            Delay400Ms();
+ 595   1            Delay400Ms();
+ 596   1            Delay400Ms();
+ 597   1            Delay400Ms();
+ 598   1            Delay400Ms();
+ 599   1            Delay400Ms();
+ 600   1            Delay400Ms();
+ 601   1            Delay400Ms();
+ 602   1            Delay400Ms();
+ 603   1            Delay400Ms();
+ 604   1            LcdWriteCommand( 0x02, 1);            // 显示开及光标设置
+ 605   1      
+ 606   1      // clear Display
+ 607   1      
+ 608   1        for(i=0;i<8;i++)
+ 609   1          {
+ 610   2              DispOneChar(i,0,' ');
+ 611   2              DispOneChar(i,1,' ');
+ 612   2          }
+C51 COMPILER V9.60.0.0   SRTT_II_MAIN                                                      07/05/2022 17:18:07 PAGE 11  
+
+ 613   1      
+ 614   1        for(;;) 
+ 615   1         {
+ 616   2          for(i=0;i<8;i++)
+ 617   2            {
+ 618   3                DispOneChar(i,0,*(number3+i));
+ 619   3            }
+ 620   2      
+ 621   2      
+ 622   2            tmp_alarm=Adc(6);
+ 623   2            dispchar(tmp_alarm);
+ 624   2      
+ 625   2          if(tmp_alarm_before != tmp_alarm)
+ 626   2          {
+ 627   3            qian = tmp_alarm / 1000;
+ 628   3            tmp_alarm = tmp_alarm - 1000*qian;
+ 629   3            bai = tmp_alarm /100;
+ 630   3            tmp_alarm = tmp_alarm - 100*bai;
+ 631   3            shi = tmp_alarm /10;
+ 632   3            tmp_alarm = tmp_alarm - 10*shi;
+ 633   3            ge = tmp_alarm;
+ 634   3      
+ 635   3            send(word_storeroom[qian]);
+ 636   3            send(word_storeroom[bai]);
+ 637   3            send(word_storeroom[shi]);
+ 638   3            send(word_storeroom[ge]);
+ 639   3      
+ 640   3            tmp_alarm_before = tmp_alarm;
+ 641   3          }
+ 642   2          
+ 643   2      
+ 644   2         }
+ 645   1      
+ 646   1      } //end_main
+*** WARNING C280 IN LINE 514 OF SRTT_II main.c: 'limit': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1628    ----
+   CONSTANT SIZE    =     53    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     22      43
+   IDATA SIZE       =     16    ----
+   BIT SIZE         =      2    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  1 WARNING(S),  0 ERROR(S)

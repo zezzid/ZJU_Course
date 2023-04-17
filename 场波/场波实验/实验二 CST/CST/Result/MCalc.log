@@ -1,0 +1,1496 @@
+======================================================
+ - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+ - desired group         : 0, sockets = 0
+ - num cores available   : 16
+ - num accessible procs  : 16
+ - num logical procs     : 16
+ - affinity (main thread): 11111111 11111111 
+ - sockets               : 0
+ - potential cores       : 0,2,4,6,8,10,12,14
+ - affinity              : 11111111
+ - active cores          : 0,2,4,6,8,10,12,14
+ - hyperthreading        : on
+ - allowed socket ids    : 0
+ - allowed core ids      : 0,2,4,6,8,10,12,14
+ - used mask (string)    : 10101010 10101010 
+======================================================
+
+===============================
+Port preparation
+Version 2019.0 (build 20180920)
+PBA version 2018092019
+2022 Apr 09 (Sat): 22:56:14
+===============================
+
+==========================
+Finished port preparation.
+==========================
+
+<<<<<<<<<<<<<<<<<<<<<<<<
+2022 Apr<<<<<<<<<<<<<<<<<<<<<<<<
+
+======================================================
+ - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+ - desired group         : 0, sockets = 0
+ - num cores available   : 16
+ - num accessible procs  : 16
+ - num logical procs     : 16
+ - affinity (main thread): 11111111 11111111 
+ - sockets               : 0
+ - potential cores       : 0,2,4,6,8,10,12,14
+ - affinity              : 11111111
+ - active cores          : 0,2,4,6,8,10,12,14
+ - hyperthreading        : on
+ - allowed socket ids    : 0
+ - allowed core ids      : 0,2,4,6,8,10,12,14
+ - used mask (string)    : 10101010 10101010 
+======================================================
+
+=======================================
+Matrix computation (PBA)
+	[Gaps between metals are preserved]
+	[PBA version: default]
+Version 2019.0 (build 20180920)
+PBA version 2018092019
+2022 Apr 09 (Sat): 22:56:15
+=======================================
+
+----------------------------------------------
+Used point accuracy enhancement value: 75.00%.
+----------------------------------------------
+
+==================================================================================================
+== CST Matrix Calculation Priority Log                                                          ==
+==================================================================================================
+ 
+Priorities are sorted in ascending order beginning with the lowest priority
+ 
+Priority:   1, shape   1: component1:solid1__1_0, material: PEC, float:   0.00e+00, wire: false, sheet: false, human: false, PEC:  true, SI: false, face port:   0, feature ID:      -1
+ 
+==================================================================================================
+ 
+====================================================
+PBA version: default
+Geo accuracy: 75.000000
+PEC background is represented by CAD geometry: false
+Watertightness check: true
+Self intersection check: false
+Inheritance (all): false
+Normal dominance (all): false
+Normal dominance (ports): false
+Flanges hollow: true
+One shape per flange: false
+====================================================
+Shapes are ordered to support shape wise matrix storage
+Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+FARM/Meshfill cache is set to 8 (local FI domains: 1, dynamic: false)
+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+------------------------------------------------------------------------------
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+settings for port mode calculation
++++++++++++++++++++++++++++++++++++++++++++++++++++++
+PBA fill limit is applied in inverse mode.
+PBA fill limit is applied on faces filled with at least 99.00% metal material.
+--------------------------------------------------------------
+detailed accuracy settings:
+--------------------------------------------------------------
+augmented fill limit:       true
+augmented fill limit value: 99.00
+automatic fill limit:       true
+early fill limit:           true
+inverse fill limit:         true
+model complexity:           0.00
+legacy 2015:                false
+fixed point accuracy:       false
+minimum point accuracy:     0
+mesh step inheritance:      false
+accuracy mode:              
+------------------------------------------------------------------------------
+
+=================================
+Finished matrix computation (PBA)
+=================================
+
+>>>>>>>>>>>>>>>>>>>>>>>>
+2022 Apr>>>>>>>>>>>>>>>>>>>>>>>>
+
+--------------------------------
+# of staircase filled cells: 0
+# of staircase filled areas: 0
+# of staircase filled edges: 0
+# of faces above fill limit: 0
+# of edges with FPBA topology: 0
+--------------------------------
+
+======================================================
+ - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+ - desired group         : 0, sockets = 0
+ - num cores available   : 16
+ - num accessible procs  : 16
+ - num logical procs     : 16
+ - affinity (main thread): 11111111 11111111 
+ - sockets               : 0
+ - potential cores       : 0,2,4,6,8,10,12,14
+ - affinity              : 11111111
+ - active cores          : 0,2,4,6,8,10,12,14
+ - hyperthreading        : on
+ - allowed socket ids    : 0
+ - allowed core ids      : 0,2,4,6,8,10,12,14
+ - used mask (string)    : 10101010 10101010 
+======================================================
+
+========================================================================
+Processing CAD model (for field results)
+	[Improved internal geometry representation]
+	[Accuracy improvement for long shapes in inhomogeneous mesh regions]
+Version 2019.0 (build 20180920)
+PBA version 2018092019
+2022 Apr 09 (Sat): 22:57:36
+========================================================================
+
+===========================================
+Finished CAD processing (for field results)
+===========================================
+
+========================================================================
+Processing CAD model
+	[Improved internal geometry representation]
+	[Accuracy improvement for long shapes in inhomogeneous mesh regions]
+Version 2019.0 (build 20180920)
+PBA version 2018092019
+2022 Apr 09 (Sat): 22:57:36
+========================================================================
+
+---------------------------------------------
+Used point accuracy enhancement value: 0.00%.
+---------------------------------------------
+
+=============================================================================
+Mesh statistics:
+-----------------------------------------------------------------------------
+Minimum edge length (x): 0.5 @ mesh line 63 (x)
+Maximum edge length (x): 1.57 @ mesh line 51 (x)
+Minimum face area (x): 0.0432 @ mesh lines 38 | 16 (y | z)
+Maximum face area (x): 2.38 @ mesh lines 32 | 10 (y | z)
+Minimum edge length (y): 0.5 @ mesh line 38 (y)
+Maximum edge length (y): 1.55 @ mesh line 32 (y)
+Minimum face area (y): 0.0432 @ mesh lines 16 | 63 (z | x)
+Maximum face area (y): 2.42 @ mesh lines 10 | 51 (z | x)
+Minimum edge length (z): 0.0864 @ mesh line 16 (z)
+Maximum edge length (z): 1.54 @ mesh line 10 (z)
+Minimum face area (z): 0.25 @ mesh lines 63 | 38 (x | y)
+Maximum face area (z): 2.43 @ mesh lines 51 | 32 (x | y)
+Maximum mesh face aspect ratio (x): 17.9 : 1.0  @ mesh lines 32 | 16 (y | z)
+Maximum mesh face aspect ratio (y): 18.2 : 1.0  @ mesh lines 16 | 51 (z | x)
+Maximum mesh face aspect ratio (z): 3.15 : 1.0  @ mesh lines 51 | 38 (x | y)
+=============================================================================
+
+============================================================================
+Available resources to store TST cells: 2146568887 (234659.24% of mesh size)
+============================================================================
+
+==================================================================================================
+== CST Matrix Calculation Priority Log                                                          ==
+==================================================================================================
+ 
+Priorities are sorted in ascending order beginning with the lowest priority
+ 
+Priority:   1, shape   1: component1:solid1, material: PEC, float:   0.00e+00, wire: false, sheet: false, human: false, PEC:  true, SI: false, face port:   0, feature ID:      -1
+ 
+==================================================================================================
+ 
+====================================================
+PBA version: default
+Geo accuracy: 0.000000
+PEC background is represented by CAD geometry: false
+Watertightness check: true
+Self intersection check: false
+Inheritance (all): false
+Normal dominance (all): false
+Normal dominance (ports): false
+Flanges hollow: true
+One shape per flange: false
+====================================================
+=======================
+Finished CAD processing
+=======================
+
+------------------------------------------------------------
+Parallelization Info
+------------------------------------------------------------
+Number of concurrent threads: 8
+Number of node domains: 16
+Number of mesh fill domains: 48
+Memory downscale: 1
+CPU load: 100.00%
+Emptiness: 0.00%
+Hex mesh complexity: 0.89
+Geometric complexity: 0.00
+------------------------------------------------------------
+Node order
+7, 10, 4, 5, 6, 8, 14, 12, 1, 11, 9, 15, 13, 3, 2, 0
+------------------------------------------------------------
+
+------------------------------------
+Mesh: # of points excl. TSTs: 914760
+      # of points incl. TSTs: 914760
+------------------------------------
+
+1xN000:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN000:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN000:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:47
+         =======================================
+
+1xN000:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN000:  Shapes are ordered to support shape wise matrix storage
+1xN000:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN000:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN000:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 8 (local FI domains: 8, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN000:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN000:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN000:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN001:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN001:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN001:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:42
+         =======================================
+
+1xN001:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN001:  Shapes are ordered to support shape wise matrix storage
+1xN001:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN001:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN001:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 8 (local FI domains: 8, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN001:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN001:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN001:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN002:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN002:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN002:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:47
+         =======================================
+
+1xN002:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN002:  Shapes are ordered to support shape wise matrix storage
+1xN002:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN002:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN002:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN002:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN002:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN002:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN003:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN003:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN003:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:47
+         =======================================
+
+1xN003:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN003:  Shapes are ordered to support shape wise matrix storage
+1xN003:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN003:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN003:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN003:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN003:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN003:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN004:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN004:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN004:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN004:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN004:  Shapes are ordered to support shape wise matrix storage
+1xN004:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN004:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN004:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN004:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN004:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN004:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN005:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN005:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN005:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN005:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN005:  Shapes are ordered to support shape wise matrix storage
+1xN005:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN005:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN005:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 18 (local FI domains: 18, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN005:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN005:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN005:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN006:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN006:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN006:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN006:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN006:  Shapes are ordered to support shape wise matrix storage
+1xN006:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN006:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN006:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN006:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN006:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN006:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN007:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN007:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN007:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN007:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN007:  Shapes are ordered to support shape wise matrix storage
+1xN007:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN007:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN007:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN007:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN007:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN007:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN008:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN008:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN008:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN008:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN008:  Shapes are ordered to support shape wise matrix storage
+1xN008:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN008:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN008:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 18 (local FI domains: 18, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN008:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN008:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN008:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN009:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN009:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN009:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:46
+         =======================================
+
+1xN009:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN009:  Shapes are ordered to support shape wise matrix storage
+1xN009:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN009:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN009:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN009:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN009:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN009:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN010:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN010:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN010:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN010:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN010:  Shapes are ordered to support shape wise matrix storage
+1xN010:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN010:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN010:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 18 (local FI domains: 18, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN010:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN010:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN010:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN011:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN011:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN011:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:42
+         =======================================
+
+1xN011:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN011:  Shapes are ordered to support shape wise matrix storage
+1xN011:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN011:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN011:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN011:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN011:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN011:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN012:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN012:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN012:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN012:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN012:  Shapes are ordered to support shape wise matrix storage
+1xN012:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN012:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN012:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 18 (local FI domains: 18, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN012:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN012:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN012:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN013:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN013:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN013:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:47
+         =======================================
+
+1xN013:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN013:  Shapes are ordered to support shape wise matrix storage
+1xN013:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN013:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN013:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN013:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN013:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN013:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN014:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN014:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN014:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:37
+         =======================================
+
+1xN014:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN014:  Shapes are ordered to support shape wise matrix storage
+1xN014:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN014:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN014:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 18 (local FI domains: 18, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN014:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN014:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN014:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+1xN015:  <<<<<<<<<<<<<<<<<<<<<<<<
+         2022 Apr         <<<<<<<<<<<<<<<<<<<<<<<<
+
+1xN015:  ======================================================
+          - pinning rule in use   : PINNING_RULE_MCALC_SKIP_ALL
+          - desired group         : 0, sockets = 0
+          - num cores available   : 16
+          - num accessible procs  : 16
+          - num logical procs     : 16
+          - affinity (main thread): 11111111 11111111
+          - sockets               : 0
+          - potential cores       : 0,2,4,6,8,10,12,14
+          - affinity              : 11111111
+          - active cores          : 0,2,4,6,8,10,12,14
+          - hyperthreading        : on
+          - allowed socket ids    : 0
+          - allowed core ids      : 0,2,4,6,8,10,12,14
+          - used mask (string)    : 10101010 10101010
+
+         ======================================================
+
+1xN015:  =======================================
+         Matrix computation (PBA)
+         	[Gaps between metals are preserved]
+         	[PBA version: default]
+         Version 2019.0 (build 20180920)
+         PBA version 2018092019
+         2022 Apr 09 (Sat): 22:57:46
+         =======================================
+
+1xN015:  ---------------------------------------------
+         Used point accuracy enhancement value: 0.00%.
+         ---------------------------------------------
+
+1xN015:  Shapes are ordered to support shape wise matrix storage
+1xN015:  ==================================================================================================
+         == CST Matrix Calculation Priority Log                                                          ==
+         ==================================================================================================
+
+         Priorities are sorted in ascending order beginning with the lowest priority
+
+         Priority:   3, shape   1: component1:solid1, material: PEC
+
+         ==================================================================================================
+
+1xN015:  Gap-Detection activated for FARM-topology. Gaps are resolved, even partially.: gap tolerance value is 0.001 and mesh geometry scale is 0.001
+1xN015:  cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+         FARM/Meshfill cache is set to 12 (local FI domains: 12, dynamic: true)
+         cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+
+1xN015:  ------------------------------------------------------------------------------
+         PBA fill limit is applied in inverse mode.
+         PBA fill limit is applied on faces filled with at least 85.56% metal material.
+         --------------------------------------------------------------
+         detailed accuracy settings:
+         --------------------------------------------------------------
+         augmented fill limit:       true
+         augmented fill limit value: 85.56
+         automatic fill limit:       true
+         early fill limit:           true
+         inverse fill limit:         true
+         model complexity:           0.00
+         legacy 2015:                false
+         fixed point accuracy:       false
+         minimum point accuracy:     0
+         mesh step inheritance:      false
+         accuracy mode:
+         ------------------------------------------------------------------------------
+
+1xN015:  =================================
+         Finished matrix computation (PBA)
+         =================================
+
+1xN015:  >>>>>>>>>>>>>>>>>>>>>>>>
+         2022 Apr         >>>>>>>>>>>>>>>>>>>>>>>>
+
+
+
+--------------------------------
+# of staircase filled cells: 0
+# of staircase filled areas: 0
+# of staircase filled edges: 0
+# of faces above fill limit: 0
+# of edges with FPBA topology: 0
+--------------------------------
+

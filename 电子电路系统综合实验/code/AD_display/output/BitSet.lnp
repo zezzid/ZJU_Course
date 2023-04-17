@@ -1,0 +1,4 @@
+".\output\STARTUP.obj",
+".\output\SRTT_II main.obj" 
+TO ".\output\BitSet" 
+PRINT(".\BitSet.m51") RAMSIZE(256) 

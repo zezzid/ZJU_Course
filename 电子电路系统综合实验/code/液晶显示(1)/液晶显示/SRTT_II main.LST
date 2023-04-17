@@ -1,0 +1,358 @@
+C51 COMPILER V9.00   SRTT_II_MAIN                                                          06/24/2022 20:59:20 PAGE 1   
+
+
+C51 COMPILER V9.00, COMPILATION OF MODULE SRTT_II_MAIN
+OBJECT MODULE PLACED IN .\output\SRTT_II main.obj
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE SRTT_II main.c BROWSE DEBUG OBJECTEXTEND OBJECT(.\output\SRTT_II main.obj)
+
+line level    source
+
+   1          
+   2          #include <reg52.h>
+   3          #include <STC12C.h>
+   4          #include <intrins.h>              
+   5          
+   6          sbit LCD_RS=P3^2;    /*LCD寄存器选择信号*/
+   7          sbit LCD_R_W=P3^3;   /*LCD读写信号*/
+   8          sbit LCD_E=P3^4;     /*LCD片选信号*/
+   9          
+  10          //变量类型标识的宏定义，大家都喜欢这么做
+  11          #define Uchar unsigned char
+  12          #define Uint unsigned int
+  13          #define uchar unsigned char
+  14          #define uint unsigned int
+  15          
+  16          /* 定义命令 */
+  17          #define ISP_IAP_BYTE_READ                               0x01        /*  字节读数据存储区   */
+  18          #define ISP_IAP_BYTE_PROGRAM          0x02        /*  字节编程数据存储区 */
+  19          #define ISP_IAP_SECTOR_ERASE     0x03        /*  扇区擦除数据存储区 */
+  20          
+  21          /* 定义Flash 操作等待时间 */
+  22          #define ENABLE_ISP        0x84
+  23          #define DATA_FLASH_START_ADDRESS           0x2800
+  24          
+  25          typedef     unsigned char       INT8U;          /* 8 bit 无符号整型  */
+  26          typedef     unsigned int    INT16U;     /* 16 bit 无符号整型 */
+  27          #define         DELAY_CONST         60000
+  28          
+  29          /* 定义常量 */
+  30          #define ERROR   0
+  31          #define OK      1
+  32          
+  33          // 控制引脚定义，不同的连接必须修改的部分
+  34          sbit RS=P3^2;
+  35          sbit RW=P3^3; 
+  36          sbit Elcm=P3^4;  
+  37          
+  38          sbit SelA=P1^1;
+  39          sbit SelB=P3^7;
+  40          
+  41          sbit PA=P1^5;
+  42          sbit PB=P1^6;
+  43          sbit PC=P1^7;
+  44          
+  45          
+  46          
+  47          unsigned char lcd_data[5];
+  48          unsigned int i,k,j;
+  49          unsigned char disp_bool;
+  50          unsigned char tempC;
+  51          unsigned char overflag;
+  52          
+  53          
+  54          #define DataPort P2                // 数据端口
+  55          #define Busy    0x80
+C51 COMPILER V9.00   SRTT_II_MAIN                                                          06/24/2022 20:59:20 PAGE 2   
+
+  56          #define uchar unsigned char
+  57          #define uint unsigned int
+  58          #define ulong unsigned long
+  59          #define _Nop() _nop_()
+  60          
+  61          char idata word_storeroom[]=
+  62          {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'}; 
+  63          
+  64          void Delay400Ms(void);
+  65          void Delay5Ms(void);
+  66          void WaitForEnable( void );
+  67          void LcdWriteData( char dataW );
+  68          void LcdWriteCommand( Uchar CMD,Uchar AttribC );
+  69          void LcdReset( void );
+  70          void Display( Uchar dd );
+  71          void DispOneChar(Uchar x,Uchar y,Uchar Wdata);
+  72          void ePutstr(Uchar x,Uchar y, Uchar code *ptr);
+  73          
+  74          
+  75          /*=======================================================
+  76          显示字符串
+  77          =======================================================*/
+  78          void ePutstr(Uchar x,Uchar y, Uchar code *ptr) {
+  79   1      Uchar i,l=0;
+  80   1          while (ptr[l] >31) {l++;};
+  81   1          for (i=0;i<16;i++) { DispOneChar(x++,y,ptr[i]);
+  82   2              if ( x == 16 ){
+  83   3                  x = 0; y ^= 1;
+  84   3              }
+  85   2          }
+  86   1      }
+  87          
+  88          /*=======================================================
+  89          演示一行连续字符串，配合上位程序演示移动字串
+  90          =======================================================*/
+  91          void Display( Uchar dd ) {
+  92   1      
+  93   1      Uchar i;
+  94   1      
+  95   1          for (i=0;i<16;i++) {
+  96   2              DispOneChar(i,1,dd++);
+  97   2              dd &= 0x7f;
+  98   2              if (dd<32) dd=32;
+  99   2          }
+ 100   1      }
+ 101          
+ 102          /*=======================================================
+ 103          显示光标定位
+ 104          =======================================================*/
+ 105          void Disp_XY( char posx,char posy) {
+ 106   1      
+ 107   1      uchar temp;
+ 108   1      
+ 109   1          temp = posx %40;// & 0x07;
+ 110   1          posy &= 0x01;
+ 111   1          if ( posy==1)  {temp |= 0x40;}
+ 112   1          temp |= 0x80;
+ 113   1          LcdWriteCommand(temp,1);
+ 114   1      }
+ 115          
+ 116          /*=======================================================
+ 117          按指定位置显示数出一个字符
+C51 COMPILER V9.00   SRTT_II_MAIN                                                          06/24/2022 20:59:20 PAGE 3   
+
+ 118          =======================================================*/
+ 119          void DispOneChar(Uchar x,Uchar y,Uchar Wdata) {
+ 120   1      
+ 121   1          Disp_XY( x, y );                // 定位显示地址
+ 122   1          LcdWriteData( Wdata );            // 写字符
+ 123   1      }
+ 124          
+ 125          /*=======================================================
+ 126          初始化程序, 必须按照产品资料介绍的初始化过程进行
+ 127          =======================================================*/
+ 128          void LcdReset( void ) {
+ 129   1      
+ 130   1             LcdWriteCommand( 0x38, 0);            // 显示模式设置(不检测忙信号)
+ 131   1              Delay5Ms();
+ 132   1          LcdWriteCommand( 0x38, 0);            // 共三次
+ 133   1              Delay5Ms();
+ 134   1          LcdWriteCommand( 0x38, 0);
+ 135   1              Delay5Ms();
+ 136   1      
+ 137   1          LcdWriteCommand( 0x38, 1);            // 显示模式设置(以后均检测忙信号)
+ 138   1          LcdWriteCommand( 0x08, 1);            // 显示关闭
+ 139   1          LcdWriteCommand( 0x01, 1);            // 显示清屏
+ 140   1          LcdWriteCommand( 0x06, 1);            // 显示光标移动设置
+ 141   1          LcdWriteCommand( 0x0c, 1);            // 显示开及光标设置
+ 142   1          LcdWriteCommand( 0x02, 1);            // 显示开及光标设置
+ 143   1      }
+ 144          
+ 145          /*=======================================================
+ 146          写控制字符子程序: E=1 RS=0 RW=0
+ 147          =======================================================*/
+ 148          void LcdWriteCommand( Uchar CMD,Uchar AttribC ) {
+ 149   1      
+ 150   1          if (AttribC) WaitForEnable();                // 检测忙信号?
+ 151   1      
+ 152   1          RS = 0;    RW = 0; _nop_();
+ 153   1      
+ 154   1          DataPort = CMD; _nop_();
+ 155   1          // 送控制字子程序
+ 156   1      
+ 157   1          Elcm = 1;_nop_();_nop_();Elcm = 0;            // 操作允许脉冲信号
+ 158   1      }
+ 159          
+ 160          /*=======================================================
+ 161          当前位置写字符子程序: E =1 RS=1 RW=0
+ 162          =======================================================*/
+ 163          void LcdWriteData( char dataW ) {
+ 164   1      
+ 165   1          WaitForEnable();
+ 166   1              // 检测忙信号
+ 167   1      
+ 168   1          RS = 1; RW = 0; _nop_();
+ 169   1      
+ 170   1          DataPort = dataW; _nop_();
+ 171   1      
+ 172   1          Elcm = 1; _nop_(); _nop_(); Elcm = 0;        // 操作允许脉冲信号
+ 173   1      
+ 174   1      }
+ 175          
+ 176          /*=======================================================
+ 177          正常读写操作之前必须检测LCD控制器状态:    CS=1 RS=0 RW=1
+ 178          DB7:    0  LCD控制器空闲; 1  LCD控制器忙
+ 179          ========================================================*/
+C51 COMPILER V9.00   SRTT_II_MAIN                                                          06/24/2022 20:59:20 PAGE 4   
+
+ 180          void WaitForEnable( void ) {
+ 181   1      
+ 182   1          DataPort = 0xff;
+ 183   1      
+ 184   1          RS =0; RW = 1; _nop_();    Elcm = 1; _nop_(); _nop_();
+ 185   1      
+ 186   1          while( DataPort & Busy );
+ 187   1      
+ 188   1          Elcm = 0;
+ 189   1      }
+ 190          
+ 191          
+ 192          // 短延时
+ 193          void Delay5Ms(void)
+ 194          {
+ 195   1          Uint i = 5552;
+ 196   1          while(i--);
+ 197   1      }
+ 198          
+ 199          //长延时
+ 200          void Delay400Ms(void)
+ 201          {
+ 202   1          Uchar i = 5;
+ 203   1          Uint j;
+ 204   1          while(i--)
+ 205   1          {
+ 206   2              j=7269;
+ 207   2              while(j--);
+ 208   2          };
+ 209   1      }
+ 210          
+ 211          void delay(unsigned int t) //延时
+ 212          {       
+ 213   1              unsigned int i, j; 
+ 214   1              for(i=0;i<t;i++)
+ 215   1              { 
+ 216   2                      for(j=0;j<10;j++)
+ 217   2                      {;} 
+ 218   2          } 
+ 219   1      } 
+ 220          
+ 221          main()
+ 222          { 
+ 223   1          uint tmp=0;
+ 224   1          uint i;
+ 225   1              uint tmp_alarm;
+ 226   1          unsigned long limit;
+ 227   1          char code *number1="www.zju.edu.cn  ";
+ 228   1              char code *number6="edu.cn  ";
+ 229   1          char code *number2="         Ver2.71";
+ 230   1          char code *number3="Voltage: ";
+ 231   1          char code *number4="Thinknes";
+ 232   1          char code *number5="s:      ";
+ 233   1      
+ 234   1      
+ 235   1          LcdReset();
+ 236   1              Delay400Ms();
+ 237   1      
+ 238   1      
+ 239   1              for(;;) {       
+ 240   2      
+ 241   2      // Display "www.zju.edu.cn"
+C51 COMPILER V9.00   SRTT_II_MAIN                                                          06/24/2022 20:59:20 PAGE 5   
+
+ 242   2                      for(i=0;i<16;i++)
+ 243   2                  {
+ 244   3                      DispOneChar(i,0,*(number1+i));
+ 245   3                      DispOneChar(i,1,*(number6+i));
+ 246   3                  }
+ 247   2                      Delay400Ms();
+ 248   2                  Delay400Ms();
+ 249   2                  Delay400Ms();
+ 250   2                  Delay400Ms();
+ 251   2                  Delay400Ms();
+ 252   2                  Delay400Ms();
+ 253   2                  Delay400Ms();
+ 254   2                  Delay400Ms();
+ 255   2                  Delay400Ms();
+ 256   2                  Delay400Ms();
+ 257   2                      Delay400Ms();
+ 258   2                  Delay400Ms();
+ 259   2                  Delay400Ms();
+ 260   2                  Delay400Ms();
+ 261   2                  Delay400Ms();
+ 262   2                  Delay400Ms();
+ 263   2                  Delay400Ms();
+ 264   2                  Delay400Ms();
+ 265   2                  Delay400Ms();
+ 266   2                  Delay400Ms();
+ 267   2                      Delay400Ms();
+ 268   2                  Delay400Ms();
+ 269   2                  Delay400Ms();
+ 270   2                  Delay400Ms();
+ 271   2                  Delay400Ms();
+ 272   2                  Delay400Ms();
+ 273   2                  Delay400Ms();
+ 274   2                  Delay400Ms();
+ 275   2                  Delay400Ms();
+ 276   2                  Delay400Ms();
+ 277   2                      Delay400Ms();
+ 278   2                  Delay400Ms();
+ 279   2                  Delay400Ms();
+ 280   2                  Delay400Ms();
+ 281   2                  Delay400Ms();
+ 282   2                  Delay400Ms();
+ 283   2                  Delay400Ms();
+ 284   2                  Delay400Ms();
+ 285   2                  Delay400Ms();
+ 286   2                  Delay400Ms();
+ 287   2      
+ 288   2                      //平移
+ 289   2                      for(i=0;i<16;i++)
+ 290   2                  {
+ 291   3                      DispOneChar(i,0,*(number1+i));
+ 292   3                      DispOneChar(i,1,*(number2+i));
+ 293   3                  }
+ 294   2                  for(i=0;i<8;i++)
+ 295   2                  {
+ 296   3                      LcdWriteCommand( 0x18, 1);            //平移
+ 297   3                      Delay400Ms();
+ 298   3                      Delay400Ms();
+ 299   3                      Delay400Ms();
+ 300   3                  }
+ 301   2      
+ 302   2                  Delay400Ms();
+ 303   2                  Delay400Ms();
+C51 COMPILER V9.00   SRTT_II_MAIN                                                          06/24/2022 20:59:20 PAGE 6   
+
+ 304   2                  Delay400Ms();
+ 305   2                  Delay400Ms();
+ 306   2                  Delay400Ms();
+ 307   2                  Delay400Ms();
+ 308   2                  Delay400Ms();
+ 309   2                  Delay400Ms();
+ 310   2                  Delay400Ms();
+ 311   2                  Delay400Ms();
+ 312   2                  LcdWriteCommand( 0x02, 1);            // 显示开及光标设置
+ 313   2      
+ 314   2      // clear Display
+ 315   2      
+ 316   2              for(i=0;i<8;i++)
+ 317   2          {
+ 318   3              DispOneChar(i,0,' ');
+ 319   3              DispOneChar(i,1,' ');
+ 320   3          }
+ 321   2      
+ 322   2       }
+ 323   1      } //end_main
+*** WARNING C280 IN LINE 225 OF SRTT_II MAIN.C: 'tmp_alarm': unreferenced local variable
+*** WARNING C280 IN LINE 226 OF SRTT_II MAIN.C: 'limit': unreferenced local variable
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    665    ----
+   CONSTANT SIZE    =     71    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     14      32
+   IDATA SIZE       =     16    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

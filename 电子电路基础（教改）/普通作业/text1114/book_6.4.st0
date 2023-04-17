@@ -1,0 +1,74 @@
+****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******
+ Input File: book_6.4.sp
+ lic:
+ lic: FLEXlm: v11.2.1
+ lic: USER:   Zezzid               HOSTNAME: LAPTOP-NBK8184L
+ lic: HOSTID: "68545a57211d"       PID:      24640
+ lic: Using FLEXlm license file:
+ lic: 27000@LAPTOP-NBK8184L
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 30-dec-2030/2029.2029
+ lic: 1(in_use)/99(total) FLOATING license(s) on SERVER 27000@LAPTOP-NBK8184L
+ lic:
+ init: begin read circuit files,  cpu clock=  2.50E-01
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\AD\
+       option search = D:\Hspice_K-2015.06-3\parts\XILINX\
+       option search = D:\Hspice_K-2015.06-3\parts\TLINE\
+       option search = D:\Hspice_K-2015.06-3\parts\TI\
+       option search = D:\Hspice_K-2015.06-3\parts\SIGNET\
+       option search = D:\Hspice_K-2015.06-3\parts\PCI\
+       option search = D:\Hspice_K-2015.06-3\parts\LIN_TECH\
+       option search = D:\Hspice_K-2015.06-3\parts\PET\
+       option search = D:\Hspice_K-2015.06-3\parts\DI0\
+       option search = D:\Hspice_K-2015.06-3\parts\COMLINE\
+       option search = D:\Hspice_K-2015.06-3\parts\BURR_BRM\
+       option search = D:\Hspice_K-2015.06-3\parts\BJT\
+       option search = D:\Hspice_K-2015.06-3\parts\behave\
+       option search = D:\Hspice_K-2015.06-3\parts\AD\
+       option runlvl
+       option post
+       option accurate
+       option probe
+ init: end read circuit files,  cpu clock=  2.58E-01 peak memory=        48 mb
+ init: begin check errors,  cpu clock=  2.58E-01
+ init: end check errors,  cpu clock=  2.70E-01 peak memory=        50 mb
+ init: begin setup matrix, pivot=     0 cpu clock=  2.70E-01
+       establish matrix -- done,  cpu clock=  2.70E-01 peak memory=        50 mb
+       re-order matrix -- done,  cpu clock=  2.70E-01 peak memory=        50 mb
+ init: end setup matrix,  cpu clock=  2.71E-01 peak memory=        50 mb
+ sweep: voltage         voltage1         begin, #sweeps =   7
+ voltage: vvgs            =    0.00E+00
+ output: D:\_University\_current\text1114\book_6.4.sw0
+ sweep: dc dc1    begin, #sweeps=  19 cpu clock=  2.72E-01
+ sweep: dc dc1    end,  cpu clock=  2.73E-01 peak memory=        50 mb
+ voltage: vvgs            =    3.00E-01
+ output: D:\_University\_current\text1114\book_6.4.sw0
+ sweep: dc dc2    begin, #sweeps=  19 cpu clock=  2.74E-01
+ sweep: dc dc2    end,  cpu clock=  2.74E-01 peak memory=        50 mb
+ voltage: vvgs            =    6.00E-01
+ output: D:\_University\_current\text1114\book_6.4.sw0
+ sweep: dc dc3    begin, #sweeps=  19 cpu clock=  2.74E-01
+ sweep: dc dc3    end,  cpu clock=  2.74E-01 peak memory=        50 mb
+ voltage: vvgs            =    9.00E-01
+ output: D:\_University\_current\text1114\book_6.4.sw0
+ sweep: dc dc4    begin, #sweeps=  19 cpu clock=  2.74E-01
+ sweep: dc dc4    end,  cpu clock=  2.75E-01 peak memory=        50 mb
+ voltage: vvgs            =    1.20E+00
+ output: D:\_University\_current\text1114\book_6.4.sw0
+ sweep: dc dc5    begin, #sweeps=  19 cpu clock=  2.75E-01
+ sweep: dc dc5    end,  cpu clock=  2.75E-01 peak memory=        50 mb
+ voltage: vvgs            =    1.50E+00
+ output: D:\_University\_current\text1114\book_6.4.sw0
+ sweep: dc dc6    begin, #sweeps=  19 cpu clock=  2.75E-01
+ sweep: dc dc6    end,  cpu clock=  2.76E-01 peak memory=        50 mb
+ voltage: vvgs            =    1.80E+00
+ output: D:\_University\_current\text1114\book_6.4.sw0
+ sweep: dc dc7    begin, #sweeps=  19 cpu clock=  2.76E-01
+ sweep: dc dc7    end,  cpu clock=  2.76E-01 peak memory=        50 mb
+ sweep: voltage         voltage         1 end
+ dcop: begin dcop,  cpu clock=  2.77E-01
+ dcop: end dcop,  cpu clock=  2.78E-01 peak memory=        50 mb  tot_iter=       4
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)

@@ -1,0 +1,115 @@
+C51 COMPILER V9.60.0.0   PWM1                                                              06/28/2022 15:09:54 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE PWM1
+OBJECT MODULE PLACED IN .\Objects\PWM1.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE PWM1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\PWM1.lst) TABS(2) OBJECT(.\Objects\PWM1.obj)
+
+line level    source
+
+   1          /*******************************************************************************
+   2          * 版  权  : 红梅科技工作室
+   3          * 论  坛  ：https://blog.csdn.net/Qingzhusshuiyun
+   4          * Q Q     ：2369099714
+   5          * 版权所有，盗版必究。
+   6          * 工  程   : PWM调光
+   7          * 文件名   : PWM调光.c
+   8          * 处理器   : STC89C52RC
+   9          * 编译环境 : Keil 5
+  10          * 系统时钟 : 12MHZ
+  11          * 版    本  : V1.0 
+  12          * 生成日期  : 2018-05-14              
+  13          * 修改日期  :  
+  14          * 简单描述 : 通过PWM（脉宽调制）调节LED的亮度
+  15          *******************************************************************************/
+  16          
+  17          #include<reg52.h> //包含头文件，一般情况不需要改动，头文件包含特殊功能寄存器�
+             -�定义
+  18          
+  19          //sbit LED0=P1^0;// 用sbit 关键字 定义 LED到P1.0端口，LED是自己任意定义且容易记忆的
+             -符号
+  20          sbit P20=P1^3;
+  21          sbit LED1 = P1^0;
+  22          sbit LED2 = P1^1;
+  23          sbit LED3 = P1^2;
+  24          
+  25          void Delay(unsigned int t); //函数声明
+  26          /*------------------------------------------------
+  27                              主函数
+  28          ------------------------------------------------*/
+  29          void main (void)
+  30          {
+  31   1          //unsigned int kk;                  
+  32   1          unsigned int CYCLE=10,PWM_LOW=0;//定义周期并赋值   //   
+  33   1          while (1)         //主循环
+  34   1          {
+  35   2              if(P20==0)
+  36   2              {
+  37   3                  Delay(3);
+  38   3                  if(P20==0)
+  39   3                  {
+  40   4                      CYCLE=CYCLE+10;
+  41   4                      if(CYCLE==60)
+  42   4                      {
+  43   5                          CYCLE=10;
+  44   5                      }
+  45   4                      while(P20==0);
+  46   4                  }
+  47   3              }
+  48   2              //P1=0XFF;// LED0=1;
+  49   2              LED1 = 1;
+  50   2              //Delay(60000);        //特意加延时，可以看到熄灭的过程
+  51   2              for(PWM_LOW=1;PWM_LOW<CYCLE;PWM_LOW++)
+  52   2              { //PWM_LOW表示低
+C51 COMPILER V9.60.0.0   PWM1                                                              06/28/2022 15:09:54 PAGE 2   
+
+  53   3              //电平时间，这个循环中低电平时长从1累加到CYCLE（周期）的值，即600次
+  54   3      
+  55   3                  //P1=0X00;    //  LED0=0;        //点亮LED  
+  56   3                  LED1 = 0;
+  57   3                  Delay(PWM_LOW);//延时长度，600次循环中从1加至599
+  58   3                  //P1=0XFF;    //  LED0=1;        //熄灭LED
+  59   3                  LED1 = 1;
+  60   3                  Delay(CYCLE-PWM_LOW);//延时长度，600次循环中从599减至1
+  61   3                      
+  62   3              }
+  63   2              //P1=0X00;// LED0=0;
+  64   2              LED1 = 0;
+  65   2              for(PWM_LOW=CYCLE-1;PWM_LOW>0;PWM_LOW--)
+  66   2              { //与逐渐变亮相反的过程
+  67   3      
+  68   3                  //P1=0X00;    //  LED0=0;
+  69   3                  LED1 = 0;
+  70   3                  Delay(PWM_LOW);
+  71   3                  //P1=0XFF;    //  LED0=1;
+  72   3                  LED1 = 1;
+  73   3                  Delay(CYCLE-PWM_LOW);
+  74   3                  
+  75   3              }
+  76   2                              //主循环中添加其他需要一直工作的程序
+  77   2          }
+  78   1      }
+  79          /*------------------------------------------------
+  80           延时函数，含有输入参数 unsigned int t，无返回值
+  81           unsigned int 是定义无符号整形变量，其值的范围是
+  82           0~65535
+  83          ------------------------------------------------*/
+  84          void Delay(unsigned int t)
+  85          {
+  86   1       while(--t);
+  87   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    162    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

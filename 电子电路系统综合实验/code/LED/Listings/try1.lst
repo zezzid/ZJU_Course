@@ -1,0 +1,106 @@
+C51 COMPILER V9.60.0.0   TRY1                                                              06/27/2022 14:54:48 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE TRY1
+OBJECT MODULE PLACED IN .\Objects\try1.obj
+COMPILER INVOKED BY: D:\software\Keil_v5\C51\BIN\C51.EXE try1.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\List
+                    -ings\try1.lst) TABS(2) OBJECT(.\Objects\try1.obj)
+
+line level    source
+
+   1          #include<reg52.h>
+   2              sbit red = P1^0;
+   3              sbit yellow = P1^1;
+   4              sbit green = P1^2;
+   5              unsigned int state;
+   6              unsigned int i;
+   7              unsigned long Timer_Count;
+   8              unsigned int timer_flag;
+   9          
+  10          void Timer0_Init (void)
+  11          {
+  12   1         TR0 = 0;       //停止计数
+  13   1         ET0 = 1;       //允许中断
+  14   1         PT0 = 1;       //高优先级中断
+  15   1         TMOD = 0x01;     //#00000,0001,16位定时模式
+  16   1         
+  17   1         TH0 = 0;
+  18   1         TL0 = 0;
+  19   1         TR0 = 1;       //开始运行
+  20   1      }
+  21          
+  22          void Init_Device(void)
+  23          {
+  24   1        Timer0_Init();
+  25   1      
+  26   1          EA = 1;         //开启全局中断允许
+  27   1      }
+  28          
+  29          void timer0_int (void) interrupt 1
+  30          {
+  31   1        TH0 = 0xfc;
+  32   1        TL0 = 0x18;     //1ms定时中断
+  33   1      
+  34   1        ++Timer_Count;
+  35   1        if (Timer_Count > 1000)
+  36   1        {
+  37   2          Timer_Count = 0;
+  38   2          timer_flag = 1;
+  39   2        }
+  40   1      
+  41   1      }
+  42          
+  43          void main(){
+  44   1          Init_Device();
+  45   1          state = 0;
+  46   1          do{
+  47   2              if(timer_flag)
+  48   2              {
+  49   3                  timer_flag = 0;
+  50   3                  state++;
+  51   3                  state = state % 3;
+  52   3      
+  53   3                  switch (state)
+  54   3                  {
+C51 COMPILER V9.60.0.0   TRY1                                                              06/27/2022 14:54:48 PAGE 2   
+
+  55   4                  case 0:
+  56   4                      red = 1;
+  57   4                      yellow = 0;
+  58   4                      green = 0;
+  59   4                      break;
+  60   4                  case 1:
+  61   4                      red = 0;
+  62   4                      yellow = 1;
+  63   4                      green = 0;
+  64   4                      break;
+  65   4                  case 2:
+  66   4                      red = 0;
+  67   4                      yellow = 0;
+  68   4                      green = 1;
+  69   4                      break;
+  70   4                  default:
+  71   4                      red = 0;
+  72   4                      yellow = 0;
+  73   4                      green = 0;
+  74   4                      break;
+  75   4                  }
+  76   3      
+  77   3              }
+  78   2              
+  79   2          }while(1);
+  80   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    234    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

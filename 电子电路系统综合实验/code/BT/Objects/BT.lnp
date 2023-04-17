@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\BT.obj" 
+TO ".\Objects\BT" 
+PRINT(".\Listings\BT.m51") RAMSIZE(256) 

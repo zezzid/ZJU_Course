@@ -1,0 +1,5 @@
+Build target 'Target 1'
+compiling BT.c...
+BT.c(57): error C202: 'B_PUT': undefined identifier
+Target not created.
+Build Time Elapsed:  00:00:00

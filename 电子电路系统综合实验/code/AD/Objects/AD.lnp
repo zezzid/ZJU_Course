@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\AD_jian.obj" 
+TO ".\Objects\AD" 
+PRINT(".\Listings\AD.m51") RAMSIZE(256) 

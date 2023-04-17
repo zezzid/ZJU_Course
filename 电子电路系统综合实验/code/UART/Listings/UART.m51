@@ -1,0 +1,257 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    06/30/2022  10:59:25  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+D:\SOFTWARE\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\UART.obj TO .\Objects\UART PRINT (.\Listings\UART.
+>> m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\UART.obj (UART)
+  D:\SOFTWARE\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  D:\SOFTWARE\KEIL_V5\C51\LIB\C51S.LIB (?C?SLDIV)
+  D:\SOFTWARE\KEIL_V5\C51\LIB\C51S.LIB (?C?ULDIV)
+
+
+LINK MAP OF MODULE:  .\Objects\UART (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0003H     UNIT         ?DT?UART
+                    000BH     0015H                  *** GAP ***
+            BIT     0020H.0   0000H.3   UNIT         ?BI?UART
+                    0020H.3   0000H.5                *** GAP ***
+            IDATA   0021H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+            CODE    000EH     00CEH     UNIT         ?C?LIB_CODE
+            CODE    00DCH     008CH     UNIT         ?C_C51STARTUP
+            CODE    0168H     0080H     UNIT         ?PR?INTERRUPTTIMER0?UART
+            CODE    01E8H     0044H     UNIT         ?C?LDIV
+            CODE    022CH     001EH     UNIT         ?PR?MAIN?UART
+            CODE    024AH     001CH     UNIT         ?PR?_CONFIGUART?UART
+            CODE    0266H     001BH     UNIT         ?PR?STARTRXD?UART
+            CODE    0281H     0010H     UNIT         ?PR?_STARTTXD?UART
+            CODE    0291H     0010H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\UART (?C_STARTUP)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?UART
+  +--> ?C_INITSEG
+
+?PR?MAIN?UART
+  +--> ?PR?_CONFIGUART?UART
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/30/2022  10:59:25  PAGE 2
+
+
+  +--> ?PR?STARTRXD?UART
+  +--> ?PR?_STARTTXD?UART
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\UART (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:00DCH         SEGMENT       ?C_C51STARTUP
+  I:0021H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:00DFH         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:00DCH         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:00DCH         LINE#         133
+  C:00DEH         LINE#         134
+  C:00DFH         LINE#         135
+  C:00E0H         LINE#         136
+  C:00E2H         LINE#         185
+  C:00E5H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        UART
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0266H         PUBLIC        StartRXD
+  D:0090H         PUBLIC        P1
+  C:0281H         PUBLIC        _StartTXD
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:0168H         PUBLIC        InterruptTimer0
+  D:00A8H         PUBLIC        IE
+  C:024AH         PUBLIC        _ConfigUART
+  D:00B8H         PUBLIC        IP
+  B:0020H.0       PUBLIC        RxdOrTxd
+  C:022CH         PUBLIC        main
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/30/2022  10:59:25  PAGE 3
+
+
+  D:0098H         PUBLIC        SCON
+  D:0089H         PUBLIC        TMOD
+  D:0088H         PUBLIC        TCON
+  B:00B0H.0       PUBLIC        PIN_RXD
+  B:00B0H.1       PUBLIC        PIN_TXD
+  B:0020H.1       PUBLIC        RxdEnd
+  B:00A8H.1       PUBLIC        ET0
+  B:0020H.2       PUBLIC        TxdEnd
+  D:008CH         PUBLIC        TH0
+  D:0009H         PUBLIC        RxdBuf
+  D:000AH         PUBLIC        TxdBuf
+  D:008AH         PUBLIC        TL0
+  B:0088H.4       PUBLIC        TR0
+  D:00C8H         PUBLIC        T2CON
+  D:00D0H         PUBLIC        PSW
+  -------         PROC          MAIN
+  C:022CH         LINE#         16
+  C:022CH         LINE#         17
+  C:022CH         LINE#         18
+  C:022EH         LINE#         19
+  C:0235H         LINE#         21
+  C:0235H         LINE#         22
+  C:0235H         LINE#         23
+  C:0238H         LINE#         24
+  C:023BH         LINE#         25
+  C:023EH         LINE#         26
+  C:0245H         LINE#         27
+  -------         ENDPROC       MAIN
+  -------         PROC          _CONFIGUART
+  D:0006H         SYMBOL        baud
+  C:024AH         LINE#         32
+  C:024AH         LINE#         33
+  C:024AH         LINE#         34
+  C:024DH         LINE#         35
+  C:0250H         LINE#         36
+  C:0265H         LINE#         37
+  -------         ENDPROC       _CONFIGUART
+  -------         PROC          STARTRXD
+  C:0266H         LINE#         39
+  C:0266H         LINE#         40
+  C:0266H         LINE#         41
+  C:0278H         LINE#         42
+  C:027AH         LINE#         43
+  C:027CH         LINE#         44
+  C:027EH         LINE#         45
+  C:0280H         LINE#         46
+  -------         ENDPROC       STARTRXD
+  -------         PROC          _STARTTXD
+  D:0007H         SYMBOL        dat
+  C:0281H         LINE#         48
+  C:0281H         LINE#         49
+  C:0281H         LINE#         50
+  C:0283H         LINE#         51
+  C:0286H         LINE#         52
+  C:0288H         LINE#         53
+  C:028AH         LINE#         54
+  C:028CH         LINE#         55
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/30/2022  10:59:25  PAGE 4
+
+
+  C:028EH         LINE#         56
+  C:0290H         LINE#         57
+  -------         ENDPROC       _STARTTXD
+  -------         PROC          INTERRUPTTIMER0
+  -------         DO            
+  D:0008H         SYMBOL        cnt
+  -------         ENDDO         
+  C:0168H         LINE#         59
+  C:0173H         LINE#         63
+  C:0176H         LINE#         64
+  C:0176H         LINE#         65
+  C:0178H         LINE#         66
+  C:0186H         LINE#         67
+  C:0186H         LINE#         68
+  C:018BH         LINE#         69
+  C:0191H         LINE#         70
+  C:0193H         LINE#         71
+  C:0199H         LINE#         72
+  C:0199H         LINE#         73
+  C:019BH         LINE#         74
+  C:019DH         LINE#         76
+  C:019DH         LINE#         77
+  C:01A0H         LINE#         78
+  C:01A2H         LINE#         79
+  C:01A4H         LINE#         80
+  C:01A4H         LINE#         81
+  C:01A6H         LINE#         83
+  C:01A6H         LINE#         84
+  C:01ADH         LINE#         85
+  C:01ADH         LINE#         86
+  C:01B0H         LINE#         87
+  C:01B0H         LINE#         88
+  C:01B2H         LINE#         89
+  C:01B4H         LINE#         90
+  C:01B6H         LINE#         92
+  C:01B6H         LINE#         93
+  C:01B8H         LINE#         94
+  C:01B8H         LINE#         95
+  C:01BAH         LINE#         96
+  C:01C5H         LINE#         97
+  C:01C5H         LINE#         98
+  C:01CBH         LINE#         99
+  C:01CEH         LINE#         100
+  C:01CEH         LINE#         101
+  C:01D1H         LINE#         102
+  C:01D1H         LINE#         103
+  C:01D3H         LINE#         104
+  C:01D5H         LINE#         106
+  C:01D5H         LINE#         107
+  C:01D8H         LINE#         108
+  C:01DAH         LINE#         109
+  C:01DDH         LINE#         110
+  C:01DDH         LINE#         111
+  C:01DFH         LINE#         112
+  C:01DFH         LINE#         113
+  C:01DFH         LINE#         114
+  C:01DFH         LINE#         115
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  06/30/2022  10:59:25  PAGE 5
+
+
+  -------         ENDPROC       INTERRUPTTIMER0
+  -------         ENDMOD        UART
+
+  -------         MODULE        ?C?SLDIV
+  C:01E8H         PUBLIC        ?C?SLDIV
+  -------         ENDMOD        ?C?SLDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:004AH         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+Program Size: data=12.3 xdata=0 code=665
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

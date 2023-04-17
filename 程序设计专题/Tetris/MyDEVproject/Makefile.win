@@ -1,0 +1,58 @@
+# Project: project_1
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = ../simpleGUI/imgui.o ../libgraphics/exceptio.o ../libgraphics/genlib.o ../libgraphics/graphics.o ../libgraphics/linkedlist.o ../libgraphics/random.o ../libgraphics/simpio.o ../libgraphics/strlib.o ../Mycode/Tetris.o ../Mycode/file.o ../Mycode/draw.o
+LINKOBJ  = ../simpleGUI/imgui.o ../libgraphics/exceptio.o ../libgraphics/genlib.o ../libgraphics/graphics.o ../libgraphics/linkedlist.o ../libgraphics/random.o ../libgraphics/simpio.o ../libgraphics/strlib.o ../Mycode/Tetris.o ../Mycode/file.o ../Mycode/draw.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"D:/_University/_current/Tetris/libgraphics" -L"D:/_University/_current/Tetris/simpleGUI" -L"D:/_University/_current/Tetris/Mycode" -mwindows -g3
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/_University/_current/Tetris/libgraphics" -I"D:/_University/_current/Tetris/simpleGUI" -I"D:/_University/_current/Tetris/Mycode"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"D:/_University/_current/Tetris/libgraphics" -I"D:/_University/_current/Tetris/simpleGUI" -I"D:/_University/_current/Tetris/Mycode"
+BIN      = project_1.exe
+CXXFLAGS = $(CXXINCS) -g3 -std=c99
+CFLAGS   = $(INCS) -g3 -std=c99
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CC) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+../simpleGUI/imgui.o: ../simpleGUI/imgui.c
+	$(CC) -c ../simpleGUI/imgui.c -o ../simpleGUI/imgui.o $(CFLAGS)
+
+../libgraphics/exceptio.o: ../libgraphics/exceptio.c
+	$(CC) -c ../libgraphics/exceptio.c -o ../libgraphics/exceptio.o $(CFLAGS)
+
+../libgraphics/genlib.o: ../libgraphics/genlib.c
+	$(CC) -c ../libgraphics/genlib.c -o ../libgraphics/genlib.o $(CFLAGS)
+
+../libgraphics/graphics.o: ../libgraphics/graphics.c
+	$(CC) -c ../libgraphics/graphics.c -o ../libgraphics/graphics.o $(CFLAGS)
+
+../libgraphics/linkedlist.o: ../libgraphics/linkedlist.c
+	$(CC) -c ../libgraphics/linkedlist.c -o ../libgraphics/linkedlist.o $(CFLAGS)
+
+../libgraphics/random.o: ../libgraphics/random.c
+	$(CC) -c ../libgraphics/random.c -o ../libgraphics/random.o $(CFLAGS)
+
+../libgraphics/simpio.o: ../libgraphics/simpio.c
+	$(CC) -c ../libgraphics/simpio.c -o ../libgraphics/simpio.o $(CFLAGS)
+
+../libgraphics/strlib.o: ../libgraphics/strlib.c
+	$(CC) -c ../libgraphics/strlib.c -o ../libgraphics/strlib.o $(CFLAGS)
+
+../Mycode/Tetris.o: ../Mycode/Tetris.c
+	$(CC) -c ../Mycode/Tetris.c -o ../Mycode/Tetris.o $(CFLAGS)
+
+../Mycode/file.o: ../Mycode/file.c
+	$(CC) -c ../Mycode/file.c -o ../Mycode/file.o $(CFLAGS)
+
+../Mycode/draw.o: ../Mycode/draw.c
+	$(CC) -c ../Mycode/draw.c -o ../Mycode/draw.o $(CFLAGS)

@@ -1,0 +1,1408 @@
+ ****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+  Copyright (c) 1986 - 2021 by Synopsys, Inc. All Rights Reserved.              
+  This software and the associated documentation are proprietary
+  to Synopsys, Inc. This software may only be used in accordance
+  with the terms and conditions of a written license agreement with
+  Synopsys, Inc. All other use, reproduction, or distribution of
+  this software is strictly prohibited.
+  Input File: book_6.11_3.sp                                                    
+  Command line options: D:\Hspice_K-2015.06-3\WIN64\hspice.exe -i book_6.11_3.sp -o D:\_University\_current\text1114\book_6.11_3.lis
+  lic:  
+  lic: FLEXlm: v11.2.1 
+  lic: USER:   Zezzid               HOSTNAME: LAPTOP-NBK8184L 
+  lic: HOSTID: "68545a57211d"       PID:      43796 
+  lic: Using FLEXlm license file: 
+  lic: 27000@LAPTOP-NBK8184L 
+  lic: Checkout 1 hspice 
+  lic: License/Maintenance for hspice will expire on 30-dec-2030/2029.2029 
+  lic: 1(in_use)/99(total) FLOATING license(s) on SERVER 27000@LAPTOP-NBK8184L 
+  lic:   
+ Init: read install configuration file: D:\Hspice_K-2015.06-3\meta.cfg
+
+ **warning**  runlvl smaller than 5, reset to 5 when accurate turned on
+  **warning** (..\models\ms018.mdl:33) Model n18 device geometries will not be checked against the limits set by lmin, lmax, wmin and wmax. To enable this check, add a period(.) to the model name(i.e. enable model selector).
+
+ **warning**  runlvl smaller than 5, reset to 5 when accurate turned on
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** mos   model parameters tnom=  25.000 temp=  25.000 ******
+ ***************************************************************************
+ ***        model parameters  model name:   0:n18      model type:nmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+       hspver=    2006.03               level=         49         
+      version=       3.24            paramchk=          0         
+       apwarn=          1                lite=          0         
+       vgslim=          0             binUnit=          2         
+       capMod=          3               xpart=          1         
+       mobMod=          1              nqsMod=          0         
+       stiMod=          0                 elm=          5         
+     sfvtflag=          0                 tox=  3.87e-009 meter   
+           xj=   1.6e-007 meter       binflag=          0         
+         lmin=   1.5e-007 meter          lmax=     1e-005 meter   
+         wmin=   1.9e-007 meter          wmax=     0.0001 meter   
+         lref=          0 meter          wref=          0 meter   
+         lint=1.57571e-008 meter          wint=-1.44505e-009 meter   
+        lmult=          1               wmult=          1         
+           ll=2.63528e-016                 lln=     1.1206         
+           lw=-2.26256e-016                 lwn=       0.92         
+          lwl=-2.05767e-022                  wl=-2.36646e-016         
+          wln=       1.06                  ww=-3.64097e-014         
+          wwn=   0.876847                 wwl=    -4e-021         
+          dwg= -5.96e-009 m/V             dwb=   4.5e-009 m/V^1/2 
+           xl=   1.8e-008                  xw=          0         
+           a0=       0.83                 ags=       0.32 V^-1    
+           b0=     6e-008 meter            b1=          0 meter   
+         keta=     -0.003 V^-1           voff=     -0.103 V       
+        ngate=          0 cm^-3           vbx=          0 V       
+          vbm=         -3 V                xt=  1.55e-007 meter   
+         vth0=       0.39 V               nch=3.8694e+017 cm^-3   
+         nsub=     6e+016 cm^-3           nlx=7.5451e-008 meter   
+       gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+           k1=   0.680104 V^1/2            k2= -0.0499778         
+           k3=         10                 k3b=         -3 V^-1    
+           w0=5.58201e-007 meter          dvt0=        1.3         
+         dvt1=   0.577163                dvt2=  -0.171755 V^-1    
+        dvt0w=          0 meter^-1      dvt1w=          0 meter^-1
+        dvt2w=          0 V^-1           dsub=        0.4         
+         eta0=      0.028                etab=     -0.027 V^-1    
+           u0=      0.034 m^2/V/sec         ua= -1.03e-009 m/V     
+           ub=2.36667e-018 (m/V)^2          uc=   1.2e-010 V^-1    
+         vsat=      82500 m/sec            a1=          0 v^-1    
+           a2=       0.99               delta=       0.01 V       
+         rdsw=    55.5497 ohm-um         prwg=        0.4 V^-1    
+         prwb=      -0.24 V^-1/2           wr=          1         
+         pclm=        1.2             pdiblc1=      0.025         
+      pdiblc2=     0.0038             pdiblcb=          0 V^-1    
+       pscbe1=  3.45e+008 V/m          pscbe2=     1e-006 V/m     
+        drout=       0.56                pvag=          0         
+      nfactor=       1.25                cdsc=          0 f/m^2   
+        cdscb=          0 f/V/m^2       cdscd=     0.0001 f/V/m^2 
+          cit=          0 f/m^2        alpha0=1.7754e-008 m/V     
+        beta0=    11.1684 V               dlc=   8.5e-009 meter   
+          dwc=   4.5e-008 meter           clc=     1e-007 meter   
+          cle=        0.6                cgso=   3.7e-010 f/m     
+         cgdo=   3.7e-010 f/m            cgbo=8.03054e-010 f/m     
+         cgsl=          0 f/m            cgdl=          0 f/m     
+       ckappa=        0.6                  cf=          0 f/m     
+         acde=       0.64 m/V            moin=         24 V^1/2   
+         toxm=  3.87e-009 m            dtoxcv=          0 m       
+          vfb (not used)                alpha1=     0.1764 1/V     
+         ijth=        0.1 A              noff=     1.2025         
+       voffcv=          0                 tcj=   0.000842 1/K     
+        tcjsw=   0.000669 1/K          tcjswg=   0.000669 1/K     
+          tpb=    0.00147 V/K           tpbsw=   0.000868 V/K     
+       tpbswg=   0.000868 V/K             llc=2.63528e-016         
+          lwc=-2.26256e-016                lwlc=-2.05767e-022         
+          wlc=-2.36646e-016                 wwc=-3.64097e-014         
+         wwlc=    -4e-021                tnom=     298.15 K       
+          kt1=  -0.257287 V              kt1l=    -1e-009         
+          kt2=      -0.04                 ute=      -1.55         
+          ua1=  1.76e-009 m/V             ub1=  -2.4e-018 (m/V)^2 
+          uc1=    -1e-010 m/V^2            at=      37000 m/s     
+          prt=        -55         
+          using Berkeley noise model       noiMod=          2         
+         noia=8.2282e+019                noib=      13327         
+         noic=-2.4937e-014                  em=1.7767e+007         
+           ef=      0.818                  af=          1         
+           kf=          0              gdsnoi=-1.23457e-029         
+          using Berkeley diodes          using ACM 
+          acm=        12                 hdif=    2e-007 meter    
+         ldif=    7e-008 meter             js= 3.52e-007 amp/m^2  
+          jsw=    3e-013 amp/m            xti=      3.25          
+           nj=    1.0392                   cj=  0.000968 f/m^2    
+           mj=     0.346                   pb=       0.7 V        
+         cjsw= 7.95e-011 f/m             mjsw=     0.538          
+          php (not used)                  pbsw=         1 V        
+       cjgate (not used)                 cjswg= 4.18e-010 f/m      
+        mjswg=     0.538                pbswg=         1 V        
+        lketa=  -1.7e-009               lvoff=  -3.3e-009         
+          lu0=2.30577e-011                 lua=7.73498e-019         
+     lnfactor=   4.5e-008                lua1=     6e-018         
+         luc1=   1.7e-017             lalpha1= 7.625e-009         
+        wvth0=-2.97095e-008                 wk1=-2.48968e-008         
+          wu0=-3.10097e-009                wua1=  -1.1e-016         
+        pvth0=     5e-016                 pk1=   1.3e-015         
+          pua=    -1e-024                 puc=   1.5e-024         
+        pvsat=  -8.3e-010               ppclm=     3e-015         
+     ppdiblc2=   2.7e-016                pua1=    -5e-025         
+         puc1=    -3e-024                 pat=  -7.5e-010         
+ ***************************************************************************
+ ***        model parameters  model name:   0:p18      model type:pmos   ***
+ ***************************************************************************
+
+   *** general parameters ***
+    deriv=   0.           
+
+   ***  level 49  model parameters  ***
+
+       hspver=    2006.03               level=         49         
+      version=       3.24            paramchk=          0         
+       apwarn=          1                lite=          0         
+       vgslim=          0             binUnit=          2         
+       capMod=          3               xpart=          1         
+       mobMod=          1              nqsMod=          0         
+       stiMod=          0                 elm=          5         
+     sfvtflag=          0                 tox=  3.74e-009 meter   
+           xj=   1.7e-007 meter       binflag=          0         
+         lmin=   1.5e-007 meter          lmax=     1e-005 meter   
+         wmin=   1.9e-007 meter          wmax=     0.0001 meter   
+         lref=          0 meter          wref=          0 meter   
+         lint=     1e-008 meter          wint=     8e-009 meter   
+        lmult=          1               wmult=          1         
+           ll=   3.4e-015                 lln=          1         
+           lw= -3.36e-016                 lwn=          1         
+          lwl=          0                  wl=3.59042e-015         
+          wln=      1.045                  ww=  -1.9e-015         
+          wwn=          1                 wwl=-1.1205e-021         
+          dwg=-1.7362e-008 m/V             dwb=     2e-008 m/V^1/2 
+           xl=  -5.7e-009                  xw=          0         
+           a0=          1                 ags=        0.2 V^-1    
+           b0=   6.3e-008 meter            b1=          0 meter   
+         keta=       0.02 V^-1           voff=     -0.095 V       
+        ngate= 3.168e+020 cm^-3           vbx=          0 V       
+          vbm=         -3 V                xt=  1.55e-007 meter   
+         vth0=     -0.402 V               nch=   5.5e+017 cm^-3   
+         nsub=     6e+016 cm^-3           nlx=     9e-008 meter   
+       gamma1=          0 V^-1/2       gamma2=          0 V^-1/2  
+           k1=   0.587239 V^1/2            k2= 0.00709069         
+           k3=        2.6                 k3b=     2.4862 V^-1    
+           w0=          0 meter          dvt0=   0.719493         
+         dvt1=   0.246744                dvt2=  0.0780897 V^-1    
+        dvt0w=          0 meter^-1      dvt1w=     800000 meter^-1
+        dvt2w=          0 V^-1           dsub=       0.56         
+         eta0=       0.04                etab=     -0.025 V^-1    
+           u0=   0.008661 m^2/V/sec         ua=  2.85e-010 m/V     
+           ub=     1e-018 (m/V)^2          uc= -4.77e-011 V^-1    
+         vsat=     100000 m/sec            a1=          0 v^-1    
+           a2=       0.99               delta=       0.01 V       
+         rdsw=        455 ohm-um         prwg=          0 V^-1    
+         prwb=       -0.4 V^-1/2           wr=          1         
+         pclm=        0.7             pdiblc1=          0         
+      pdiblc2=      0.007             pdiblcb=          0 V^-1    
+       pscbe1=     4e+008 V/m          pscbe2=     1e-007 V/m     
+        drout=       0.56                pvag=          0         
+      nfactor=        0.9                cdsc=          0 f/m^2   
+        cdscb=          0 f/V/m^2       cdscd=          0 f/V/m^2 
+          cit=          0 f/m^2        alpha0=     7e-008 m/V     
+        beta0=    22.8424 V               dlc=  -1.5e-009 meter   
+          dwc=     8e-009 meter           clc=     1e-007 meter   
+          cle=        0.6                cgso=   4.2e-010 f/m     
+         cgdo=   4.2e-010 f/m            cgbo=1.47728e-010 f/m     
+         cgsl=          0 f/m            cgdl=          0 f/m     
+       ckappa=        0.6                  cf=          0 f/m     
+         acde=   0.850508 m/V            moin=    14.9534 V^1/2   
+         toxm=  3.74e-009 m            dtoxcv=          0 m       
+          vfb (not used)                alpha1=    7.04917 1/V     
+         ijth=        0.1 A              noff=    1.43182         
+       voffcv=          0                 tcj=   0.000876 1/K     
+        tcjsw=   0.000745 1/K          tcjswg=   0.000745 1/K     
+          tpb=    0.00153 V/K           tpbsw=    0.00117 V/K     
+       tpbswg=    0.00117 V/K             llc=   3.4e-015         
+          lwc= -3.36e-016                lwlc=          0         
+          wlc=3.59042e-015                 wwc=  -1.9e-015         
+         wwlc=-1.1205e-021                tnom=     298.15 K       
+          kt1=  -0.257701 V              kt1l=    -8e-009         
+          kt2= -0.0309799                 ute=   -1.27036         
+          ua1=5.38663e-010 m/V             ub1=-2.071e-018 (m/V)^2 
+          uc1=2.06097e-011 m/V^2            at=      10000 m/s     
+          prt=         90         
+          using Berkeley noise model       noiMod=          2         
+         noia=3.3617e+018                noib=     195360         
+         noic=5.2658e-012                  em=6.2548e+007         
+           ef=     1.1307                  af=          1         
+           kf=          0              gdsnoi=-1.23457e-029         
+          using Berkeley diodes          using ACM 
+          acm=        12                 hdif=    2e-007 meter    
+         ldif=    7e-008 meter             js= 1.66e-007 amp/m^2  
+          jsw=  1.2e-013 amp/m            xti=       4.5          
+           nj=    1.0384                   cj=   0.00107 f/m^2    
+           mj=     0.415                   pb=     0.817 V        
+         cjsw= 9.89e-011 f/m             mjsw=     0.489          
+          php (not used)                  pbsw=         1 V        
+       cjgate (not used)                 cjswg= 5.07e-010 f/m      
+        mjswg=     0.489                pbswg=         1 V        
+        lketa=  -8.5e-009               lvoff=  -1.7e-009         
+          lk1=3.55321e-009                 lu0=    -2e-011         
+          lua=   5.5e-018            lnfactor=     1e-007         
+       lbeta0=  -7.5e-008                lkt2=    -3e-009         
+        wvoff=    -2e-009               wvth0=1.26754e-008         
+          wu0=1.38154e-010                 wuc=3.1668e-017         
+         wua1=   1.1e-016               pketa=     5e-016         
+        pvoff=    -1e-016               pvth0= -1.25e-015         
+          pua=    -2e-024                 puc=  -2.5e-024         
+     pnfactor=    -5e-015                pkt2=-6.53317e-016         
+         pua1= -2.37e-024                 pat=    -1e-009         
+  **warning** (book_6.11_3.sp:7) Both nodes of element vgnd are connected together; Line ignored.
+ 
+
+  
+      
+ **info** set option symb=1 internally to help for convergence.
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 5         bypass  = 2         
+ **info** dc convergence successful at Newton-Raphson method 
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** operating point information tnom=  25.000 temp=  27.000 ******
+ ****** operating point status is all       simulation time is     0.     
+    node    =voltage      node    =voltage      node    =voltage
+
+ +0:1       = 550.0000m 0:2       = 586.6876m 0:3       =   1.1197 
+ +0:4       =   1.8000 
+
+
+ **** voltage sources
+
+ subckt                        
+ element  0:vdd      0:vin     
+  volts      1.8000   550.0000m
+  current  -19.8860u    0.     
+  power     35.7948u    0.     
+
+     total voltage source power dissipation=   35.7948u       watts
+
+
+
+ **** resistors
+
+ subckt             
+ element  0:r1      
+  r value  120.0000k
+  v drop     1.1197 
+  current    9.3305u
+  power     10.4470u
+
+
+
+ **** mosfets
+
+
+ subckt                                   
+ element  0:m1       0:m2       0:m3      
+ model    0:n18      0:p18      0:p18     
+ region     Saturati   Saturati   Saturati
+  id        10.5555u  -10.5555u   -9.3305u
+  ibs     -1.603e-21  6.564e-22  5.803e-22
+  ibd     -176.4094a   26.9892f  5.759e-19
+  vgs      550.0000m -680.3401m -680.3401m
+  vds      586.6876m   -1.2133  -680.3401m
+  vbs        0.         0.         0.     
+  vth      470.5504m -480.4373m -487.9995m
+  vdsat    103.5933m -198.6859m -192.9241m
+  vod       79.4496m -199.9027m -192.3406m
+  beta       1.8640m  481.9231u  481.0120u
+  gam eff  756.7948m  604.3687m  604.3687m
+  gm       143.1006u   89.1847u   81.7273u
+  gds        4.0171u    2.1777u    2.5110u
+  gmb       35.7999u   26.1562u   24.3702u
+  cdtot      1.0087f    1.0201f    1.1147f
+  cgtot      1.6122f    1.4772f    1.4741f
+  cstot      2.0100f    2.1080f    2.1064f
+  cbtot      2.0130f    1.9205f    2.0146f
+  cgs        1.0288f    1.0419f    1.0408f
+  cgd      307.7448a  342.7920a  342.9609a
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency = 100.0000        hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.3441f    
+      1/f    0.         
+    total    3.3441f    
+       rx  155.5944k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.287e-20    
+       rs   47.2997a    
+       id   38.1681f    
+       rx  161.4142k    
+       fn    6.4196n    
+    total    6.4196n    
+
+
+
+
+ element     0:m2
+       rd  6.656e-21    
+       rs   19.3335a    
+       id   25.6207f    
+       rx  161.4504k    
+       fn    1.9295n    
+    total    1.9295n    
+
+
+
+
+ element     0:m3
+       rd  8.195e-21    
+       rs   15.3257a    
+       id   22.8569f    
+       rx  155.5384k    
+       fn    1.3300n    
+    total    1.3300n    
+
+
+
+
+ **** total output noise voltage         =   9.6791n       sq v/hz
+                                         =  98.3823u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  23.0985       
+      equivalent input noise at vin                           
+                                         =   4.2593u       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto  100.0000       hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    0.            volts
+ **** total equivalent input noise =    0.           
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency = 316.2278        hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.3441f    
+      1/f    0.         
+    total    3.3441f    
+       rx  155.5944k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.287e-20    
+       rs   47.2997a    
+       id   38.1681f    
+       rx  161.4142k    
+       fn    2.5033n    
+    total    2.5033n    
+
+
+
+
+ element     0:m2
+       rd  6.656e-21    
+       rs   19.3335a    
+       id   25.6207f    
+       rx  161.4504k    
+       fn  524.9131p    
+    total  524.9387p    
+
+
+
+
+ element     0:m3
+       rd  8.195e-21    
+       rs   15.3257a    
+       id   22.8569f    
+       rx  155.5384k    
+       fn  361.8139p    
+    total  361.8368p    
+
+
+
+
+ **** total output noise voltage         =   3.3901n       sq v/hz
+                                         =  58.2244u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  23.0985       
+      equivalent input noise at vin                           
+                                         =   2.5207u       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto  316.2278       hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    1.0830m       volts
+ **** total equivalent input noise =   46.8864u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =   1.0000k       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.3441f    
+      1/f    0.         
+    total    3.3441f    
+       rx  155.5944k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.287e-20    
+       rs   47.2996a    
+       id   38.1681f    
+       rx  161.4142k    
+       fn  976.1246p    
+    total  976.1629p    
+
+
+
+
+ element     0:m2
+       rd  6.656e-21    
+       rs   19.3334a    
+       id   25.6206f    
+       rx  161.4503k    
+       fn  142.8029p    
+    total  142.8285p    
+
+
+
+
+ element     0:m3
+       rd  8.195e-21    
+       rs   15.3257a    
+       id   22.8569f    
+       rx  155.5384k    
+       fn   98.4317p    
+    total   98.4546p    
+
+
+
+
+ **** total output noise voltage         =   1.2174n       sq v/hz
+                                         =  34.8920u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  23.0985       
+      equivalent input noise at vin                           
+                                         =   1.5106u       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto    1.0000k      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    1.5777m       volts
+ **** total equivalent input noise =   68.3016u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =   3.1623k       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.3441f    
+      1/f    0.         
+    total    3.3441f    
+       rx  155.5936k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.287e-20    
+       rs   47.2992a    
+       id   38.1677f    
+       rx  161.4134k    
+       fn  380.6285p    
+    total  380.6667p    
+
+
+
+
+ element     0:m2
+       rd  6.656e-21    
+       rs   19.3333a    
+       id   25.6204f    
+       rx  161.4496k    
+       fn   38.8493p    
+    total   38.8749p    
+
+
+
+
+ element     0:m3
+       rd  8.195e-21    
+       rs   15.3256a    
+       id   22.8566f    
+       rx  155.5376k    
+       fn   26.7782p    
+    total   26.8010p    
+
+
+
+
+ **** total output noise voltage         = 446.3460p       sq v/hz
+                                         =  21.1269u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  23.0984       
+      equivalent input noise at vin                           
+                                         = 914.6495n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto    3.1623k      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    2.0000m       volts
+ **** total equivalent input noise =   86.5860u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =  10.0000k       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.3438f    
+      1/f    0.         
+    total    3.3438f    
+       rx  155.5864k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.253e-20    
+       rs   47.2948a    
+       id   38.1642f    
+       rx  161.4059k    
+       fn  148.4092p    
+    total  148.4474p    
+
+
+
+
+ element     0:m2
+       rd  6.657e-21    
+       rs   19.3315a    
+       id   25.6180f    
+       rx  161.4420k    
+       fn   10.5680p    
+    total   10.5936p    
+
+
+
+
+ element     0:m3
+       rd  8.196e-21    
+       rs   15.3242a    
+       id   22.8545f    
+       rx  155.5304k    
+       fn    7.2843p    
+    total    7.3072p    
+
+
+
+
+ **** total output noise voltage         = 166.3516p       sq v/hz
+                                         =  12.8977u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  23.0973       
+      equivalent input noise at vin                           
+                                         = 558.4093n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto   10.0000k      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    2.4015m       volts
+ **** total equivalent input noise =  103.9682u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =  31.6228k       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.3407f    
+      1/f    0.         
+    total    3.3407f    
+       rx  155.5140k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.256e-20    
+       rs   47.2508a    
+       id   38.1287f    
+       rx  161.3308k    
+       fn   57.8171p    
+    total   57.8553p    
+
+
+
+
+ element     0:m2
+       rd  6.663e-21    
+       rs   19.3135a    
+       id   25.5942f    
+       rx  161.3669k    
+       fn    2.8724p    
+    total    2.8980p    
+
+
+
+
+ element     0:m3
+       rd  8.203e-21    
+       rs   15.3099a    
+       id   22.8333f    
+       rx  155.4580k    
+       fn    1.9799p    
+    total    2.0027p    
+
+
+
+
+ **** total output noise voltage         =  62.7593p       sq v/hz
+                                         =   7.9221u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  23.0865       
+      equivalent input noise at vin                           
+                                         = 343.1472n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto   31.6228k      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    2.8042m       volts
+ **** total equivalent input noise =  121.4107u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency = 100.0000k       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.3099f    
+      1/f    0.         
+    total    3.3099f    
+       rx  154.7957k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.243e-20    
+       rs   46.8153a    
+       id   37.7772f    
+       rx  160.5856k    
+       fn   22.3375p    
+    total   22.3754p    
+
+
+
+
+ element     0:m2
+       rd  6.542e-21    
+       rs   19.1355a    
+       id   25.3583f    
+       rx  160.6215k    
+       fn  774.2242f    
+    total  799.6016f    
+
+
+
+
+ element     0:m3
+       rd  8.277e-21    
+       rs   15.1688a    
+       id   22.6228f    
+       rx  154.7399k    
+       fn  533.6601f    
+    total  556.2980f    
+
+
+
+
+ **** total output noise voltage         =  23.7346p       sq v/hz
+                                         =   4.8718u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  22.9799       
+      equivalent input noise at vin                           
+                                         = 212.0033n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto  100.0000k      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    3.2206m       volts
+ **** total equivalent input noise =  139.5042u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency = 316.2278k       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.0305f    
+      1/f    0.         
+    total    3.0305f    
+       rx  148.1199k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.063e-20    
+       rs   42.8644a    
+       id   34.5891f    
+       rx  153.6602k    
+       fn    7.9753p    
+    total    8.0099p    
+
+
+
+
+ element     0:m2
+       rd  6.005e-21    
+       rs   17.5206a    
+       id   23.2182f    
+       rx  153.6946k    
+       fn  192.8529f    
+    total  216.0887f    
+
+
+
+
+ element     0:m3
+       rd  7.529e-21    
+       rs   13.8887a    
+       id   20.7136f    
+       rx  148.0666k    
+       fn  132.9304f    
+    total  153.6579f    
+
+
+
+
+ **** total output noise voltage         =   8.3827p       sq v/hz
+                                         =   2.8953u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  21.9889       
+      equivalent input noise at vin                           
+                                         = 131.6704n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto  316.2278k      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    3.6480m       volts
+ **** total equivalent input noise =  158.7136u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =   1.0000x       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    1.6435f    
+      1/f    0.         
+    total    1.6435f    
+       rx  109.0792k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  1.118e-20    
+       rs   23.2463a    
+       id   18.7584f    
+       rx  113.1592k    
+       fn    1.6866p    
+    total    1.7053p    
+
+
+
+
+ element     0:m2
+       rd  3.237e-21    
+       rs    9.5018a    
+       id   12.5918f    
+       rx  113.1846k    
+       fn   28.4534f    
+    total   41.0546f    
+
+
+
+
+ element     0:m3
+       rd  4.047e-21    
+       rs    7.5321a    
+       id   11.2334f    
+       rx  109.0400k    
+       fn   19.6124f    
+    total   30.8534f    
+
+
+
+
+ **** total output noise voltage         =   1.7789p       sq v/hz
+                                         =   1.3338u       v/rt hz
+      transfer function value:
+        v(2)/vin                         =  16.1932       
+      equivalent input noise at vin                           
+                                         =  82.3652n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto    1.0000x      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    4.0048m       volts
+ **** total equivalent input noise =  179.5144u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =   3.1623x       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs  294.7085a    
+      1/f    0.         
+    total  294.7085a    
+       rx   46.1902k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.016e-21    
+       rs    4.1684a    
+       id    3.3637f    
+       rx   47.9179k    
+       fn  117.9284f    
+    total  121.2962f    
+
+
+
+
+ element     0:m2
+       rd  5.808e-22    
+       rs    1.7038a    
+       id    2.2579f    
+       rx   47.9287k    
+       fn    1.3880f    
+    total    3.6476f    
+
+
+
+
+ element     0:m3
+       rd  7.264e-22    
+       rs    1.3506a    
+       id    2.0143f    
+       rx   46.1736k    
+       fn  956.7483a    
+    total    2.9724f    
+
+
+
+
+ **** total output noise voltage         = 128.2110f       sq v/hz
+                                         = 358.0656n       v/rt hz
+      transfer function value:
+        v(2)/vin                         =   6.8571       
+      equivalent input noise at vin                           
+                                         =  52.2183n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto    3.1623x      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    4.1472m       volts
+ **** total equivalent input noise =  202.5794u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =  10.0000x       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs   32.0095a    
+      1/f    0.         
+    total   32.0095a    
+       rx   15.2228k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.199e-22    
+       rs  4.528e-19    
+       id  365.3443a    
+       rx   15.7922k    
+       fn    4.9947f    
+    total    5.3605f    
+
+
+
+
+ element     0:m2
+       rd  6.460e-23    
+       rs  1.851e-19    
+       id  245.2404a    
+       rx   15.7957k    
+       fn   41.0146a    
+    total  286.4402a    
+
+
+
+
+ element     0:m3
+       rd  7.848e-23    
+       rs  1.467e-19    
+       id  218.7843a    
+       rx   15.2173k    
+       fn   28.2706a    
+    total  247.2017a    
+
+
+
+
+ **** total output noise voltage         =   5.9261f       sq v/hz
+                                         =  76.9813n       v/rt hz
+      transfer function value:
+        v(2)/vin                         =   2.2599       
+      equivalent input noise at vin                           
+                                         =  34.0644n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto   10.0000x      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    4.1726m       volts
+ **** total equivalent input noise =  229.2088u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency =  31.6228x       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs    3.2286a    
+      1/f    0.         
+    total    3.2286a    
+       rx    4.8346k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.215e-23    
+       rs  4.567e-20    
+       id   36.8519a    
+       rx    5.0156k    
+       fn  196.4558a    
+    total  233.3534a    
+
+
+
+
+ element     0:m2
+       rd  6.653e-24    
+       rs  1.867e-20    
+       id   24.7371a    
+       rx    5.0167k    
+       fn    1.1255a    
+    total   25.8813a    
+
+
+
+
+ element     0:m3
+       rd  8.059e-24    
+       rs  1.480e-20    
+       id   22.0675a    
+       rx    4.8329k    
+       fn  7.758e-19    
+    total   22.8581a    
+
+
+
+
+ **** total output noise voltage         = 285.3214a       sq v/hz
+                                         =  16.8915n       v/rt hz
+      transfer function value:
+        v(2)/vin                         = 717.7330m      
+      equivalent input noise at vin                           
+                                         =  23.5345n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto   31.6228x      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    4.1763m       volts
+ **** total equivalent input noise =  262.4484u      
+
+
+
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** noise analysis tnom=  25.000 temp=  27.000 ******
+
+     frequency = 100.0000x       hz
+
+
+
+
+ **** resistor squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:r1
+       rs  3.230e-19    
+      1/f    0.         
+    total  3.230e-19    
+       rx    1.5291k    
+
+
+
+ **** mosfet squared noise voltages (sq v/hz)
+
+
+
+
+ element     0:m1
+       rd  2.268e-24    
+       rs  4.571e-21    
+       id    3.6884a    
+       rx    1.5868k    
+       fn    7.6673a    
+    total   11.3603a    
+
+
+
+
+ element     0:m2
+       rd  7.337e-25    
+       rs  1.868e-21    
+       id    2.4759a    
+       rx    1.5871k    
+       fn  3.065e-20    
+    total    2.5084a    
+
+
+
+
+ element     0:m3
+       rd  8.181e-25    
+       rs  1.480e-21    
+       id    2.2076a    
+       rx    1.5286k    
+       fn  2.111e-20    
+    total    2.2302a    
+
+
+
+
+ **** total output noise voltage         =  16.4219a       sq v/hz
+                                         =   4.0524n       v/rt hz
+      transfer function value:
+        v(2)/vin                         = 227.0660m      
+      equivalent input noise at vin                           
+                                         =  17.8468n       /rt hz
+
+
+
+ **** the results of the sqrt of integral (v**2 / freq)
+      from fstart upto  100.0000x      hz. using more freq points
+      results in more accurate total noise values.
+
+ **** total output noise voltage   =    4.1769m       volts
+ **** total equivalent input noise =  309.8682u      
+
+
+
+
+          ***** job concluded
+1****** HSPICE -- K-2015.06-3 win64 (Aug  6 2015) ******                        
+ ******  
+ .title pmos_ac
+
+ ****** job statistics summary tnom=  25.000 temp=  27.000 ******
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ****** Statistics of Ignored Elements ******
+  Voltage Sources :       1
+
+  ******  Circuit Statistics  ******
+  # nodes       =      11 # elements   =       7
+  # resistors   =       1 # capacitors =       1 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       0
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       2
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       3 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1          10
+  ac analysis        0.01         121         121
+  readin             0.01
+  errchk             0.00
+  setup              0.00
+  output             0.00
+
+
+           peak memory used         50.49 megabytes
+           total cpu time            0.03 seconds
+           total elapsed time        0.20 seconds
+           job started at     23:01:05 11/15/2021
+           job ended   at     23:01:06 11/15/2021
+
+
+  lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        0.17(s)
