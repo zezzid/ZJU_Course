@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<SchematicTopology Version="2.3" Seed="1" Grid="25">
-    <BasePath>C:/Users/Zezzid/AppData/Local/Temp/CSTDE1/Temp/DE/Untitled_0/Model/DS</BasePath>
-    <Block ForeignId="42658680" Id="1" Class="MWSSCHEM">
-        <Size Height="150" Width="150"/>
-        <Pos X="75" Y="75"/>
-        <ToolTip>CST MICROWAVE STUDIO schematic block MWSSCHEM1</ToolTip>
-    </Block>
-</SchematicTopology>
